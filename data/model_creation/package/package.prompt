@@ -1,0 +1,92 @@
+You are an expert in SysML modeling.
+
+SYSTEM / SCOPE TO MODEL:
+{system_description}
+
+TASK: Create a JSON package diagram for the system described above. Do not ask for clarification.
+
+Output Format
+You MUST output ONLY a valid JSON object following this exact schema:
+
+json
+Copy
+Edit
+{{
+  "name": "DiagramName",
+  "packages": [
+    {{"name": "PackageName", "type": "package"}}
+  ],
+  "elements": [
+    {{"name": "ElementName", "type": "block", "package": "PackageName"}}
+  ],
+  "relationships": [
+    {{"from": "SourcePackage", "to": "TargetPackage", "type": "dependency"}}
+  ]
+}}
+Schema Requirements
+Root Field	Type	Notes
+name	string	Name of the package diagram
+packages	array	List of packages (≥ 1)
+elements	array	Optional — model elements contained in packages
+relationships	array	Structural relationships between packages (≥ 0)
+
+Package Object
+Field	Type	Allowed type value	Description
+name	string	—	Unique package name
+type	string	"package"	Must be "package"
+
+Element Object (optional)
+Field	Type	Description
+name	string	Element name (block, interface, etc.)
+type	string	Element kind (e.g., "block", "interface", "actor"). Keep free-form.
+package	string	Must exactly match a packages.name
+
+Relationship Object
+Field	Type	Allowed type values	Description
+from	string	—	Source package (must match packages.name)
+to	string	—	Target package (must match packages.name)
+type	string	"dependency", "import", "access", "merge"	Relationship kind
+stereotype	string	Optional	Additional qualifier (e.g., «profile»)
+
+Working Example
+json
+Copy
+Edit
+{{
+  "name": "ECommercePackages",
+  "packages": [
+    {{"name": "Payment", "type": "package"}},
+    {{"name": "Order",   "type": "package"}},
+    {{"name": "User",    "type": "package"}}
+  ],
+  "elements": [
+    {{"name": "PaymentGateway", "type": "block", "package": "Payment"}},
+    {{"name": "OrderService",   "type": "block", "package": "Order"}},
+    {{"name": "UserProfile",    "type": "block", "package": "User"}}
+  ],
+  "relationships": [
+    {{"from": "Order", "to": "Payment", "type": "dependency"}},
+    {{"from": "Order", "to": "User",    "type": "dependency"}},
+    {{"from": "Payment", "to": "User",  "type": "access"}}
+  ]
+}}
+Modeling Rules
+Identify logical groupings → Each major subsystem/module becomes a package.
+
+Contain elements → Optionally list key blocks or interfaces under elements.
+
+Relate packages → Use relationships to show dependencies, imports, merges, or accesses.
+
+Match references exactly → elements.package, relationships.from, and relationships.to must match package names exactly.
+
+Avoid orphan packages → Every package (except completely independent ones) should participate in at least one relationship.
+
+Use clear, descriptive names.
+
+Prefer concise names → Use short, descriptive names that stick closely to the terminology used in the original question. Avoid verbose or unnecessarily long element names.
+
+Output only JSON → No explanations, comments, or extra formatting.
+
+Never ask for clarification → Model strictly with the information provided.
+
+REMINDER: Create the JSON package diagram for the system described above. Output only valid JSON.

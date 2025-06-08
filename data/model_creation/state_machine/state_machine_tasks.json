@@ -1,0 +1,1153 @@
+[
+  {
+    "question": "Create a SysML state chart for a coffee machine: It starts idle, heats water after turn-on, if enough water it brews coffee then turns off, otherwise goes to error and then turns off. Provide the diagram in JSON.",
+    "desired_model": {
+      "name": "CoffeeMachineStatechart",
+      "states": [
+        {
+          "name": "Idle",
+          "type": "initial"
+        },
+        {
+          "name": "Heating",
+          "type": "state",
+          "entry": "heatWater()"
+        },
+        {
+          "name": "Brewing",
+          "type": "state",
+          "entry": "brewCoffee()"
+        },
+        {
+          "name": "Error",
+          "type": "state",
+          "entry": "displayError()"
+        },
+        {
+          "name": "Off",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Idle",
+          "to": "Heating",
+          "event": "turnOn()"
+        },
+        {
+          "from": "Heating",
+          "to": "Brewing",
+          "event": "waterHeated",
+          "guard": "enoughWater"
+        },
+        {
+          "from": "Heating",
+          "to": "Error",
+          "event": "waterHeated",
+          "guard": "!enoughWater"
+        },
+        {
+          "from": "Brewing",
+          "to": "Off",
+          "event": "brewDone"
+        },
+        {
+          "from": "Error",
+          "to": "Off",
+          "event": "ackError"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Model a pedestrian traffic light as a SysML state chart. The light starts in the Idle state. When a pedestrian presses the button (event: 'buttonPressed'), the light transitions to Walk. After 30 seconds (event: 'timer30s'), it transitions to Flashing. After 10 seconds (event: 'timer10s'), it transitions to DontWalk. When the cycle is complete (event: 'cycleComplete'), it returns to Idle. At any time, a manual reset (event: 'manualReset') can return the system to Idle. The system can be powered off from DontWalk (event: 'powerOff'), transitioning to the End state. Use the following state names: 'Idle', 'Walk', 'Flashing', 'DontWalk', 'End'. Use the specified event names for transitions.",
+    "desired_model": {
+      "name": "PedestrianLightStatechart",
+      "states": [
+        {
+          "name": "Idle",
+          "type": "initial"
+        },
+        {
+          "name": "Walk",
+          "type": "state"
+        },
+        {
+          "name": "Flashing",
+          "type": "state"
+        },
+        {
+          "name": "DontWalk",
+          "type": "state"
+        },
+        {
+          "name": "End",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Idle",
+          "to": "Walk",
+          "event": "buttonPressed"
+        },
+        {
+          "from": "Walk",
+          "to": "Flashing",
+          "event": "timer30s"
+        },
+        {
+          "from": "Flashing",
+          "to": "DontWalk",
+          "event": "timer10s"
+        },
+        {
+          "from": "DontWalk",
+          "to": "Idle",
+          "event": "cycleComplete"
+        },
+        {
+          "from": "DontWalk",
+          "to": "End",
+          "event": "powerOff"
+        },
+        {
+          "from": "Walk",
+          "to": "Idle",
+          "event": "manualReset"
+        },
+        {
+          "from": "Flashing",
+          "to": "Idle",
+          "event": "manualReset"
+        },
+        {
+          "from": "DontWalk",
+          "to": "Idle",
+          "event": "manualReset"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML state chart for an elevator controller with the following behavior: The initial state is 'Idle'. From 'Idle', on 'callReceived', transition to 'Moving'. From 'Moving', on 'arrivedFloor', transition to 'DoorOpen'. From 'DoorOpen', on 'timeout30s' or 'doorCloseCmd', transition to 'Idle'. At any time during 'Moving', on 'emergencyStop', transition to 'Error', which has entry action 'activateAlarm()'. From 'Error', on 'reset', transition to 'Idle'. From 'Idle', on 'powerOff', transition to the final state 'Shutdown'. Use these exact state and event names.",
+    "desired_model": {
+      "name": "ElevatorStatechart",
+      "states": [
+        {
+          "name": "Idle",
+          "type": "initial"
+        },
+        {
+          "name": "Moving",
+          "type": "state"
+        },
+        {
+          "name": "DoorOpen",
+          "type": "state"
+        },
+        {
+          "name": "Error",
+          "type": "state",
+          "entry": "activateAlarm()"
+        },
+        {
+          "name": "Shutdown",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Idle",
+          "to": "Moving",
+          "event": "callReceived"
+        },
+        {
+          "from": "Moving",
+          "to": "DoorOpen",
+          "event": "arrivedFloor"
+        },
+        {
+          "from": "DoorOpen",
+          "to": "Idle",
+          "event": "doorCloseCmd"
+        },
+        {
+          "from": "DoorOpen",
+          "to": "Idle",
+          "event": "timeout30s"
+        },
+        {
+          "from": "Moving",
+          "to": "Error",
+          "event": "emergencyStop"
+        },
+        {
+          "from": "Error",
+          "to": "Idle",
+          "event": "reset"
+        },
+        {
+          "from": "Idle",
+          "to": "Shutdown",
+          "event": "powerOff"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML state chart for a digital door lock with the following behavior: The lock starts in the 'Locked' state. When a user enters a code, if the code is valid, the lock transitions to the 'Unlocked' state. If the code is invalid, the lock transitions to the 'Alarm' state, which triggers the 'soundAlarm()' entry action. The lock automatically returns from 'Unlocked' to 'Locked' after a 30-second timeout. The 'Alarm' state returns to 'Locked' when a 'reset' event occurs. If a 'batteryLow' event occurs while in the 'Locked' state, the lock transitions to a 'Disabled' final state. Use the following standardized names: states ('Locked', 'Unlocked', 'Alarm', 'Disabled'), events ('enterCode', 'timeout30s', 'reset', 'batteryLow'), and guard conditions ('valid', '!valid').",
+    "desired_model": {
+      "name": "DoorLockStatechart",
+      "states": [
+        {
+          "name": "Locked",
+          "type": "initial"
+        },
+        {
+          "name": "Unlocked",
+          "type": "state"
+        },
+        {
+          "name": "Alarm",
+          "type": "state",
+          "entry": "soundAlarm()"
+        },
+        {
+          "name": "Disabled",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Locked",
+          "to": "Unlocked",
+          "event": "enterCode",
+          "guard": "valid"
+        },
+        {
+          "from": "Locked",
+          "to": "Alarm",
+          "event": "enterCode",
+          "guard": "!valid"
+        },
+        {
+          "from": "Unlocked",
+          "to": "Locked",
+          "event": "timeout30s"
+        },
+        {
+          "from": "Alarm",
+          "to": "Locked",
+          "event": "reset"
+        },
+        {
+          "from": "Locked",
+          "to": "Disabled",
+          "event": "batteryLow"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML state chart for an ATM transaction. The state machine starts in the 'Idle' state (type: initial). When a card is inserted (event: 'insertCard'), transition to 'CardInserted'. After a valid PIN is entered (event: 'enterPin', guard: 'pinValid'), transition to 'PinEntered'. When a transaction is selected (event: 'selectTransaction'), transition to 'TransactionSelected'. Upon confirmation (event: 'confirm'), transition to 'DispenseCash'. When cash is dispensed (event: 'cashDispensed'), transition to 'EjectCard'. When the card is ejected (event: 'cardEjected'), return to 'Idle'. At any time in 'CardInserted', 'PinEntered', or 'TransactionSelected', a 'cancel' event transitions to 'EjectCard'. From 'Idle', a 'maintenanceMode' event transitions to 'OutOfService' (type: final). Use these exact state and event names.",
+    "desired_model": {
+      "name": "ATMStatechart",
+      "states": [
+        {
+          "name": "Idle",
+          "type": "initial"
+        },
+        {
+          "name": "CardInserted",
+          "type": "state"
+        },
+        {
+          "name": "PinEntered",
+          "type": "state"
+        },
+        {
+          "name": "TransactionSelected",
+          "type": "state"
+        },
+        {
+          "name": "DispenseCash",
+          "type": "state"
+        },
+        {
+          "name": "EjectCard",
+          "type": "state"
+        },
+        {
+          "name": "OutOfService",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Idle",
+          "to": "CardInserted",
+          "event": "insertCard"
+        },
+        {
+          "from": "CardInserted",
+          "to": "PinEntered",
+          "event": "enterPin",
+          "guard": "pinValid"
+        },
+        {
+          "from": "PinEntered",
+          "to": "TransactionSelected",
+          "event": "selectTransaction"
+        },
+        {
+          "from": "TransactionSelected",
+          "to": "DispenseCash",
+          "event": "confirm"
+        },
+        {
+          "from": "DispenseCash",
+          "to": "EjectCard",
+          "event": "cashDispensed"
+        },
+        {
+          "from": "EjectCard",
+          "to": "Idle",
+          "event": "cardEjected"
+        },
+        {
+          "from": "CardInserted",
+          "to": "EjectCard",
+          "event": "cancel"
+        },
+        {
+          "from": "PinEntered",
+          "to": "EjectCard",
+          "event": "cancel"
+        },
+        {
+          "from": "TransactionSelected",
+          "to": "EjectCard",
+          "event": "cancel"
+        },
+        {
+          "from": "Idle",
+          "to": "OutOfService",
+          "event": "maintenanceMode"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML state chart for a washing machine with the following sequence: Off (initial) \u2192 Fill \u2192 Wash \u2192 Rinse \u2192 Spin \u2192 Done \u2192 Off (final). If the 'doorOpen' event occurs in any state except Off, the machine aborts to Off. Use these exact state names: Off, Fill, Wash, Rinse, Spin, Done. Use these event names for transitions: 'start' (Off\u2192Fill), 'filled' (Fill\u2192Wash), 'washed' (Wash\u2192Rinse), 'rinsed' (Rinse\u2192Spin), 'spun' (Spin\u2192Done), 'done' (Done\u2192Off). Use 'doorOpen' as the abort event from Fill, Wash, Rinse, Spin, and Done to Off.",
+    "desired_model": {
+      "name": "WashingMachineStatechart",
+      "states": [
+        {
+          "name": "Off",
+          "type": "initial"
+        },
+        {
+          "name": "Fill",
+          "type": "state"
+        },
+        {
+          "name": "Wash",
+          "type": "state"
+        },
+        {
+          "name": "Rinse",
+          "type": "state"
+        },
+        {
+          "name": "Spin",
+          "type": "state"
+        },
+        {
+          "name": "Done",
+          "type": "state"
+        },
+        {
+          "name": "OffFinal",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Off",
+          "to": "Fill",
+          "event": "start"
+        },
+        {
+          "from": "Fill",
+          "to": "Wash",
+          "event": "filled"
+        },
+        {
+          "from": "Wash",
+          "to": "Rinse",
+          "event": "washed"
+        },
+        {
+          "from": "Rinse",
+          "to": "Spin",
+          "event": "rinsed"
+        },
+        {
+          "from": "Spin",
+          "to": "Done",
+          "event": "spun"
+        },
+        {
+          "from": "Done",
+          "to": "OffFinal",
+          "event": "done"
+        },
+        {
+          "from": "Fill",
+          "to": "Off",
+          "event": "doorOpen"
+        },
+        {
+          "from": "Wash",
+          "to": "Off",
+          "event": "doorOpen"
+        },
+        {
+          "from": "Rinse",
+          "to": "Off",
+          "event": "doorOpen"
+        },
+        {
+          "from": "Spin",
+          "to": "Off",
+          "event": "doorOpen"
+        },
+        {
+          "from": "Done",
+          "to": "Off",
+          "event": "doorOpen"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML state chart for a thermostat with the following behavior: The initial state is Off. From Off, transition to Heating when the tempLow event occurs, and to Cooling when the tempHigh event occurs. In the Heating state, enter with heaterOn() and exit with heaterOff(); transition back to Off when tempReached occurs. In the Cooling state, enter with acOn() and exit with acOff(); transition back to Off when tempReached occurs. From Off, transition to the final state Shutdown when the powerOff event occurs.",
+    "desired_model": {
+      "name": "ThermostatStatechart",
+      "states": [
+        {
+          "name": "Off",
+          "type": "initial"
+        },
+        {
+          "name": "Heating",
+          "type": "state",
+          "entry": "heaterOn()",
+          "exit": "heaterOff()"
+        },
+        {
+          "name": "Cooling",
+          "type": "state",
+          "entry": "acOn()",
+          "exit": "acOff()"
+        },
+        {
+          "name": "Shutdown",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Off",
+          "to": "Heating",
+          "event": "tempLow"
+        },
+        {
+          "from": "Heating",
+          "to": "Off",
+          "event": "tempReached"
+        },
+        {
+          "from": "Off",
+          "to": "Cooling",
+          "event": "tempHigh"
+        },
+        {
+          "from": "Cooling",
+          "to": "Off",
+          "event": "tempReached"
+        },
+        {
+          "from": "Off",
+          "to": "Shutdown",
+          "event": "powerOff"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML state chart for a printer: Ready \u00e2\u2020\u2019 Printing \u00e2\u2020\u2019 Ready on success, Printing \u00e2\u2020\u2019 Error on jam, Error \u00e2\u2020\u2019 Ready after clear, Ready \u00e2\u2020\u2019 Off on powerDown. Provide JSON.",
+    "desired_model": {
+      "name": "PrinterStatechart",
+      "states": [
+        {
+          "name": "Ready",
+          "type": "initial"
+        },
+        {
+          "name": "Printing",
+          "type": "state"
+        },
+        {
+          "name": "Error",
+          "type": "state",
+          "entry": "blinkLED()"
+        },
+        {
+          "name": "Off",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Ready",
+          "to": "Printing",
+          "event": "printJob"
+        },
+        {
+          "from": "Printing",
+          "to": "Ready",
+          "event": "printDone"
+        },
+        {
+          "from": "Printing",
+          "to": "Error",
+          "event": "paperJam"
+        },
+        {
+          "from": "Error",
+          "to": "Ready",
+          "event": "clearJam"
+        },
+        {
+          "from": "Ready",
+          "to": "Off",
+          "event": "powerDown"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML state chart for a portable music player with the following states and transitions:\n- States: 'Stopped' (initial), 'Playing', 'Paused', 'Off' (final)\n- Transitions:\n  - 'Stopped' (initial) to 'Playing' on event 'play'\n  - 'Playing' to 'Paused' on event 'pause'\n  - 'Paused' to 'Playing' on event 'resume'\n  - 'Playing' to 'Stopped' on event 'stop'\n  - From any state ('Stopped', 'Playing', 'Paused') to 'Off' (final) on event 'powerOff'\nUse these exact state and event names. Provide the statechart in the specified JSON format.",
+    "desired_model": {
+      "name": "MusicPlayerStatechart",
+      "states": [
+        {
+          "name": "Stopped",
+          "type": "initial"
+        },
+        {
+          "name": "Playing",
+          "type": "state"
+        },
+        {
+          "name": "Paused",
+          "type": "state"
+        },
+        {
+          "name": "Off",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Stopped",
+          "to": "Playing",
+          "event": "play"
+        },
+        {
+          "from": "Playing",
+          "to": "Paused",
+          "event": "pause"
+        },
+        {
+          "from": "Paused",
+          "to": "Playing",
+          "event": "resume"
+        },
+        {
+          "from": "Playing",
+          "to": "Stopped",
+          "event": "stop"
+        },
+        {
+          "from": "Stopped",
+          "to": "Off",
+          "event": "powerOff"
+        },
+        {
+          "from": "Playing",
+          "to": "Off",
+          "event": "powerOff"
+        },
+        {
+          "from": "Paused",
+          "to": "Off",
+          "event": "powerOff"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML state chart for a vending machine with the following behavior: The machine starts in the Idle state. When an item is selected (event: itemSelected), it transitions to the Selection state. After confirming the selection (event: confirmSelection), it moves to the Payment state. If payment is sufficient (event: paymentOK), it transitions to the Dispense state, and after dispensing the item (event: itemDispensed), it returns to Idle. If payment is insufficient (event: paymentInsufficient), it remains in the Payment state. If the selected item is out of stock (event: outOfStock) during Selection, it transitions to the Refund state, and after refunding (event: refundDone), it returns to Idle. The machine can be powered off from Idle (event: powerOff), transitioning to the Shutdown final state. Use the following state names: Idle (initial), Selection, Payment, Dispense, Refund, Shutdown (final). Use the specified event names for transitions.",
+    "desired_model": {
+      "name": "VendingMachineStatechart",
+      "states": [
+        {
+          "name": "Idle",
+          "type": "initial"
+        },
+        {
+          "name": "Selection",
+          "type": "state"
+        },
+        {
+          "name": "Payment",
+          "type": "state"
+        },
+        {
+          "name": "Dispense",
+          "type": "state"
+        },
+        {
+          "name": "Refund",
+          "type": "state"
+        },
+        {
+          "name": "Shutdown",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Idle",
+          "to": "Selection",
+          "event": "itemSelected"
+        },
+        {
+          "from": "Selection",
+          "to": "Payment",
+          "event": "confirmSelection"
+        },
+        {
+          "from": "Payment",
+          "to": "Dispense",
+          "event": "paymentOK"
+        },
+        {
+          "from": "Payment",
+          "to": "Payment",
+          "event": "paymentInsufficient"
+        },
+        {
+          "from": "Dispense",
+          "to": "Idle",
+          "event": "itemDispensed"
+        },
+        {
+          "from": "Selection",
+          "to": "Refund",
+          "event": "outOfStock"
+        },
+        {
+          "from": "Refund",
+          "to": "Idle",
+          "event": "refundDone"
+        },
+        {
+          "from": "Idle",
+          "to": "Shutdown",
+          "event": "powerOff"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML state chart for a car ignition system with the following states: 'Off' (initial), 'Accessory', 'IgnitionOn', 'EngineRunning', 'Fault', and 'End' (final). Transitions occur as follows: From 'Off' to 'Accessory' on 'keyTurnAccessory'; from 'Accessory' to 'IgnitionOn' on 'keyTurnOn'; from 'IgnitionOn' to 'EngineRunning' on 'engineStart'; from 'EngineRunning' to 'Off' on 'keyOff'; from 'EngineRunning' to 'Fault' on 'engineError'; from 'Fault' to 'Off' on 'reset'; and from 'Off' to 'End' on 'batteryDisconnect'. Use these exact state and event names in your model.",
+    "desired_model": {
+      "name": "CarIgnitionStatechart",
+      "states": [
+        {
+          "name": "Off",
+          "type": "initial"
+        },
+        {
+          "name": "Accessory",
+          "type": "state"
+        },
+        {
+          "name": "IgnitionOn",
+          "type": "state"
+        },
+        {
+          "name": "EngineRunning",
+          "type": "state"
+        },
+        {
+          "name": "Fault",
+          "type": "state"
+        },
+        {
+          "name": "End",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Off",
+          "to": "Accessory",
+          "event": "keyTurnAccessory"
+        },
+        {
+          "from": "Accessory",
+          "to": "IgnitionOn",
+          "event": "keyTurnOn"
+        },
+        {
+          "from": "IgnitionOn",
+          "to": "EngineRunning",
+          "event": "engineStart"
+        },
+        {
+          "from": "EngineRunning",
+          "to": "Off",
+          "event": "keyOff"
+        },
+        {
+          "from": "EngineRunning",
+          "to": "Fault",
+          "event": "engineError"
+        },
+        {
+          "from": "Fault",
+          "to": "Off",
+          "event": "reset"
+        },
+        {
+          "from": "Off",
+          "to": "End",
+          "event": "batteryDisconnect"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML state chart for a pedestrian crossing button with the following states and transitions:\n\nStates (use these exact names):\n- 'Wait' (initial state)\n- 'Pressed'\n- 'SignalChange'\n- 'Crossing'\n- 'Disabled' (final state)\n\nTransitions (use these exact event names):\n- 'Wait' to 'Pressed' on event 'buttonPress'\n- 'Pressed' to 'SignalChange' on event 'debounceDone'\n- 'SignalChange' to 'Crossing' on event 'greenLight'\n- 'Crossing' to 'Wait' on event 'timeout'\n- 'Wait' to 'Disabled' on event 'maintenance'\n\nProvide the JSON statechart using these names exactly.",
+    "desired_model": {
+      "name": "CrossingButtonStatechart",
+      "states": [
+        {
+          "name": "Wait",
+          "type": "initial"
+        },
+        {
+          "name": "Pressed",
+          "type": "state"
+        },
+        {
+          "name": "SignalChange",
+          "type": "state"
+        },
+        {
+          "name": "Crossing",
+          "type": "state"
+        },
+        {
+          "name": "Disabled",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Wait",
+          "to": "Pressed",
+          "event": "buttonPress"
+        },
+        {
+          "from": "Pressed",
+          "to": "SignalChange",
+          "event": "debounceDone"
+        },
+        {
+          "from": "SignalChange",
+          "to": "Crossing",
+          "event": "greenLight"
+        },
+        {
+          "from": "Crossing",
+          "to": "Wait",
+          "event": "timeout"
+        },
+        {
+          "from": "Wait",
+          "to": "Disabled",
+          "event": "maintenance"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML state chart for a temperature alarm system with the following behavior: The system starts in the 'Normal' state. When the temperature becomes high (event: 'tempHigh'), it transitions to the 'Warning' state. If the temperature becomes very high (event: 'tempVeryHigh'), it transitions from 'Warning' to 'Alarm', where the siren is activated (entry action: 'activateSiren()'). If the temperature returns to normal (event: 'tempNormal'), the system transitions from 'Warning' back to 'Normal'. When the alarm is active, a reset event ('reset') returns the system to 'Normal'. The system can transition from 'Normal' to a final 'Shut' state on the 'systemOff' event.",
+    "desired_model": {
+      "name": "TempAlarmStatechart",
+      "states": [
+        {
+          "name": "Normal",
+          "type": "initial"
+        },
+        {
+          "name": "Warning",
+          "type": "state"
+        },
+        {
+          "name": "Alarm",
+          "type": "state",
+          "entry": "activateSiren()"
+        },
+        {
+          "name": "Shut",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Normal",
+          "to": "Warning",
+          "event": "tempHigh"
+        },
+        {
+          "from": "Warning",
+          "to": "Alarm",
+          "event": "tempVeryHigh"
+        },
+        {
+          "from": "Alarm",
+          "to": "Normal",
+          "event": "reset"
+        },
+        {
+          "from": "Warning",
+          "to": "Normal",
+          "event": "tempNormal"
+        },
+        {
+          "from": "Normal",
+          "to": "Shut",
+          "event": "systemOff"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML state chart for a microwave oven with the following behavior: The oven starts in the Idle state with the door closed. When the 'start' event occurs and the door is closed, transition from Idle to Cooking. While Cooking, if the 'doorOpen' event occurs, transition to Paused. When the door is closed again ('doorClosed' event), transition from Paused back to Cooking. When cooking is done ('cookDone' event), transition from Cooking to Idle. Include an Off final state, reached from Idle on 'powerOff'. Use these exact state and event names: Idle, Cooking, Paused, Off; start, cookDone, doorOpen, doorClosed, powerOff. Add entry action 'magnetronOn()' and exit action 'magnetronOff()' to Cooking.",
+    "desired_model": {
+      "name": "MicrowaveStatechart",
+      "states": [
+        {
+          "name": "Idle",
+          "type": "initial"
+        },
+        {
+          "name": "Cooking",
+          "type": "state",
+          "entry": "magnetronOn()",
+          "exit": "magnetronOff()"
+        },
+        {
+          "name": "Paused",
+          "type": "state"
+        },
+        {
+          "name": "Off",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Idle",
+          "to": "Cooking",
+          "event": "start",
+          "guard": "doorClosed"
+        },
+        {
+          "from": "Cooking",
+          "to": "Idle",
+          "event": "cookDone"
+        },
+        {
+          "from": "Cooking",
+          "to": "Paused",
+          "event": "doorOpen"
+        },
+        {
+          "from": "Paused",
+          "to": "Cooking",
+          "event": "doorClosed"
+        },
+        {
+          "from": "Idle",
+          "to": "Off",
+          "event": "powerOff"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML state chart for a user login session with the following requirements: The initial state is 'LoggedOut'. From 'LoggedOut', submitting credentials transitions to 'LoggingIn'. If authentication succeeds, transition to 'LoggedIn'; if authentication fails, return to 'LoggedOut'. From 'LoggedIn', a 'logout' event transitions back to 'LoggedOut'. From 'LoggedOut', an 'appClose' event transitions to the final state 'End'. Use the exact state and event names: 'LoggedOut', 'LoggingIn', 'LoggedIn', 'End', 'submitCredentials', 'authSuccess', 'authFail', 'logout', and 'appClose'. Provide the statechart in JSON format.",
+    "desired_model": {
+      "name": "LoginSessionStatechart",
+      "states": [
+        {
+          "name": "LoggedOut",
+          "type": "initial"
+        },
+        {
+          "name": "LoggingIn",
+          "type": "state"
+        },
+        {
+          "name": "LoggedIn",
+          "type": "state"
+        },
+        {
+          "name": "End",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "LoggedOut",
+          "to": "LoggingIn",
+          "event": "submitCredentials"
+        },
+        {
+          "from": "LoggingIn",
+          "to": "LoggedIn",
+          "event": "authSuccess"
+        },
+        {
+          "from": "LoggingIn",
+          "to": "LoggedOut",
+          "event": "authFail"
+        },
+        {
+          "from": "LoggedIn",
+          "to": "LoggedOut",
+          "event": "logout"
+        },
+        {
+          "from": "LoggedOut",
+          "to": "End",
+          "event": "appClose"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML state chart for a battery charger with the following behavior: The charger starts in the Idle state (initial). When the event 'batteryLow' occurs, it transitions to Charging. When 'nearFull' occurs, it transitions from Charging to Trickle. When 'full' occurs, it transitions from Trickle back to Idle. If an 'overheat' event occurs during Charging, transition to the Fault state. From Fault, a 'reset' event returns the charger to Idle. From Idle, a 'powerOff' event transitions the charger to the Off (final) state. Use these exact state and event names.",
+    "desired_model": {
+      "name": "BatteryChargerStatechart",
+      "states": [
+        {
+          "name": "Idle",
+          "type": "initial"
+        },
+        {
+          "name": "Charging",
+          "type": "state"
+        },
+        {
+          "name": "Trickle",
+          "type": "state"
+        },
+        {
+          "name": "Fault",
+          "type": "state"
+        },
+        {
+          "name": "Off",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Idle",
+          "to": "Charging",
+          "event": "batteryLow"
+        },
+        {
+          "from": "Charging",
+          "to": "Trickle",
+          "event": "nearFull"
+        },
+        {
+          "from": "Trickle",
+          "to": "Idle",
+          "event": "full"
+        },
+        {
+          "from": "Charging",
+          "to": "Fault",
+          "event": "overheat"
+        },
+        {
+          "from": "Fault",
+          "to": "Idle",
+          "event": "reset"
+        },
+        {
+          "from": "Idle",
+          "to": "Off",
+          "event": "powerOff"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML state chart for a smart light bulb with the following behavior: The bulb has four states: Off, On, Dimmed, and Dead (final). The bulb can be turned On from Off either by a manual 'toggle' event or automatically by a 'motionDetected' event from a motion sensor. From On, a manual 'toggle' event turns the bulb Off, a 'dim' event transitions to Dimmed, and a 'timeout5m' event (after 5 minutes) also turns it Off. From Dimmed, a 'bright' event returns to On, a 'timeout5m' event turns it Off. At any time in Off, a 'bulbFault' event transitions to Dead. Use these exact event and state names in your model. Provide JSON.",
+    "desired_model": {
+      "name": "SmartBulbStatechart",
+      "states": [
+        {
+          "name": "Off",
+          "type": "initial"
+        },
+        {
+          "name": "On",
+          "type": "state"
+        },
+        {
+          "name": "Dimmed",
+          "type": "state"
+        },
+        {
+          "name": "Dead",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Off",
+          "to": "On",
+          "event": "toggle"
+        },
+        {
+          "from": "Off",
+          "to": "On",
+          "event": "motionDetected"
+        },
+        {
+          "from": "On",
+          "to": "Off",
+          "event": "toggle"
+        },
+        {
+          "from": "On",
+          "to": "Dimmed",
+          "event": "dim"
+        },
+        {
+          "from": "On",
+          "to": "Off",
+          "event": "timeout5m"
+        },
+        {
+          "from": "Dimmed",
+          "to": "On",
+          "event": "bright"
+        },
+        {
+          "from": "Dimmed",
+          "to": "Off",
+          "event": "timeout5m"
+        },
+        {
+          "from": "Off",
+          "to": "Dead",
+          "event": "bulbFault"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML state chart for a ticket vending kiosk: Start \u00e2\u2020\u2019 SelectRoute \u00e2\u2020\u2019 Pay \u00e2\u2020\u2019 PrintTicket \u00e2\u2020\u2019 Start; cancel at any point returns to Start; maintenance to Disabled. Provide JSON.",
+    "desired_model": {
+      "name": "TicketKioskStatechart",
+      "states": [
+        {
+          "name": "Start",
+          "type": "initial"
+        },
+        {
+          "name": "SelectRoute",
+          "type": "state"
+        },
+        {
+          "name": "Pay",
+          "type": "state"
+        },
+        {
+          "name": "PrintTicket",
+          "type": "state"
+        },
+        {
+          "name": "Disabled",
+          "type": "final"
+        }
+      ],
+      "transitions": [
+        {
+          "from": "Start",
+          "to": "SelectRoute",
+          "event": "begin"
+        },
+        {
+          "from": "SelectRoute",
+          "to": "Pay",
+          "event": "confirmRoute"
+        },
+        {
+          "from": "Pay",
+          "to": "PrintTicket",
+          "event": "paymentSuccess"
+        },
+        {
+          "from": "PrintTicket",
+          "to": "Start",
+          "event": "ticketPrinted"
+        },
+        {
+          "from": "SelectRoute",
+          "to": "Start",
+          "event": "cancel"
+        },
+        {
+          "from": "Pay",
+          "to": "Start",
+          "event": "cancel"
+        },
+        {
+          "from": "PrintTicket",
+          "to": "Start",
+          "event": "cancel"
+        },
+        {
+          "from": "Start",
+          "to": "Disabled",
+          "event": "maintenance"
+        }
+      ]
+    }
+  }
+]

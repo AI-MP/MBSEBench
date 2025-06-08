@@ -1,0 +1,1205 @@
+[
+  {
+    "question": "Create a SysML use-case diagram for a coffee machine: A User can brew coffee or receive error messages. A MaintenanceTech performs maintenance. Represent actors, use cases, and associations in JSON format.",
+    "desired_model": {
+      "name": "CoffeeMachineUseCases",
+      "actors": [
+        {
+          "name": "User",
+          "type": "primary"
+        },
+        {
+          "name": "MaintenanceTech",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Brew Coffee",
+          "type": "useCase"
+        },
+        {
+          "name": "Display Error",
+          "type": "useCase"
+        },
+        {
+          "name": "Perform Maintenance",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "User",
+          "to": "Brew Coffee",
+          "type": "association"
+        },
+        {
+          "from": "User",
+          "to": "Display Error",
+          "type": "association"
+        },
+        {
+          "from": "MaintenanceTech",
+          "to": "Perform Maintenance",
+          "type": "association"
+        },
+        {
+          "from": "Display Error",
+          "to": "Perform Maintenance",
+          "type": "include"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML use-case diagram for a library management system. Patrons (called 'Patron') can search the catalog, borrow books, and return books. Librarians (called 'Librarian') can add books and manage inventory. Use the following use case names exactly: 'Search Catalog', 'Borrow Book', 'Return Book', 'Add Book', 'Manage Inventory'. Both actors are 'primary'. Do not include any relationships between use cases unless explicitly described.",
+    "desired_model": {
+      "name": "LibrarySystemUseCases",
+      "actors": [
+        {
+          "name": "Patron",
+          "type": "primary"
+        },
+        {
+          "name": "Librarian",
+          "type": "primary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Search Catalog",
+          "type": "useCase"
+        },
+        {
+          "name": "Borrow Book",
+          "type": "useCase"
+        },
+        {
+          "name": "Return Book",
+          "type": "useCase"
+        },
+        {
+          "name": "Add Book",
+          "type": "useCase"
+        },
+        {
+          "name": "Manage Inventory",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Patron",
+          "to": "Search Catalog",
+          "type": "association"
+        },
+        {
+          "from": "Patron",
+          "to": "Borrow Book",
+          "type": "association"
+        },
+        {
+          "from": "Patron",
+          "to": "Return Book",
+          "type": "association"
+        },
+        {
+          "from": "Librarian",
+          "to": "Add Book",
+          "type": "association"
+        },
+        {
+          "from": "Librarian",
+          "to": "Manage Inventory",
+          "type": "association"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Model an online bookstore\u2019s use-case diagram. The actors are: Customer (primary) and PaymentSystem (secondary). The use cases are: Search Books, Place Order, Process Payment, and Send Confirmation. The Customer can Search Books, Place Order, and receives confirmations via Send Confirmation. Placing an order always includes processing payment. The PaymentSystem is associated with Process Payment. After payment is processed, Send Confirmation is triggered. Use these exact names for all elements. Provide JSON.",
+    "desired_model": {
+      "name": "OnlineBookstoreUseCases",
+      "actors": [
+        {
+          "name": "Customer",
+          "type": "primary"
+        },
+        {
+          "name": "PaymentSystem",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Search Books",
+          "type": "useCase"
+        },
+        {
+          "name": "Place Order",
+          "type": "useCase"
+        },
+        {
+          "name": "Process Payment",
+          "type": "useCase"
+        },
+        {
+          "name": "Send Confirmation",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Customer",
+          "to": "Search Books",
+          "type": "association"
+        },
+        {
+          "from": "Customer",
+          "to": "Place Order",
+          "type": "association"
+        },
+        {
+          "from": "Place Order",
+          "to": "Process Payment",
+          "type": "include"
+        },
+        {
+          "from": "PaymentSystem",
+          "to": "Process Payment",
+          "type": "association"
+        },
+        {
+          "from": "Process Payment",
+          "to": "Send Confirmation",
+          "type": "extend"
+        },
+        {
+          "from": "Customer",
+          "to": "Send Confirmation",
+          "type": "association"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML use-case diagram for a smart-home security system: Homeowner arms system, disarms system, and receives alerts. SecurityService monitors alarms. Provide JSON.",
+    "desired_model": {
+      "name": "SmartHomeSecurityUseCases",
+      "actors": [
+        {
+          "name": "Homeowner",
+          "type": "primary"
+        },
+        {
+          "name": "SecurityService",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Arm System",
+          "type": "useCase"
+        },
+        {
+          "name": "Disarm System",
+          "type": "useCase"
+        },
+        {
+          "name": "Receive Alert",
+          "type": "useCase"
+        },
+        {
+          "name": "Monitor Alarm",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Homeowner",
+          "to": "Arm System",
+          "type": "association"
+        },
+        {
+          "from": "Homeowner",
+          "to": "Disarm System",
+          "type": "association"
+        },
+        {
+          "from": "Homeowner",
+          "to": "Receive Alert",
+          "type": "association"
+        },
+        {
+          "from": "SecurityService",
+          "to": "Monitor Alarm",
+          "type": "association"
+        },
+        {
+          "from": "Monitor Alarm",
+          "to": "Receive Alert",
+          "type": "include"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML use-case diagram for a ride-sharing app: Rider requests ride and pays fare; Driver accepts ride and completes trip; PaymentProcessor handles payment. Provide JSON.",
+    "desired_model": {
+      "name": "RideSharingUseCases",
+      "actors": [
+        {
+          "name": "Rider",
+          "type": "primary"
+        },
+        {
+          "name": "Driver",
+          "type": "primary"
+        },
+        {
+          "name": "PaymentProcessor",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Request Ride",
+          "type": "useCase"
+        },
+        {
+          "name": "Accept Ride",
+          "type": "useCase"
+        },
+        {
+          "name": "Complete Trip",
+          "type": "useCase"
+        },
+        {
+          "name": "Pay Fare",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Rider",
+          "to": "Request Ride",
+          "type": "association"
+        },
+        {
+          "from": "Driver",
+          "to": "Accept Ride",
+          "type": "association"
+        },
+        {
+          "from": "Driver",
+          "to": "Complete Trip",
+          "type": "association"
+        },
+        {
+          "from": "Request Ride",
+          "to": "Accept Ride",
+          "type": "include"
+        },
+        {
+          "from": "Complete Trip",
+          "to": "Pay Fare",
+          "type": "include"
+        },
+        {
+          "from": "PaymentProcessor",
+          "to": "Pay Fare",
+          "type": "association"
+        },
+        {
+          "from": "Rider",
+          "to": "Pay Fare",
+          "type": "association"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML use-case diagram for a weather application. The system boundary is the weather application itself. There are two actors: 'User' (primary) and 'WeatherAPI' (secondary, external data provider). The user can 'View Current Weather', 'View Forecast', and 'Set Weather Alert'. The 'WeatherAPI' provides weather data to the application. Use the following exact use-case names: 'View Current Weather', 'View Forecast', 'Set Weather Alert', and 'Provide Weather Data'. Use the actor names 'User' and 'WeatherAPI'. Show associations between actors and use cases, and include relationships from 'Provide Weather Data' to both 'View Current Weather' and 'View Forecast'. Output JSON only.",
+    "desired_model": {
+      "name": "WeatherAppUseCases",
+      "actors": [
+        {
+          "name": "User",
+          "type": "primary"
+        },
+        {
+          "name": "WeatherAPI",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "View Current Weather",
+          "type": "useCase"
+        },
+        {
+          "name": "View Forecast",
+          "type": "useCase"
+        },
+        {
+          "name": "Set Weather Alert",
+          "type": "useCase"
+        },
+        {
+          "name": "Provide Weather Data",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "User",
+          "to": "View Current Weather",
+          "type": "association"
+        },
+        {
+          "from": "User",
+          "to": "View Forecast",
+          "type": "association"
+        },
+        {
+          "from": "User",
+          "to": "Set Weather Alert",
+          "type": "association"
+        },
+        {
+          "from": "WeatherAPI",
+          "to": "Provide Weather Data",
+          "type": "association"
+        },
+        {
+          "from": "Provide Weather Data",
+          "to": "View Current Weather",
+          "type": "include",
+          "note": "Weather data is required to view current weather"
+        },
+        {
+          "from": "Provide Weather Data",
+          "to": "View Forecast",
+          "type": "include",
+          "note": "Weather data is required to view forecast"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Model an email service use-case diagram. Use the following conventions: Actors are 'Sender', 'Recipient', and 'SpamFilter' (all as external actors). Use cases are 'Send Email', 'Read Email', 'Store Email', and 'Filter Spam'. The system boundary is the email service itself (do not model 'System' as an actor). Specify these relationships: 'Sender' is associated with 'Send Email'; 'Recipient' is associated with 'Read Email'; 'SpamFilter' is associated with 'Filter Spam'; 'Send Email' includes 'Store Email'; 'Filter Spam' extends 'Store Email'; 'Store Email' includes 'Read Email'. Provide the use-case diagram in JSON as per the schema.",
+    "desired_model": {
+      "name": "EmailServiceUseCases",
+      "actors": [
+        {
+          "name": "Sender",
+          "type": "primary"
+        },
+        {
+          "name": "Recipient",
+          "type": "primary"
+        },
+        {
+          "name": "SpamFilter",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Send Email",
+          "type": "useCase"
+        },
+        {
+          "name": "Read Email",
+          "type": "useCase"
+        },
+        {
+          "name": "Store Email",
+          "type": "useCase"
+        },
+        {
+          "name": "Filter Spam",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Sender",
+          "to": "Send Email",
+          "type": "association"
+        },
+        {
+          "from": "Send Email",
+          "to": "Store Email",
+          "type": "include"
+        },
+        {
+          "from": "SpamFilter",
+          "to": "Filter Spam",
+          "type": "association"
+        },
+        {
+          "from": "Filter Spam",
+          "to": "Store Email",
+          "type": "extend"
+        },
+        {
+          "from": "Recipient",
+          "to": "Read Email",
+          "type": "association"
+        },
+        {
+          "from": "Store Email",
+          "to": "Read Email",
+          "type": "include"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML use-case diagram for a hospital patient monitoring system. The system has the following actors: 'Nurse' (primary) and 'Technician' (secondary). The use cases are: 'Collect Vitals', 'View Vitals', 'Receive Alert', and 'Calibrate Sensor'. The relationships are: 'Nurse' is associated with 'View Vitals' and 'Receive Alert'; 'Technician' is associated with 'Calibrate Sensor'; 'Collect Vitals' includes 'View Vitals' and extends 'Receive Alert'; 'Calibrate Sensor' includes 'Collect Vitals'. Provide the model in JSON format using these exact names and relationships.",
+    "desired_model": {
+      "name": "PatientMonitoringUseCases",
+      "actors": [
+        {
+          "name": "Nurse",
+          "type": "primary"
+        },
+        {
+          "name": "Technician",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Collect Vitals",
+          "type": "useCase"
+        },
+        {
+          "name": "View Vitals",
+          "type": "useCase"
+        },
+        {
+          "name": "Receive Alert",
+          "type": "useCase"
+        },
+        {
+          "name": "Calibrate Sensor",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Nurse",
+          "to": "View Vitals",
+          "type": "association"
+        },
+        {
+          "from": "Nurse",
+          "to": "Receive Alert",
+          "type": "association"
+        },
+        {
+          "from": "Collect Vitals",
+          "to": "Receive Alert",
+          "type": "extend"
+        },
+        {
+          "from": "Collect Vitals",
+          "to": "View Vitals",
+          "type": "include"
+        },
+        {
+          "from": "Technician",
+          "to": "Calibrate Sensor",
+          "type": "association"
+        },
+        {
+          "from": "Calibrate Sensor",
+          "to": "Collect Vitals",
+          "type": "include"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML use-case diagram for an autonomous drone delivery platform. Use the following standardized element names: Actors: 'Customer' (primary), 'Operator' (secondary). Use Cases: 'Schedule Delivery', 'Execute Delivery', 'Monitor Mission'. Relationships: 'Customer' is associated with 'Schedule Delivery'; 'Schedule Delivery' includes 'Execute Delivery'; 'Operator' is associated with 'Monitor Mission'; 'Monitor Mission' extends 'Execute Delivery'. Provide the JSON use-case diagram using these exact names and relationships.",
+    "desired_model": {
+      "name": "DroneDeliveryUseCases",
+      "actors": [
+        {
+          "name": "Customer",
+          "type": "primary"
+        },
+        {
+          "name": "Operator",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Schedule Delivery",
+          "type": "useCase"
+        },
+        {
+          "name": "Execute Delivery",
+          "type": "useCase"
+        },
+        {
+          "name": "Monitor Mission",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Customer",
+          "to": "Schedule Delivery",
+          "type": "association"
+        },
+        {
+          "from": "Schedule Delivery",
+          "to": "Execute Delivery",
+          "type": "include"
+        },
+        {
+          "from": "Operator",
+          "to": "Monitor Mission",
+          "type": "association"
+        },
+        {
+          "from": "Monitor Mission",
+          "to": "Execute Delivery",
+          "type": "extend"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML use-case diagram for an EV charging network: Driver starts session and pays fee; MaintenanceCrew services station; PaymentGateway processes payments. Provide JSON.",
+    "desired_model": {
+      "name": "EVChargingUseCases",
+      "actors": [
+        {
+          "name": "Driver",
+          "type": "primary"
+        },
+        {
+          "name": "MaintenanceCrew",
+          "type": "secondary"
+        },
+        {
+          "name": "PaymentGateway",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Start Charging Session",
+          "type": "useCase"
+        },
+        {
+          "name": "Pay Charging Fee",
+          "type": "useCase"
+        },
+        {
+          "name": "Perform Maintenance",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Driver",
+          "to": "Start Charging Session",
+          "type": "association"
+        },
+        {
+          "from": "Start Charging Session",
+          "to": "Pay Charging Fee",
+          "type": "include"
+        },
+        {
+          "from": "PaymentGateway",
+          "to": "Pay Charging Fee",
+          "type": "association"
+        },
+        {
+          "from": "MaintenanceCrew",
+          "to": "Perform Maintenance",
+          "type": "association"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML use-case diagram for a healthcare appointment system with the following requirements: The Patient books an appointment, the Doctor conducts the appointment, and the system sends reminders to the Patient after an appointment is booked. Model only 'Patient' and 'Doctor' as actors. Use the following use cases: 'Book Appointment', 'Conduct Appointment', and 'Send Reminder'. Use an 'association' relationship between each actor and their respective use case. Use an 'include' relationship from 'Book Appointment' to 'Send Reminder' to indicate that reminders are always sent after booking. Do not include a 'System' actor.",
+    "desired_model": {
+      "name": "AppointmentSystemUseCases",
+      "actors": [
+        {
+          "name": "Patient",
+          "type": "primary"
+        },
+        {
+          "name": "Doctor",
+          "type": "primary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Book Appointment",
+          "type": "useCase"
+        },
+        {
+          "name": "Conduct Appointment",
+          "type": "useCase"
+        },
+        {
+          "name": "Send Reminder",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Patient",
+          "to": "Book Appointment",
+          "type": "association"
+        },
+        {
+          "from": "Book Appointment",
+          "to": "Send Reminder",
+          "type": "include"
+        },
+        {
+          "from": "Doctor",
+          "to": "Conduct Appointment",
+          "type": "association"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML use-case diagram for a warehouse robot management system: Operator assigns tasks; Robot completes tasks; System updates inventory. Provide JSON.",
+    "desired_model": {
+      "name": "WarehouseRobotUseCases",
+      "actors": [
+        {
+          "name": "Operator",
+          "type": "primary"
+        },
+        {
+          "name": "Robot",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Assign Task",
+          "type": "useCase"
+        },
+        {
+          "name": "Complete Task",
+          "type": "useCase"
+        },
+        {
+          "name": "Update Inventory",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Operator",
+          "to": "Assign Task",
+          "type": "association"
+        },
+        {
+          "from": "Assign Task",
+          "to": "Complete Task",
+          "type": "include"
+        },
+        {
+          "from": "Robot",
+          "to": "Complete Task",
+          "type": "association"
+        },
+        {
+          "from": "Complete Task",
+          "to": "Update Inventory",
+          "type": "include"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML use-case diagram for an online payment gateway. Use the following actors: 'Merchant', 'Customer', and 'FraudService' (as an external actor). Define the use cases as: 'Initiate Payment', 'Process Payment', 'Fraud Check', and 'Confirm Payment'. Specify the following relationships: 'Merchant' is associated with 'Initiate Payment'; 'Customer' is associated with 'Confirm Payment'; 'FraudService' is associated with 'Fraud Check'; 'Initiate Payment' includes 'Process Payment'; 'Fraud Check' extends 'Process Payment'; 'Process Payment' includes 'Confirm Payment'. Provide the diagram in JSON format using these exact names.",
+    "desired_model": {
+      "name": "PaymentGatewayUseCases",
+      "actors": [
+        {
+          "name": "Merchant",
+          "type": "primary"
+        },
+        {
+          "name": "Customer",
+          "type": "primary"
+        },
+        {
+          "name": "FraudService",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Initiate Payment",
+          "type": "useCase"
+        },
+        {
+          "name": "Process Payment",
+          "type": "useCase"
+        },
+        {
+          "name": "Fraud Check",
+          "type": "useCase"
+        },
+        {
+          "name": "Confirm Payment",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Merchant",
+          "to": "Initiate Payment",
+          "type": "association"
+        },
+        {
+          "from": "Customer",
+          "to": "Confirm Payment",
+          "type": "association"
+        },
+        {
+          "from": "Initiate Payment",
+          "to": "Process Payment",
+          "type": "include"
+        },
+        {
+          "from": "FraudService",
+          "to": "Fraud Check",
+          "type": "association"
+        },
+        {
+          "from": "Fraud Check",
+          "to": "Process Payment",
+          "type": "extend"
+        },
+        {
+          "from": "Process Payment",
+          "to": "Confirm Payment",
+          "type": "include"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML use-case diagram for a solar panel monitoring portal. The system allows the following interactions: (1) The Owner can view performance data; (2) The Service Technician can diagnose faults; (3) The system automatically logs data. Model 'Owner' as a primary actor, 'Service Technician' as a secondary actor, and 'Log Data' as a use case initiated by the system itself (not as an actor). Do not include 'include' or 'extend' relationships unless explicitly described. Provide JSON.",
+    "desired_model": {
+      "name": "SolarPanelMonitoringPortalUseCases",
+      "actors": [
+        {
+          "name": "Owner",
+          "type": "primary"
+        },
+        {
+          "name": "Service Technician",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "View Performance",
+          "type": "useCase"
+        },
+        {
+          "name": "Diagnose Faults",
+          "type": "useCase"
+        },
+        {
+          "name": "Log Data",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Owner",
+          "to": "View Performance",
+          "type": "association"
+        },
+        {
+          "from": "Service Technician",
+          "to": "Diagnose Faults",
+          "type": "association"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML use-case diagram for a university course registration portal: Student searches courses, enrolls, drops; Registrar manages catalog. Provide JSON.",
+    "desired_model": {
+      "name": "CourseRegistrationUseCases",
+      "actors": [
+        {
+          "name": "Student",
+          "type": "primary"
+        },
+        {
+          "name": "Registrar",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Search Courses",
+          "type": "useCase"
+        },
+        {
+          "name": "Enroll Course",
+          "type": "useCase"
+        },
+        {
+          "name": "Drop Course",
+          "type": "useCase"
+        },
+        {
+          "name": "Manage Catalog",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Student",
+          "to": "Search Courses",
+          "type": "association"
+        },
+        {
+          "from": "Student",
+          "to": "Enroll Course",
+          "type": "association"
+        },
+        {
+          "from": "Student",
+          "to": "Drop Course",
+          "type": "association"
+        },
+        {
+          "from": "Registrar",
+          "to": "Manage Catalog",
+          "type": "association"
+        },
+        {
+          "from": "Manage Catalog",
+          "to": "Search Courses",
+          "type": "include"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML use-case diagram for a food delivery service: Customer places order, Courier delivers, Restaurant prepares, System tracks delivery. Provide JSON.",
+    "desired_model": {
+      "name": "FoodDeliveryUseCases",
+      "actors": [
+        {
+          "name": "Customer",
+          "type": "primary"
+        },
+        {
+          "name": "Restaurant",
+          "type": "secondary"
+        },
+        {
+          "name": "Courier",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Place Order",
+          "type": "useCase"
+        },
+        {
+          "name": "Prepare Order",
+          "type": "useCase"
+        },
+        {
+          "name": "Deliver Order",
+          "type": "useCase"
+        },
+        {
+          "name": "Track Delivery",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Customer",
+          "to": "Place Order",
+          "type": "association"
+        },
+        {
+          "from": "Restaurant",
+          "to": "Prepare Order",
+          "type": "association"
+        },
+        {
+          "from": "Courier",
+          "to": "Deliver Order",
+          "type": "association"
+        },
+        {
+          "from": "Place Order",
+          "to": "Track Delivery",
+          "type": "include"
+        },
+        {
+          "from": "Prepare Order",
+          "to": "Deliver Order",
+          "type": "include"
+        },
+        {
+          "from": "Customer",
+          "to": "Track Delivery",
+          "type": "association"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML use-case diagram for a bike-sharing platform: Rider rents bike, returns bike; MaintenanceCrew services bikes; System logs usage. Provide JSON.",
+    "desired_model": {
+      "name": "BikeSharingUseCases",
+      "actors": [
+        {
+          "name": "Rider",
+          "type": "primary"
+        },
+        {
+          "name": "MaintenanceCrew",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Rent Bike",
+          "type": "useCase"
+        },
+        {
+          "name": "Return Bike",
+          "type": "useCase"
+        },
+        {
+          "name": "Service Bike",
+          "type": "useCase"
+        },
+        {
+          "name": "Log Usage",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Rider",
+          "to": "Rent Bike",
+          "type": "association"
+        },
+        {
+          "from": "Rider",
+          "to": "Return Bike",
+          "type": "association"
+        },
+        {
+          "from": "MaintenanceCrew",
+          "to": "Service Bike",
+          "type": "association"
+        },
+        {
+          "from": "Log Usage",
+          "to": "Rent Bike",
+          "type": "include"
+        },
+        {
+          "from": "Log Usage",
+          "to": "Return Bike",
+          "type": "include"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML use-case diagram for a hotel reservation portal: Guest searches rooms, books room, cancels booking; PaymentGateway handles payments. Provide JSON.",
+    "desired_model": {
+      "name": "HotelReservationUseCases",
+      "actors": [
+        {
+          "name": "Guest",
+          "type": "primary"
+        },
+        {
+          "name": "PaymentGateway",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Search Rooms",
+          "type": "useCase"
+        },
+        {
+          "name": "Book Room",
+          "type": "useCase"
+        },
+        {
+          "name": "Cancel Booking",
+          "type": "useCase"
+        },
+        {
+          "name": "Process Payment",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Guest",
+          "to": "Search Rooms",
+          "type": "association"
+        },
+        {
+          "from": "Guest",
+          "to": "Book Room",
+          "type": "association"
+        },
+        {
+          "from": "Guest",
+          "to": "Cancel Booking",
+          "type": "association"
+        },
+        {
+          "from": "Book Room",
+          "to": "Process Payment",
+          "type": "include"
+        },
+        {
+          "from": "PaymentGateway",
+          "to": "Process Payment",
+          "type": "association"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML use-case diagram for a smart thermostat: Homeowner sets temperature, System controls HVAC, Technician performs maintenance. Provide JSON.",
+    "desired_model": {
+      "name": "ThermostatUseCases",
+      "actors": [
+        {
+          "name": "Homeowner",
+          "type": "primary"
+        },
+        {
+          "name": "Technician",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Set Temperature",
+          "type": "useCase"
+        },
+        {
+          "name": "Control HVAC",
+          "type": "useCase"
+        },
+        {
+          "name": "Perform Maintenance",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Homeowner",
+          "to": "Set Temperature",
+          "type": "association"
+        },
+        {
+          "from": "Set Temperature",
+          "to": "Control HVAC",
+          "type": "include"
+        },
+        {
+          "from": "Technician",
+          "to": "Perform Maintenance",
+          "type": "association"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML use-case diagram for a music streaming service: Listener plays track, creates playlist; ContentProvider uploads music; Service recommends tracks. Provide JSON.",
+    "desired_model": {
+      "name": "MusicStreamingUseCases",
+      "actors": [
+        {
+          "name": "Listener",
+          "type": "primary"
+        },
+        {
+          "name": "ContentProvider",
+          "type": "secondary"
+        }
+      ],
+      "useCases": [
+        {
+          "name": "Play Track",
+          "type": "useCase"
+        },
+        {
+          "name": "Create Playlist",
+          "type": "useCase"
+        },
+        {
+          "name": "Upload Music",
+          "type": "useCase"
+        },
+        {
+          "name": "Recommend Tracks",
+          "type": "useCase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Listener",
+          "to": "Play Track",
+          "type": "association"
+        },
+        {
+          "from": "Listener",
+          "to": "Create Playlist",
+          "type": "association"
+        },
+        {
+          "from": "ContentProvider",
+          "to": "Upload Music",
+          "type": "association"
+        },
+        {
+          "from": "Recommend Tracks",
+          "to": "Play Track",
+          "type": "extend"
+        },
+        {
+          "from": "Listener",
+          "to": "Recommend Tracks",
+          "type": "association"
+        }
+      ]
+    }
+  }
+]

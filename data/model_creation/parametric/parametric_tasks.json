@@ -1,0 +1,1349 @@
+[
+  {
+    "question": "Create a SysML parametric diagram for a simple mass-spring-damper system. Model Mass, Spring, and Damper blocks with parameters m, k, c, displacement x, external force F_ext, and a constraint representing Newton\u00e2\u20ac\u2122s second law: F_ext \u00e2\u02c6\u2019 k\u00c2\u00b7x \u00e2\u02c6\u2019 c\u00c2\u00b7dx = m\u00c2\u00b7ddx. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "MassSpringDamperPD",
+      "blocks": [
+        {
+          "name": "Mass",
+          "type": "block"
+        },
+        {
+          "name": "Spring",
+          "type": "block"
+        },
+        {
+          "name": "Damper",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "m",
+          "type": "param",
+          "block": "Mass",
+          "unit": "kg"
+        },
+        {
+          "name": "k",
+          "type": "param",
+          "block": "Spring",
+          "unit": "N/m"
+        },
+        {
+          "name": "c",
+          "type": "param",
+          "block": "Damper",
+          "unit": "N\u00b7s/m"
+        },
+        {
+          "name": "x",
+          "type": "param",
+          "block": "Mass",
+          "unit": "m"
+        },
+        {
+          "name": "dx",
+          "type": "param",
+          "block": "Mass",
+          "unit": "m/s"
+        },
+        {
+          "name": "ddx",
+          "type": "param",
+          "block": "Mass",
+          "unit": "m/s^2"
+        },
+        {
+          "name": "F_ext",
+          "type": "param",
+          "block": "Mass",
+          "unit": "N"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "DynamicEq",
+          "type": "constraint",
+          "expression": "F_ext - k*x - c*dx = m*ddx"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Mass.F_ext",
+          "to": "DynamicEq.F_ext"
+        },
+        {
+          "from": "Spring.k",
+          "to": "DynamicEq.k"
+        },
+        {
+          "from": "Damper.c",
+          "to": "DynamicEq.c"
+        },
+        {
+          "from": "Mass.x",
+          "to": "DynamicEq.x"
+        },
+        {
+          "from": "Mass.dx",
+          "to": "DynamicEq.dx"
+        },
+        {
+          "from": "Mass.ddx",
+          "to": "DynamicEq.ddx"
+        },
+        {
+          "from": "Mass.m",
+          "to": "DynamicEq.m"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML parametric diagram for an electric circuit consisting of a VoltageSource and a Resistor. Use parameters V (voltage), R (resistance), and I (current) linked by Ohm\u00e2\u20ac\u2122s law V = I\u00c2\u00b7R. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "OhmsLawCircuitPD",
+      "blocks": [
+        {
+          "name": "VoltageSource",
+          "type": "block"
+        },
+        {
+          "name": "Resistor",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "V",
+          "type": "param",
+          "block": "VoltageSource",
+          "unit": "V"
+        },
+        {
+          "name": "R",
+          "type": "param",
+          "block": "Resistor",
+          "unit": "\u00ce\u00a9"
+        },
+        {
+          "name": "I",
+          "type": "param",
+          "block": "Resistor",
+          "unit": "A"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "OhmsLaw",
+          "type": "constraint",
+          "expression": "V = I * R"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "VoltageSource.V",
+          "to": "OhmsLaw.V"
+        },
+        {
+          "from": "Resistor.R",
+          "to": "OhmsLaw.R"
+        },
+        {
+          "from": "Resistor.I",
+          "to": "OhmsLaw.I"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML parametric diagram for a rocket ascent model with blocks Rocket and Atmosphere. Parameters: mass, thrust, drag, acceleration (a). Constraint: thrust \u00e2\u02c6\u2019 drag = mass\u00c2\u00b7a. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "RocketAscentPD",
+      "blocks": [
+        {
+          "name": "Rocket",
+          "type": "block"
+        },
+        {
+          "name": "Atmosphere",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "mass",
+          "type": "param",
+          "block": "Rocket",
+          "unit": "kg"
+        },
+        {
+          "name": "thrust",
+          "type": "param",
+          "block": "Rocket",
+          "unit": "N"
+        },
+        {
+          "name": "drag",
+          "type": "param",
+          "block": "Atmosphere",
+          "unit": "N"
+        },
+        {
+          "name": "a",
+          "type": "param",
+          "block": "Rocket",
+          "unit": "m/s^2"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "ForceBalance",
+          "type": "constraint",
+          "expression": "thrust - drag = mass * a"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Rocket.thrust",
+          "to": "ForceBalance.thrust"
+        },
+        {
+          "from": "Atmosphere.drag",
+          "to": "ForceBalance.drag"
+        },
+        {
+          "from": "Rocket.mass",
+          "to": "ForceBalance.mass"
+        },
+        {
+          "from": "Rocket.a",
+          "to": "ForceBalance.a"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML parametric diagram for a counter-flow heat exchanger. Use the following blocks: HotFluid, ColdFluid, HeatExchanger. Parameters: Q (HeatExchanger, unit: kW), m_dot_hot (HotFluid, unit: kg/s), cp_hot (HotFluid, unit: kJ/kgK), dT_hot (HotFluid, unit: K), m_dot_cold (ColdFluid, unit: kg/s), cp_cold (ColdFluid, unit: kJ/kgK), dT_cold (ColdFluid, unit: K). Constraints: Q = m_dot_hot * cp_hot * dT_hot; Q = m_dot_cold * cp_cold * dT_cold. Use 'dT_hot' and 'dT_cold' as parameter names (not '\u0394T_hot' or '\u0394T_cold'). Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "HeatExchangerPD",
+      "blocks": [
+        {
+          "name": "HotFluid",
+          "type": "block"
+        },
+        {
+          "name": "ColdFluid",
+          "type": "block"
+        },
+        {
+          "name": "HeatExchanger",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "Q",
+          "type": "param",
+          "block": "HeatExchanger",
+          "unit": "kW"
+        },
+        {
+          "name": "m_dot_hot",
+          "type": "param",
+          "block": "HotFluid",
+          "unit": "kg/s"
+        },
+        {
+          "name": "cp_hot",
+          "type": "param",
+          "block": "HotFluid",
+          "unit": "kJ/kgK"
+        },
+        {
+          "name": "dT_hot",
+          "type": "param",
+          "block": "HotFluid",
+          "unit": "K"
+        },
+        {
+          "name": "m_dot_cold",
+          "type": "param",
+          "block": "ColdFluid",
+          "unit": "kg/s"
+        },
+        {
+          "name": "cp_cold",
+          "type": "param",
+          "block": "ColdFluid",
+          "unit": "kJ/kgK"
+        },
+        {
+          "name": "dT_cold",
+          "type": "param",
+          "block": "ColdFluid",
+          "unit": "K"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "EnergyBalanceHot",
+          "type": "constraint",
+          "expression": "Q = m_dot_hot * cp_hot * dT_hot"
+        },
+        {
+          "name": "EnergyBalanceCold",
+          "type": "constraint",
+          "expression": "Q = m_dot_cold * cp_cold * dT_cold"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "HeatExchanger.Q",
+          "to": "EnergyBalanceHot.Q"
+        },
+        {
+          "from": "HotFluid.m_dot_hot",
+          "to": "EnergyBalanceHot.m_dot_hot"
+        },
+        {
+          "from": "HotFluid.cp_hot",
+          "to": "EnergyBalanceHot.cp_hot"
+        },
+        {
+          "from": "HotFluid.dT_hot",
+          "to": "EnergyBalanceHot.dT_hot"
+        },
+        {
+          "from": "HeatExchanger.Q",
+          "to": "EnergyBalanceCold.Q"
+        },
+        {
+          "from": "ColdFluid.m_dot_cold",
+          "to": "EnergyBalanceCold.m_dot_cold"
+        },
+        {
+          "from": "ColdFluid.cp_cold",
+          "to": "EnergyBalanceCold.cp_cold"
+        },
+        {
+          "from": "ColdFluid.dT_cold",
+          "to": "EnergyBalanceCold.dT_cold"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML parametric diagram for a centrifugal pump system. Blocks: Pump, Fluid. Parameters: power, flowRate, density, g, head, efficiency. Constraint: power = (flowRate\u00c2\u00b7density\u00c2\u00b7g\u00c2\u00b7head)/efficiency. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "PumpPowerPD",
+      "blocks": [
+        {
+          "name": "Pump",
+          "type": "block"
+        },
+        {
+          "name": "Fluid",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "power",
+          "type": "param",
+          "block": "Pump",
+          "unit": "W"
+        },
+        {
+          "name": "flowRate",
+          "type": "param",
+          "block": "Fluid",
+          "unit": "m^3/s"
+        },
+        {
+          "name": "density",
+          "type": "param",
+          "block": "Fluid",
+          "unit": "kg/m^3"
+        },
+        {
+          "name": "g",
+          "type": "param",
+          "block": "Fluid",
+          "unit": "m/s^2"
+        },
+        {
+          "name": "head",
+          "type": "param",
+          "block": "Pump",
+          "unit": "m"
+        },
+        {
+          "name": "efficiency",
+          "type": "param",
+          "block": "Pump",
+          "unit": "-"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PumpEq",
+          "type": "constraint",
+          "expression": "power = flowRate * density * g * head / efficiency"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Pump.power",
+          "to": "PumpEq.power"
+        },
+        {
+          "from": "Fluid.flowRate",
+          "to": "PumpEq.flowRate"
+        },
+        {
+          "from": "Fluid.density",
+          "to": "PumpEq.density"
+        },
+        {
+          "from": "Fluid.g",
+          "to": "PumpEq.g"
+        },
+        {
+          "from": "Pump.head",
+          "to": "PumpEq.head"
+        },
+        {
+          "from": "Pump.efficiency",
+          "to": "PumpEq.efficiency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML parametric diagram for a solar panel output model. Block: SolarPanel. Parameters: irradiance, area, efficiency, power. Constraint: power = irradiance\u00c2\u00b7area\u00c2\u00b7efficiency. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "SolarPanelPowerPD",
+      "blocks": [
+        {
+          "name": "SolarPanel",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "irradiance",
+          "type": "param",
+          "block": "SolarPanel",
+          "unit": "W/m^2"
+        },
+        {
+          "name": "area",
+          "type": "param",
+          "block": "SolarPanel",
+          "unit": "m^2"
+        },
+        {
+          "name": "efficiency",
+          "type": "param",
+          "block": "SolarPanel",
+          "unit": "-"
+        },
+        {
+          "name": "power",
+          "type": "param",
+          "block": "SolarPanel",
+          "unit": "W"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PowerEq",
+          "type": "constraint",
+          "expression": "power = irradiance * area * efficiency"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "SolarPanel.power",
+          "to": "PowerEq.power"
+        },
+        {
+          "from": "SolarPanel.irradiance",
+          "to": "PowerEq.irradiance"
+        },
+        {
+          "from": "SolarPanel.area",
+          "to": "PowerEq.area"
+        },
+        {
+          "from": "SolarPanel.efficiency",
+          "to": "PowerEq.efficiency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Develop a SysML parametric diagram for battery discharge. Blocks: Battery, Load. Parameters: capacity (Ah), current (A), time (h). Constraint: capacity = current\u00c2\u00b7time. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "BatteryDischargePD",
+      "blocks": [
+        {
+          "name": "Battery",
+          "type": "block"
+        },
+        {
+          "name": "Load",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "capacity",
+          "type": "param",
+          "block": "Battery",
+          "unit": "Ah"
+        },
+        {
+          "name": "current",
+          "type": "param",
+          "block": "Load",
+          "unit": "A"
+        },
+        {
+          "name": "time",
+          "type": "param",
+          "block": "Battery",
+          "unit": "h"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "DischargeEq",
+          "type": "constraint",
+          "expression": "capacity = current * time"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Battery.capacity",
+          "to": "DischargeEq.capacity"
+        },
+        {
+          "from": "Load.current",
+          "to": "DischargeEq.current"
+        },
+        {
+          "from": "Battery.time",
+          "to": "DischargeEq.time"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML parametric diagram for UAV endurance estimation. Blocks: UAV, Battery. Parameters: energy (Wh), powerDraw (W), endurance (h). Constraint: endurance = energy / powerDraw. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "UAVEndurancePD",
+      "blocks": [
+        {
+          "name": "UAV",
+          "type": "block"
+        },
+        {
+          "name": "Battery",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "energy",
+          "type": "param",
+          "block": "Battery",
+          "unit": "Wh"
+        },
+        {
+          "name": "powerDraw",
+          "type": "param",
+          "block": "UAV",
+          "unit": "W"
+        },
+        {
+          "name": "endurance",
+          "type": "param",
+          "block": "UAV",
+          "unit": "h"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "EnduranceEq",
+          "type": "constraint",
+          "expression": "endurance = energy / powerDraw"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Battery.energy",
+          "to": "EnduranceEq.energy"
+        },
+        {
+          "from": "UAV.powerDraw",
+          "to": "EnduranceEq.powerDraw"
+        },
+        {
+          "from": "UAV.endurance",
+          "to": "EnduranceEq.endurance"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML parametric diagram for vehicle braking dynamics. Blocks: Vehicle, Brake. Parameters: mass, decel, brakingForce. Constraint: brakingForce = mass\u00c2\u00b7decel. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "VehicleBrakingPD",
+      "blocks": [
+        {
+          "name": "Vehicle",
+          "type": "block"
+        },
+        {
+          "name": "Brake",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "mass",
+          "type": "param",
+          "block": "Vehicle",
+          "unit": "kg"
+        },
+        {
+          "name": "decel",
+          "type": "param",
+          "block": "Vehicle",
+          "unit": "m/s^2"
+        },
+        {
+          "name": "brakingForce",
+          "type": "param",
+          "block": "Brake",
+          "unit": "N"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "BrakeEq",
+          "type": "constraint",
+          "expression": "brakingForce = mass * decel"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Brake.brakingForce",
+          "to": "BrakeEq.brakingForce"
+        },
+        {
+          "from": "Vehicle.mass",
+          "to": "BrakeEq.mass"
+        },
+        {
+          "from": "Vehicle.decel",
+          "to": "BrakeEq.decel"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML parametric diagram for water tank level control. Blocks: Tank, InflowPipe, OutflowPipe. Parameters: inflowRate, outflowRate, volumeChangeRate. Constraint: volumeChangeRate = inflowRate \u00e2\u02c6\u2019 outflowRate. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "TankLevelPD",
+      "blocks": [
+        {
+          "name": "Tank",
+          "type": "block"
+        },
+        {
+          "name": "InflowPipe",
+          "type": "block"
+        },
+        {
+          "name": "OutflowPipe",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "inflowRate",
+          "type": "param",
+          "block": "InflowPipe",
+          "unit": "m^3/s"
+        },
+        {
+          "name": "outflowRate",
+          "type": "param",
+          "block": "OutflowPipe",
+          "unit": "m^3/s"
+        },
+        {
+          "name": "volumeChangeRate",
+          "type": "param",
+          "block": "Tank",
+          "unit": "m^3/s"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "LevelEq",
+          "type": "constraint",
+          "expression": "volumeChangeRate = inflowRate - outflowRate"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Tank.volumeChangeRate",
+          "to": "LevelEq.volumeChangeRate"
+        },
+        {
+          "from": "InflowPipe.inflowRate",
+          "to": "LevelEq.inflowRate"
+        },
+        {
+          "from": "OutflowPipe.outflowRate",
+          "to": "LevelEq.outflowRate"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML parametric diagram for elevator tension analysis. Blocks: ElevatorCab, Counterweight, Motor. Parameters: loadMass, counterMass, g, acceleration, tension. Constraint: tension = (loadMass + counterMass)\u00c2\u00b7acceleration + (loadMass \u00e2\u02c6\u2019 counterMass)\u00c2\u00b7g. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "ElevatorTensionPD",
+      "blocks": [
+        {
+          "name": "ElevatorCab",
+          "type": "block"
+        },
+        {
+          "name": "Counterweight",
+          "type": "block"
+        },
+        {
+          "name": "Motor",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "loadMass",
+          "type": "param",
+          "block": "ElevatorCab",
+          "unit": "kg"
+        },
+        {
+          "name": "counterMass",
+          "type": "param",
+          "block": "Counterweight",
+          "unit": "kg"
+        },
+        {
+          "name": "g",
+          "type": "param",
+          "block": "Motor",
+          "unit": "m/s^2"
+        },
+        {
+          "name": "acceleration",
+          "type": "param",
+          "block": "Motor",
+          "unit": "m/s^2"
+        },
+        {
+          "name": "tension",
+          "type": "param",
+          "block": "Motor",
+          "unit": "N"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "TensionEq",
+          "type": "constraint",
+          "expression": "tension = (loadMass + counterMass) * acceleration + (loadMass - counterMass) * g"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Motor.tension",
+          "to": "TensionEq.tension"
+        },
+        {
+          "from": "ElevatorCab.loadMass",
+          "to": "TensionEq.loadMass"
+        },
+        {
+          "from": "Counterweight.counterMass",
+          "to": "TensionEq.counterMass"
+        },
+        {
+          "from": "Motor.acceleration",
+          "to": "TensionEq.acceleration"
+        },
+        {
+          "from": "Motor.g",
+          "to": "TensionEq.g"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML parametric diagram for wind turbine power estimation. Block: WindTurbine. Parameters: airDensity, sweptArea, powerCoeff, windSpeed, power. Constraint: power = 0.5\u00c2\u00b7airDensity\u00c2\u00b7sweptArea\u00c2\u00b7powerCoeff\u00c2\u00b7windSpeed^3. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "WindTurbinePowerPD",
+      "blocks": [
+        {
+          "name": "WindTurbine",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "airDensity",
+          "type": "param",
+          "block": "WindTurbine",
+          "unit": "kg/m^3"
+        },
+        {
+          "name": "sweptArea",
+          "type": "param",
+          "block": "WindTurbine",
+          "unit": "m^2"
+        },
+        {
+          "name": "powerCoeff",
+          "type": "param",
+          "block": "WindTurbine",
+          "unit": "-"
+        },
+        {
+          "name": "windSpeed",
+          "type": "param",
+          "block": "WindTurbine",
+          "unit": "m/s"
+        },
+        {
+          "name": "power",
+          "type": "param",
+          "block": "WindTurbine",
+          "unit": "W"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "TurbineEq",
+          "type": "constraint",
+          "expression": "power = 0.5 * airDensity * sweptArea * powerCoeff * windSpeed^3"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "WindTurbine.power",
+          "to": "TurbineEq.power"
+        },
+        {
+          "from": "WindTurbine.airDensity",
+          "to": "TurbineEq.airDensity"
+        },
+        {
+          "from": "WindTurbine.sweptArea",
+          "to": "TurbineEq.sweptArea"
+        },
+        {
+          "from": "WindTurbine.powerCoeff",
+          "to": "TurbineEq.powerCoeff"
+        },
+        {
+          "from": "WindTurbine.windSpeed",
+          "to": "TurbineEq.windSpeed"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML parametric diagram for HVAC room temperature dynamics. Blocks: Room, HVACUnit. Parameters: massAir, cpAir, dTdt, heatInput, heatLoss. Constraint: massAir\u00c2\u00b7cpAir\u00c2\u00b7dTdt = heatInput \u00e2\u02c6\u2019 heatLoss. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "HVACRoomTempPD",
+      "blocks": [
+        {
+          "name": "Room",
+          "type": "block"
+        },
+        {
+          "name": "HVACUnit",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "massAir",
+          "type": "param",
+          "block": "Room",
+          "unit": "kg"
+        },
+        {
+          "name": "cpAir",
+          "type": "param",
+          "block": "Room",
+          "unit": "kJ/kgK"
+        },
+        {
+          "name": "dTdt",
+          "type": "param",
+          "block": "Room",
+          "unit": "K/s"
+        },
+        {
+          "name": "heatInput",
+          "type": "param",
+          "block": "HVACUnit",
+          "unit": "W"
+        },
+        {
+          "name": "heatLoss",
+          "type": "param",
+          "block": "Room",
+          "unit": "W"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "EnergyEq",
+          "type": "constraint",
+          "expression": "massAir * cpAir * dTdt = heatInput - heatLoss"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Room.massAir",
+          "to": "EnergyEq.massAir"
+        },
+        {
+          "from": "Room.cpAir",
+          "to": "EnergyEq.cpAir"
+        },
+        {
+          "from": "Room.dTdt",
+          "to": "EnergyEq.dTdt"
+        },
+        {
+          "from": "HVACUnit.heatInput",
+          "to": "EnergyEq.heatInput"
+        },
+        {
+          "from": "Room.heatLoss",
+          "to": "EnergyEq.heatLoss"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML parametric diagram for drone lift capacity. Blocks: DroneFrame, MotorSet. Parameters: thrustTotal, weight, payload. Constraint: thrustTotal = weight + payload. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "DroneLiftPD",
+      "blocks": [
+        {
+          "name": "DroneFrame",
+          "type": "block"
+        },
+        {
+          "name": "MotorSet",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "thrustTotal",
+          "type": "param",
+          "block": "MotorSet",
+          "unit": "N"
+        },
+        {
+          "name": "weight",
+          "type": "param",
+          "block": "DroneFrame",
+          "unit": "N"
+        },
+        {
+          "name": "payload",
+          "type": "param",
+          "block": "DroneFrame",
+          "unit": "N"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "LiftEq",
+          "type": "constraint",
+          "expression": "thrustTotal = weight + payload"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "MotorSet.thrustTotal",
+          "to": "LiftEq.thrustTotal"
+        },
+        {
+          "from": "DroneFrame.weight",
+          "to": "LiftEq.weight"
+        },
+        {
+          "from": "DroneFrame.payload",
+          "to": "LiftEq.payload"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML parametric diagram for bridge stress analysis. Blocks: Bridge, VehicleLoad. Parameters: load, area, maxStress. Constraint: maxStress = load / area. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "BridgeStressPD",
+      "blocks": [
+        {
+          "name": "Bridge",
+          "type": "block"
+        },
+        {
+          "name": "VehicleLoad",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "load",
+          "type": "param",
+          "block": "VehicleLoad",
+          "unit": "N"
+        },
+        {
+          "name": "area",
+          "type": "param",
+          "block": "Bridge",
+          "unit": "m^2"
+        },
+        {
+          "name": "maxStress",
+          "type": "param",
+          "block": "Bridge",
+          "unit": "Pa"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "StressEq",
+          "type": "constraint",
+          "expression": "maxStress = load / area"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Bridge.maxStress",
+          "to": "StressEq.maxStress"
+        },
+        {
+          "from": "VehicleLoad.load",
+          "to": "StressEq.load"
+        },
+        {
+          "from": "Bridge.area",
+          "to": "StressEq.area"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Produce a SysML parametric diagram for robot joint torque. Blocks: Motor, Joint. Parameters: Motor.torque (N\u00b7m), Joint.inertia (kg\u00b7m^2), Joint.angularAccel (rad/s^2). Constraint block: TorqueEq, with expression: torque = inertia * angularAccel. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "RobotTorquePD",
+      "blocks": [
+        {
+          "name": "Motor",
+          "type": "block"
+        },
+        {
+          "name": "Joint",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "torque",
+          "type": "param",
+          "block": "Motor",
+          "unit": "N\u00b7m"
+        },
+        {
+          "name": "inertia",
+          "type": "param",
+          "block": "Joint",
+          "unit": "kg\u00b7m^2"
+        },
+        {
+          "name": "angularAccel",
+          "type": "param",
+          "block": "Joint",
+          "unit": "rad/s^2"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "TorqueEq",
+          "type": "constraint",
+          "expression": "torque = inertia * angularAccel"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Motor.torque",
+          "to": "TorqueEq.torque"
+        },
+        {
+          "from": "Joint.inertia",
+          "to": "TorqueEq.inertia"
+        },
+        {
+          "from": "Joint.angularAccel",
+          "to": "TorqueEq.angularAccel"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML parametric diagram for engine fuel efficiency. Blocks: Engine, FuelSystem. Parameters: fuelFlowRate, powerOutput, specificFuelConsumption. Constraint: specificFuelConsumption = fuelFlowRate / powerOutput. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "EngineEfficiencyPD",
+      "blocks": [
+        {
+          "name": "Engine",
+          "type": "block"
+        },
+        {
+          "name": "FuelSystem",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "fuelFlowRate",
+          "type": "param",
+          "block": "FuelSystem",
+          "unit": "kg/h"
+        },
+        {
+          "name": "powerOutput",
+          "type": "param",
+          "block": "Engine",
+          "unit": "kW"
+        },
+        {
+          "name": "specificFuelConsumption",
+          "type": "param",
+          "block": "Engine",
+          "unit": "kg/kWh"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "SFCEq",
+          "type": "constraint",
+          "expression": "specificFuelConsumption = fuelFlowRate / powerOutput"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Engine.specificFuelConsumption",
+          "to": "SFCEq.specificFuelConsumption"
+        },
+        {
+          "from": "FuelSystem.fuelFlowRate",
+          "to": "SFCEq.fuelFlowRate"
+        },
+        {
+          "from": "Engine.powerOutput",
+          "to": "SFCEq.powerOutput"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML parametric diagram for smartphone battery life estimation. Blocks: Battery, Phone. Parameters: batteryCapacity, avgCurrent, runtime. Constraint: runtime = batteryCapacity / avgCurrent. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "PhoneBatteryLifePD",
+      "blocks": [
+        {
+          "name": "Battery",
+          "type": "block"
+        },
+        {
+          "name": "Phone",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "batteryCapacity",
+          "type": "param",
+          "block": "Battery",
+          "unit": "mAh"
+        },
+        {
+          "name": "avgCurrent",
+          "type": "param",
+          "block": "Phone",
+          "unit": "mA"
+        },
+        {
+          "name": "runtime",
+          "type": "param",
+          "block": "Phone",
+          "unit": "h"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "RuntimeEq",
+          "type": "constraint",
+          "expression": "runtime = batteryCapacity / avgCurrent"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Phone.runtime",
+          "to": "RuntimeEq.runtime"
+        },
+        {
+          "from": "Battery.batteryCapacity",
+          "to": "RuntimeEq.batteryCapacity"
+        },
+        {
+          "from": "Phone.avgCurrent",
+          "to": "RuntimeEq.avgCurrent"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML parametric diagram for hydraulic cylinder force. Blocks: Cylinder, Pump. Parameters: pressure, area, force. Constraint: force = pressure\u00c2\u00b7area. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "HydraulicForcePD",
+      "blocks": [
+        {
+          "name": "Cylinder",
+          "type": "block"
+        },
+        {
+          "name": "Pump",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "pressure",
+          "type": "param",
+          "block": "Pump",
+          "unit": "Pa"
+        },
+        {
+          "name": "area",
+          "type": "param",
+          "block": "Cylinder",
+          "unit": "m^2"
+        },
+        {
+          "name": "force",
+          "type": "param",
+          "block": "Cylinder",
+          "unit": "N"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "ForceEq",
+          "type": "constraint",
+          "expression": "force = pressure * area"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Cylinder.force",
+          "to": "ForceEq.force"
+        },
+        {
+          "from": "Pump.pressure",
+          "to": "ForceEq.pressure"
+        },
+        {
+          "from": "Cylinder.area",
+          "to": "ForceEq.area"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML parametric diagram for a conveyor belt speed relationship. Blocks: Belt, Motor. Parameters: angularVelocity, radius, speed. Constraint: speed = angularVelocity\u00c2\u00b7radius. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "ConveyorSpeedPD",
+      "blocks": [
+        {
+          "name": "Belt",
+          "type": "block"
+        },
+        {
+          "name": "Motor",
+          "type": "block"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "angularVelocity",
+          "type": "param",
+          "block": "Motor",
+          "unit": "rad/s"
+        },
+        {
+          "name": "radius",
+          "type": "param",
+          "block": "Belt",
+          "unit": "m"
+        },
+        {
+          "name": "speed",
+          "type": "param",
+          "block": "Belt",
+          "unit": "m/s"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "SpeedEq",
+          "type": "constraint",
+          "expression": "speed = angularVelocity * radius"
+        }
+      ],
+      "bindings": [
+        {
+          "from": "Belt.speed",
+          "to": "SpeedEq.speed"
+        },
+        {
+          "from": "Motor.angularVelocity",
+          "to": "SpeedEq.angularVelocity"
+        },
+        {
+          "from": "Belt.radius",
+          "to": "SpeedEq.radius"
+        }
+      ]
+    }
+  }
+]

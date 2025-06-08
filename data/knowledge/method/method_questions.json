@@ -1,0 +1,713 @@
+[
+  {
+    "question": "Which domains does the MagicGrid framework define?",
+    "options": [
+      "A. Problem Domain",
+      "B. Solution Domain",
+      "C. Implementation Domain",
+      "D. Operations Domain",
+      "E. Integration Domain"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "What perspectives are considered in the Problem Domain?",
+    "options": [
+      "A. Black-box",
+      "B. White-box",
+      "C. Grey-box",
+      "D. Logical",
+      "E. Physical"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "Which four pillars does MagicGrid’s matrix correspond to?",
+    "options": [
+      "A. Requirements",
+      "B. Structure",
+      "C. Behavior",
+      "D. Parameters",
+      "E. Safety & Reliability"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ]
+  },
+  {
+    "question": "What is the first phase of Problem Domain analysis?",
+    "options": [
+      "A. Black-box",
+      "B. White-box",
+      "C. Physical Architecture",
+      "D. Stakeholder Review",
+      "E. Solution Definition"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What should be captured in the Stakeholder Needs cell?",
+    "options": [
+      "A. User needs",
+      "B. Government regulations",
+      "C. Internal guidelines",
+      "D. Engineering constraints",
+      "E. Component interfaces"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "Which roles are responsible for eliciting stakeholder needs?",
+    "options": [
+      "A. Requirements Engineer",
+      "B. Business Analyst",
+      "C. Systems Analyst",
+      "D. Systems Engineer",
+      "E. Software Architect"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "question": "How should stakeholder needs be organized in the model?",
+    "options": [
+      "A. By packages",
+      "B. By diagrams",
+      "C. By spreadsheets",
+      "D. By color",
+      "E. By layers"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "Which SysML element type captures a single stakeholder need?",
+    "options": [
+      "A. Requirement",
+      "B. Block",
+      "C. Use Case",
+      "D. Value Type",
+      "E. Actor"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What are the main types of stakeholder needs?",
+    "options": [
+      "A. Functional",
+      "B. Non-functional",
+      "C. Structural",
+      "D. Behavioral",
+      "E. Parametric"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "Which step follows after capturing stakeholder needs?",
+    "options": [
+      "A. Grouping needs",
+      "B. Numbering needs",
+      "C. Categorizing needs",
+      "D. Mapping to architecture",
+      "E. Generating test cases"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "What is the correct order for processing stakeholder needs?",
+    "options": [
+      "A. Organize model",
+      "B. Create table",
+      "C. Capture needs",
+      "D. Group needs",
+      "E. Number needs"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ]
+  },
+  {
+    "question": "What prefix is recommended for numbering stakeholder needs?",
+    "options": [
+      "A. SN-",
+      "B. ST-",
+      "C. REQ-",
+      "D. S-",
+      "E. N-"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "In MagicGrid, what does the black-box perspective emphasize?",
+    "options": [
+      "A. Interactions with environment",
+      "B. Internal structure",
+      "C. Implementation details",
+      "D. Behavioral decomposition",
+      "E. Safety analysis"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What does the system context capture?",
+    "options": [
+      "A. External entities",
+      "B. Interactions",
+      "C. Environment",
+      "D. Internal logic",
+      "E. Stakeholder expectations"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "Which SysML element is used for system context entities?",
+    "options": [
+      "A. Block",
+      "B. Actor",
+      "C. Part",
+      "D. State",
+      "E. Package"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "How are interactions in the system context represented?",
+    "options": [
+      "A. Connectors",
+      "B. Relationships",
+      "C. Value Flows",
+      "D. Guards",
+      "E. Signals"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What types of flows can be represented in system context diagrams?",
+    "options": [
+      "A. Data",
+      "B. Matter",
+      "C. Energy",
+      "D. Information",
+      "E. Constraints"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "question": "Where are exchange items in system context typically stored?",
+    "options": [
+      "A. In a separate package",
+      "B. In the main block",
+      "C. In requirements",
+      "D. In use case diagrams",
+      "E. In test cases"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "How are functional stakeholder needs further refined?",
+    "options": [
+      "A. Use cases",
+      "B. Scenarios",
+      "C. Functions",
+      "D. MoEs",
+      "E. Logical subsystems"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "Which diagram is best for capturing use cases?",
+    "options": [
+      "A. Use Case Diagram",
+      "B. Activity Diagram",
+      "C. Block Definition Diagram",
+      "D. Parametric Diagram",
+      "E. Sequence Diagram"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What should each use case have at minimum?",
+    "options": [
+      "A. Name",
+      "B. Primary scenario",
+      "C. Actor",
+      "D. Activity",
+      "E. Trigger event"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "Who is responsible for specifying use cases?",
+    "options": [
+      "A. Systems Analyst",
+      "B. Systems Engineer",
+      "C. Business Analyst",
+      "D. Test Engineer",
+      "E. Project Manager"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "What SysML element is used for capturing a use case scenario?",
+    "options": [
+      "A. Activity",
+      "B. Sequence",
+      "C. Requirement",
+      "D. Block",
+      "E. Flow"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "In activity diagrams for use case scenarios, what do swimlanes represent?",
+    "options": [
+      "A. Participants",
+      "B. Parts",
+      "C. Activities",
+      "D. Stakeholders",
+      "E. Flows"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "What enables traceability from system context to use case scenario?",
+    "options": [
+      "A. Part properties",
+      "B. Blocks",
+      "C. Requirements",
+      "D. Test cases",
+      "E. Exchange items"
+    ],
+    "correct_answers": [
+      "A",
+      "E"
+    ]
+  },
+  {
+    "question": "What is the main purpose of Measures of Effectiveness (MoEs)?",
+    "options": [
+      "A. Capture quantifiable characteristics",
+      "B. Define test cases",
+      "C. Specify internal behavior",
+      "D. Represent structure",
+      "E. Group requirements"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "Which SysML stereotype is applied for MoEs?",
+    "options": [
+      "A. «moe»",
+      "B. «requirement»",
+      "C. «block»",
+      "D. «test»",
+      "E. «valueType»"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "How are MoEs typically captured in SysML?",
+    "options": [
+      "A. Value properties",
+      "B. Constraints",
+      "C. Blocks",
+      "D. Associations",
+      "E. Use cases"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What should MoEs be linked to for traceability?",
+    "options": [
+      "A. Stakeholder needs",
+      "B. Requirements",
+      "C. Functions",
+      "D. Blocks",
+      "E. Use cases"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "When are MoEs typically defined?",
+    "options": [
+      "A. After stakeholder needs",
+      "B. Before use cases",
+      "C. After functional analysis",
+      "D. During system context",
+      "E. During implementation"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What is the purpose of grouping stakeholder needs?",
+    "options": [
+      "A. Organize by nature",
+      "B. Facilitate analysis",
+      "C. Support traceability",
+      "D. Create test cases",
+      "E. Enhance diagrams"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "What is a grouping requirement?",
+    "options": [
+      "A. SysML requirement for a group",
+      "B. SysML block",
+      "C. Use case",
+      "D. Activity",
+      "E. Part property"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What distinguishes functional from non-functional stakeholder needs?",
+    "options": [
+      "A. What system does",
+      "B. How well system performs",
+      "C. Structural aspects",
+      "D. Safety aspects",
+      "E. Behavior under stress"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "How can functional stakeholder needs be represented in SysML?",
+    "options": [
+      "A. Functional requirements",
+      "B. Use cases",
+      "C. Activities",
+      "D. Blocks",
+      "E. States"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "What is the result of categorizing stakeholder needs?",
+    "options": [
+      "A. Functional needs are refined by use cases",
+      "B. Non-functional needs are refined by MoEs",
+      "C. Requirements are grouped",
+      "D. All needs are tested",
+      "E. Traceability is lost"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "What elements are used to specify interactions in a system context ibd?",
+    "options": [
+      "A. Part properties",
+      "B. Connectors",
+      "C. Item flows",
+      "D. Blocks",
+      "E. Requirements"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "Which statement about exchange items is true?",
+    "options": [
+      "A. Can be signals",
+      "B. Can be blocks",
+      "C. Used in item flows",
+      "D. Represent data/matter/energy",
+      "E. Only used in requirements"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "question": "What is the recommended package structure for MagicGrid models?",
+    "options": [
+      "A. Domain > Perspective > Cell",
+      "B. Project > Requirements > Test",
+      "C. Layered > Feature > Component",
+      "D. Context > Function > Scenario",
+      "E. Stakeholder > Function > MoE"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What is the first step in use case modeling?",
+    "options": [
+      "A. Organize model",
+      "B. Create diagram",
+      "C. Capture use cases",
+      "D. Create scenarios",
+      "E. Specify actors"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "When modeling use case scenarios, what is the main goal?",
+    "options": [
+      "A. Specify system behavior",
+      "B. Define structure",
+      "C. Capture requirements",
+      "D. Identify test cases",
+      "E. Assign MoEs"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What kind of relationship links system contexts to use cases?",
+    "options": [
+      "A. Usage",
+      "B. Allocation",
+      "C. Trace",
+      "D. Flow",
+      "E. Association"
+    ],
+    "correct_answers": [
+      "B"
+    ]
+  },
+  {
+    "question": "What should each cell of the MagicGrid matrix contain?",
+    "options": [
+      "A. Model view",
+      "B. Presentation artifact",
+      "C. Diagram or table",
+      "D. List of elements",
+      "E. Test results"
+    ],
+    "correct_answers": [
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "Which elements can represent exchange items?",
+    "options": [
+      "A. Signals",
+      "B. Blocks",
+      "C. Value types",
+      "D. Activities",
+      "E. States"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "What is the main distinction between black-box and white-box analysis?",
+    "options": [
+      "A. Black-box: external interactions",
+      "B. White-box: internal structure",
+      "C. Black-box: requirements",
+      "D. White-box: system context",
+      "E. Black-box: MoEs only"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "What can trigger the creation of multiple system contexts?",
+    "options": [
+      "A. Different environments",
+      "B. Multiple users",
+      "C. System modes",
+      "D. Varying regulations",
+      "E. Internal architecture"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "question": "What’s the main output of black-box analysis?",
+    "options": [
+      "A. System context",
+      "B. Stakeholder needs",
+      "C. Use cases",
+      "D. MoEs",
+      "E. Exchange items"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ]
+  },
+  {
+    "question": "In which step are internal functions of the SoI decomposed?",
+    "options": [
+      "A. White-box analysis",
+      "B. Black-box analysis",
+      "C. Stakeholder needs",
+      "D. System context",
+      "E. MoEs definition"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What does the term “presentation artifact” mean in MagicGrid?",
+    "options": [
+      "A. Diagram",
+      "B. Table",
+      "C. Matrix",
+      "D. Map",
+      "E. Any model representation"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ]
+  },
+  {
+    "question": "What is the purpose of traceability matrices in MagicGrid?",
+    "options": [
+      "A. Link model elements",
+      "B. Show refinement relationships",
+      "C. Ensure coverage",
+      "D. Identify gaps",
+      "E. Document design decisions"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "question": "What are the main types of artifacts in each MagicGrid cell?",
+    "options": [
+      "A. Diagrams",
+      "B. Tables",
+      "C. Matrices",
+      "D. Maps",
+      "E. Requirements"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  }
+]

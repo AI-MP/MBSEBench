@@ -1,0 +1,97 @@
+You are an expert in SysML modeling.
+
+SYSTEM/BEHAVIOR TO MODEL:
+{system_description}
+
+TASK: Create a JSON statechart (state-machine diagram) for the behavior described above. Do not ask for clarification.
+
+Output Format
+You MUST output ONLY a valid JSON object following this exact schema:
+
+json
+Copy
+Edit
+{{
+  "name": "DiagramName",
+  "states": [
+    {{"name": "StateName", "type": "state"}}
+  ],
+  "transitions": [
+    {{"from": "SourceState", "to": "TargetState", "event": "TriggerEvent"}}
+  ]
+}}
+Schema Requirements
+Root Object
+Field	Type	Notes
+name	string	Name of the statechart
+states	array	List of states (≥ 1)
+transitions	array	List of transitions (≥ 1)
+
+State Object
+Field	Type	Allowed type values	Description
+name	string	—	Unique state name
+type	string	"initial", "state", "final", "choice", "junction", "entry", "exit"	One "initial" and one "final" required
+substates	array	Optional	Nested state names (for composite states)
+entry	string	Optional	Entry action (e.g., "logStart()")
+exit	string	Optional	Exit action
+
+Transition Object
+Field	Type	Description
+from	string	Source state name (must exist in states)
+to	string	Target state name (must exist in states)
+event	string	Triggering event or "automatic" for no trigger
+guard	string	Optional Boolean expression (e.g., "count &gt; 0")
+action	string	Optional Effect action executed during transition
+kind	string	Optional "internal" to denote self-transition without state change
+
+Working Example
+json
+Copy
+Edit
+{{
+  "name": "CoffeeMachineStatechart",
+  "states": [
+    {{"name": "Idle", "type": "initial"}},
+    {{"name": "Heating", "type": "state", "entry": "heatWater()"}},
+    {{"name": "Brewing", "type": "state", "entry": "brewCoffee()"}},
+    {{"name": "Error", "type": "state", "entry": "displayError()"}},
+    {{"name": "Off", "type": "final"}}
+  ],
+  "transitions": [
+    {{"from": "Idle", "to": "Heating", "event": "turnOn()"}},
+    {{"from": "Heating", "to": "Brewing", "event": "waterHeated", "guard": "enoughWater"}},
+    {{"from": "Heating", "to": "Error", "event": "waterHeated", "guard": "!enoughWater"}},
+    {{"from": "Brewing", "to": "Off", "event": "brewDone"}},
+    {{"from": "Error", "to": "Off", "event": "ackError"}}
+  ]
+}}
+Modeling Rules
+Declare key states → Include initial (start) and final (end) states.
+
+Model events & guards → Each transition has an event; use guard for conditional flows.
+
+Composite states → Use substates to nest if hierarchical behavior is specified.
+
+Entry/exit actions → Capture side-effects in entry/exit fields where needed.
+
+Match identifiers exactly → from/to values must match states.name.
+
+No orphan nodes → Every non-initial state must have ≥ 1 incoming transition; every non-final state must have ≥ 1 outgoing transition.
+
+Use clear, descriptive names.
+
+Prefer concise names → Use short, descriptive names that stick closely to the terminology used in the original question. Avoid verbose or unnecessarily long element names.
+
+Output only JSON → No commentary, markdown titles, or extra text.
+
+Never ask for clarification → Work strictly with the given description.
+
+REMINDER: Create the JSON statechart for the behavior described above. Output only valid JSON.
+
+
+
+
+
+
+
+

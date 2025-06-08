@@ -1,0 +1,2038 @@
+[
+  {
+    "question": "Create a SysML requirements diagram for a smart home security system. Capture requirements for (1) detecting door or window intrusion within 2 seconds, (2) sending a remote alert to the homeowner's mobile app within 5 seconds of intrusion detection, and (3) maintaining 99.9% system uptime annually. Show which components satisfy each requirement, using the following component names: 'IntrusionSensor' (for both door and window detection), 'SecurityController' (central control), and 'HomeownerApp' (mobile application).",
+    "desired_model": {
+      "name": "SmartHomeSecurityREQ",
+      "requirements": [
+        {
+          "id": "REQ-101",
+          "text": "The system shall detect door or window intrusion within 2 seconds.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-102",
+          "text": "The system shall send a remote alert to the homeowner's mobile app within 5 seconds of intrusion detection.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-103",
+          "text": "The security system shall maintain 99.9% uptime annually.",
+          "type": "requirement",
+          "risk": "medium"
+        }
+      ],
+      "elements": [
+        {
+          "name": "IntrusionSensor",
+          "type": "block"
+        },
+        {
+          "name": "SecurityController",
+          "type": "block"
+        },
+        {
+          "name": "HomeownerApp",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "IntrusionSensor",
+          "to": "REQ-101",
+          "type": "satisfy"
+        },
+        {
+          "from": "SecurityController",
+          "to": "REQ-102",
+          "type": "satisfy"
+        },
+        {
+          "from": "HomeownerApp",
+          "to": "REQ-102",
+          "type": "verify"
+        },
+        {
+          "from": "SecurityController",
+          "to": "REQ-103",
+          "type": "satisfy"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML requirements diagram for an autonomous delivery drone. Include requirements for navigation accuracy, payload capacity, and compliance with aviation regulations, linking them to system blocks.",
+    "desired_model": {
+      "name": "AutonomousDroneREQ",
+      "requirements": [
+        {
+          "id": "REQ-201",
+          "text": "The drone shall navigate to within \u00c2\u00b12 m of the delivery waypoint.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-202",
+          "text": "The drone shall carry parcels up to 2 kg.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-203",
+          "text": "The system shall comply with local UAV flight regulations.",
+          "type": "requirement",
+          "risk": "high"
+        }
+      ],
+      "elements": [
+        {
+          "name": "NavigationModule",
+          "type": "block"
+        },
+        {
+          "name": "PayloadBay",
+          "type": "block"
+        },
+        {
+          "name": "RegComplianceTest",
+          "type": "testcase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "NavigationModule",
+          "to": "REQ-201",
+          "type": "satisfy"
+        },
+        {
+          "from": "PayloadBay",
+          "to": "REQ-202",
+          "type": "satisfy"
+        },
+        {
+          "from": "RegComplianceTest",
+          "to": "REQ-203",
+          "type": "verify"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML requirements diagram for an electric vehicle charging network. Cover charging speed, payment security, and station durability, and show satisfying elements.",
+    "desired_model": {
+      "name": "EVChargingREQ",
+      "requirements": [
+        {
+          "id": "REQ-301",
+          "text": "Stations shall provide at least 50 kW charging power.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-302",
+          "text": "Payment transactions shall be encrypted with TLS 1.3.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-303",
+          "text": "Stations shall withstand outdoor conditions for 10 years.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "PowerModule",
+          "type": "block"
+        },
+        {
+          "name": "PaymentGateway",
+          "type": "block"
+        },
+        {
+          "name": "Enclosure",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "PowerModule",
+          "to": "REQ-301",
+          "type": "satisfy"
+        },
+        {
+          "from": "PaymentGateway",
+          "to": "REQ-302",
+          "type": "satisfy"
+        },
+        {
+          "from": "Enclosure",
+          "to": "REQ-303",
+          "type": "satisfy"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML requirements diagram for an online bookstore backend. Include catalog search performance, order processing time, and PCI-DSS compliance requirements.",
+    "desired_model": {
+      "name": "OnlineBookstoreREQ",
+      "requirements": [
+        {
+          "id": "REQ-401",
+          "text": "Catalog search shall return results within 1 s for 95% of queries.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-402",
+          "text": "Order processing shall complete within 2 s.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-403",
+          "text": "Payment handling shall comply with PCI-DSS.",
+          "type": "requirement",
+          "risk": "high"
+        }
+      ],
+      "elements": [
+        {
+          "name": "SearchService",
+          "type": "block"
+        },
+        {
+          "name": "OrderService",
+          "type": "block"
+        },
+        {
+          "name": "SecurityAudit",
+          "type": "testcase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "SearchService",
+          "to": "REQ-401",
+          "type": "satisfy"
+        },
+        {
+          "from": "OrderService",
+          "to": "REQ-402",
+          "type": "satisfy"
+        },
+        {
+          "from": "SecurityAudit",
+          "to": "REQ-403",
+          "type": "verify"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Produce a SysML requirements diagram for a hospital patient monitoring system. Capture vital sign accuracy, alert latency, and HIPAA compliance requirements with trace links.",
+    "desired_model": {
+      "name": "PatientMonitoringREQ",
+      "requirements": [
+        {
+          "id": "REQ-501",
+          "text": "Vital sign measurements shall have \u00c2\u00b11% accuracy.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-502",
+          "text": "Critical alerts shall reach nurses within 3 s.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-503",
+          "text": "Patient data storage shall comply with HIPAA.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "VitalSensor",
+          "type": "block"
+        },
+        {
+          "name": "AlertModule",
+          "type": "block"
+        },
+        {
+          "name": "ComplianceTest",
+          "type": "testcase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "VitalSensor",
+          "to": "REQ-501",
+          "type": "satisfy"
+        },
+        {
+          "from": "AlertModule",
+          "to": "REQ-502",
+          "type": "satisfy"
+        },
+        {
+          "from": "ComplianceTest",
+          "to": "REQ-503",
+          "type": "verify"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML requirements diagram for a weather satellite. Address orbital lifetime, data downlink bandwidth, and sensor resolution requirements.",
+    "desired_model": {
+      "name": "WeatherSatelliteREQ",
+      "requirements": [
+        {
+          "id": "REQ-601",
+          "text": "Satellite shall operate in orbit for minimum 5 years.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-602",
+          "text": "Downlink bandwidth shall be at least 50 Mbps.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-603",
+          "text": "Sensor resolution shall be 1 km per pixel or better.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "PowerSubsystem",
+          "type": "block"
+        },
+        {
+          "name": "CommunicationLink",
+          "type": "block"
+        },
+        {
+          "name": "SensorArray",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "PowerSubsystem",
+          "to": "REQ-601",
+          "type": "satisfy"
+        },
+        {
+          "from": "CommunicationLink",
+          "to": "REQ-602",
+          "type": "satisfy"
+        },
+        {
+          "from": "SensorArray",
+          "to": "REQ-603",
+          "type": "satisfy"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML requirements diagram for an e-commerce payment gateway. Capture transaction throughput, fraud detection rate, and GDPR compliance.",
+    "desired_model": {
+      "name": "PaymentGatewayREQ",
+      "requirements": [
+        {
+          "id": "REQ-801",
+          "text": "Gateway shall handle 1000 transactions per second.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-802",
+          "text": "Fraud detection shall identify 99% of fraudulent transactions.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-803",
+          "text": "User data processing shall comply with GDPR.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "TransactionManager",
+          "type": "block"
+        },
+        {
+          "name": "FraudEngine",
+          "type": "block"
+        },
+        {
+          "name": "GDPRAudit",
+          "type": "testcase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "TransactionManager",
+          "to": "REQ-801",
+          "type": "satisfy"
+        },
+        {
+          "from": "FraudEngine",
+          "to": "REQ-802",
+          "type": "satisfy"
+        },
+        {
+          "from": "GDPRAudit",
+          "to": "REQ-803",
+          "type": "verify"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML requirements diagram for an agricultural irrigation controller. The requirements are: (1) The controller shall irrigate when soil moisture is less than 30%. (2) The valve shall open within 1 second of receiving a command. (3) Cloud connectivity uptime shall be at least 98%. Use the following element names: 'MoistureSensor', 'ValveActuator', and 'ConnectivityService'.",
+    "desired_model": {
+      "name": "IrrigationControllerREQ",
+      "requirements": [
+        {
+          "id": "REQ-901",
+          "text": "Controller shall irrigate when soil moisture < 30%.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-902",
+          "text": "Valve shall open within 1 s of command.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-903",
+          "text": "Cloud connectivity uptime shall be \u2265 98%.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "MoistureSensor",
+          "type": "block"
+        },
+        {
+          "name": "ValveActuator",
+          "type": "block"
+        },
+        {
+          "name": "ConnectivityService",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "MoistureSensor",
+          "to": "REQ-901",
+          "type": "satisfy"
+        },
+        {
+          "from": "ValveActuator",
+          "to": "REQ-902",
+          "type": "satisfy"
+        },
+        {
+          "from": "ConnectivityService",
+          "to": "REQ-903",
+          "type": "satisfy"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML requirements diagram for a bike-sharing platform. Cover bike availability, mobile app response time, and station battery life requirements with traceability.",
+    "desired_model": {
+      "name": "BikeSharingREQ",
+      "requirements": [
+        {
+          "id": "REQ-1001",
+          "text": "System shall keep at least 10 bikes available per station.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1002",
+          "text": "Mobile app shall respond to user queries within 1 s.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1003",
+          "text": "Docking station battery shall last 72 h without mains power.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "CentralServer",
+          "type": "block"
+        },
+        {
+          "name": "MobileApp",
+          "type": "block"
+        },
+        {
+          "name": "DockingStation",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "CentralServer",
+          "to": "REQ-1001",
+          "type": "satisfy"
+        },
+        {
+          "from": "MobileApp",
+          "to": "REQ-1002",
+          "type": "satisfy"
+        },
+        {
+          "from": "DockingStation",
+          "to": "REQ-1003",
+          "type": "satisfy"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Develop a SysML requirements diagram for a warehouse inventory robot system. The system shall meet the following requirements: (1) The VisionSystem shall achieve a picking accuracy of 99.5%. (2) The NavigationUnit shall stop the robot within 0.5 seconds upon obstacle detection. (3) The InventoryDB shall synchronize the inventory database every 10 seconds. Use only 'satisfy' relationships to link elements to requirements. Use the element names 'VisionSystem', 'NavigationUnit', and 'InventoryDB' exactly as specified.",
+    "desired_model": {
+      "name": "WarehouseRobotREQ",
+      "requirements": [
+        {
+          "id": "REQ-1101",
+          "text": "VisionSystem shall achieve picking accuracy of 99.5%.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1102",
+          "text": "NavigationUnit shall stop the robot within 0.5 s upon obstacle detection.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-1103",
+          "text": "InventoryDB shall synchronize the inventory database every 10 s.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "VisionSystem",
+          "type": "block"
+        },
+        {
+          "name": "NavigationUnit",
+          "type": "block"
+        },
+        {
+          "name": "InventoryDB",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "VisionSystem",
+          "to": "REQ-1101",
+          "type": "satisfy"
+        },
+        {
+          "from": "NavigationUnit",
+          "to": "REQ-1102",
+          "type": "satisfy"
+        },
+        {
+          "from": "InventoryDB",
+          "to": "REQ-1103",
+          "type": "satisfy"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML requirements diagram for a social media backend. The requirements are: (1) User feed shall load in \u2264 1.5 seconds; (2) System shall anonymize personal data for analytics to ensure privacy protection; (3) Recommendation precision shall exceed 0.8 F1-score. Use the following element names: FeedService, Anonymizer, RecommendationEngine.",
+    "desired_model": {
+      "name": "SocialMediaBackendREQ",
+      "requirements": [
+        {
+          "id": "REQ-1201",
+          "text": "User feed shall load in \u2264 1.5 s.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1202",
+          "text": "System shall anonymize personal data for analytics.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1203",
+          "text": "Recommendation precision shall exceed 0.8 F1-score.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "FeedService",
+          "type": "block"
+        },
+        {
+          "name": "Anonymizer",
+          "type": "block"
+        },
+        {
+          "name": "RecommendationEngine",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "FeedService",
+          "to": "REQ-1201",
+          "type": "satisfy"
+        },
+        {
+          "from": "Anonymizer",
+          "to": "REQ-1202",
+          "type": "satisfy"
+        },
+        {
+          "from": "RecommendationEngine",
+          "to": "REQ-1203",
+          "type": "satisfy"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML requirements diagram for a food delivery service. The system shall accept orders within 500 ms, optimize delivery routes to within 5% of the shortest possible path, and achieve a payment success rate of at least 99.8%. Use the following block names: OrderService, RoutePlanner, and PaymentGateway. Use requirement IDs REQ-1301, REQ-1302, and REQ-1303.",
+    "desired_model": {
+      "name": "FoodDeliveryREQ",
+      "requirements": [
+        {
+          "id": "REQ-1301",
+          "text": "System shall accept orders within 500 ms.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1302",
+          "text": "Routes shall be optimized within 5% of shortest path.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1303",
+          "text": "Payment success rate shall be \u2265 99.8%.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "OrderService",
+          "type": "block"
+        },
+        {
+          "name": "RoutePlanner",
+          "type": "block"
+        },
+        {
+          "name": "PaymentGateway",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "OrderService",
+          "to": "REQ-1301",
+          "type": "satisfy"
+        },
+        {
+          "from": "RoutePlanner",
+          "to": "REQ-1302",
+          "type": "satisfy"
+        },
+        {
+          "from": "PaymentGateway",
+          "to": "REQ-1303",
+          "type": "satisfy"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML requirements diagram for a car rental backend. Address booking confirmation time, vehicle data accuracy, and PCI compliance.",
+    "desired_model": {
+      "name": "CarRentalREQ",
+      "requirements": [
+        {
+          "id": "REQ-1401",
+          "text": "Booking confirmation shall be returned within 2 s.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1402",
+          "text": "Vehicle availability data shall be 99% accurate.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1403",
+          "text": "Payment handling shall comply with PCI-DSS.",
+          "type": "requirement",
+          "risk": "high"
+        }
+      ],
+      "elements": [
+        {
+          "name": "ReservationService",
+          "type": "block"
+        },
+        {
+          "name": "FleetDatabase",
+          "type": "block"
+        },
+        {
+          "name": "PCIComplianceTest",
+          "type": "testcase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "ReservationService",
+          "to": "REQ-1401",
+          "type": "satisfy"
+        },
+        {
+          "from": "FleetDatabase",
+          "to": "REQ-1402",
+          "type": "verify"
+        },
+        {
+          "from": "PCIComplianceTest",
+          "to": "REQ-1403",
+          "type": "verify"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML requirements diagram for a smart traffic light control system. Include vehicle detection accuracy, signal timing update rate, and emergency priority handling requirements.",
+    "desired_model": {
+      "name": "SmartTrafficLightREQ",
+      "requirements": [
+        {
+          "id": "REQ-1501",
+          "text": "Vehicle detection accuracy shall exceed 98%.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1502",
+          "text": "Signal timing shall update every 5 s.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1503",
+          "text": "Emergency vehicles shall receive green priority within 2 s.",
+          "type": "requirement",
+          "risk": "high"
+        }
+      ],
+      "elements": [
+        {
+          "name": "SensorInterface",
+          "type": "block"
+        },
+        {
+          "name": "ControllerLogic",
+          "type": "block"
+        },
+        {
+          "name": "PriorityModule",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "SensorInterface",
+          "to": "REQ-1501",
+          "type": "satisfy"
+        },
+        {
+          "from": "ControllerLogic",
+          "to": "REQ-1502",
+          "type": "satisfy"
+        },
+        {
+          "from": "PriorityModule",
+          "to": "REQ-1503",
+          "type": "satisfy"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML requirements diagram for a lunar rover mission. Include traversal range, sample collection capacity, and radiation tolerance requirements.",
+    "desired_model": {
+      "name": "LunarRoverREQ",
+      "requirements": [
+        {
+          "id": "REQ-1601",
+          "text": "Rover shall traverse 20 km without maintenance.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1602",
+          "text": "Rover shall collect 2 kg of samples.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1603",
+          "text": "Electronics shall tolerate 500 krad total dose.",
+          "type": "requirement",
+          "risk": "high"
+        }
+      ],
+      "elements": [
+        {
+          "name": "MobilitySubsystem",
+          "type": "block"
+        },
+        {
+          "name": "SampleCollector",
+          "type": "block"
+        },
+        {
+          "name": "RadiationShield",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "MobilitySubsystem",
+          "to": "REQ-1601",
+          "type": "satisfy"
+        },
+        {
+          "from": "SampleCollector",
+          "to": "REQ-1602",
+          "type": "satisfy"
+        },
+        {
+          "from": "RadiationShield",
+          "to": "REQ-1603",
+          "type": "satisfy"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Develop a SysML requirements diagram for a university course registration portal. Capture user concurrency, course prerequisite validation, and payment integration requirements.",
+    "desired_model": {
+      "name": "CourseRegistrationREQ",
+      "requirements": [
+        {
+          "id": "REQ-1701",
+          "text": "Portal shall support 500 concurrent users.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1702",
+          "text": "System shall validate prerequisites before enrollment.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1703",
+          "text": "Payment processing shall integrate with external gateway.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "WebFrontend",
+          "type": "block"
+        },
+        {
+          "name": "PrereqChecker",
+          "type": "block"
+        },
+        {
+          "name": "PaymentAdapter",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "WebFrontend",
+          "to": "REQ-1701",
+          "type": "satisfy"
+        },
+        {
+          "from": "PrereqChecker",
+          "to": "REQ-1702",
+          "type": "satisfy"
+        },
+        {
+          "from": "PaymentAdapter",
+          "to": "REQ-1703",
+          "type": "satisfy"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML requirements diagram for a hotel reservation backend. The system shall: (1) maintain room availability data with at least 99% accuracy as measured by cross-checking with actual occupancy records over a rolling 30-day period; (2) ensure that the server-side API booking response time is less than or equal to 1 second under normal load (up to 100 concurrent users); and (3) encrypt all personally identifiable information (PII) and payment data at rest using AES-256 encryption. Use the following block names: 'RoomDatabase', 'ReservationService', and 'EncryptionModule'. Use only the 'satisfy' relationship type for block-to-requirement links.",
+    "desired_model": {
+      "name": "HotelReservationREQ",
+      "requirements": [
+        {
+          "id": "REQ-1801",
+          "text": "Room availability data shall be at least 99% accurate as measured by cross-checking with actual occupancy records over a rolling 30-day period.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1802",
+          "text": "The server-side API booking response time shall be less than or equal to 1 second under normal load (up to 100 concurrent users).",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1803",
+          "text": "All personally identifiable information (PII) and payment data shall be encrypted at rest using AES-256 encryption.",
+          "type": "requirement",
+          "risk": "high"
+        }
+      ],
+      "elements": [
+        {
+          "name": "RoomDatabase",
+          "type": "block"
+        },
+        {
+          "name": "ReservationService",
+          "type": "block"
+        },
+        {
+          "name": "EncryptionModule",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "RoomDatabase",
+          "to": "REQ-1801",
+          "type": "satisfy"
+        },
+        {
+          "from": "ReservationService",
+          "to": "REQ-1802",
+          "type": "satisfy"
+        },
+        {
+          "from": "EncryptionModule",
+          "to": "REQ-1803",
+          "type": "satisfy"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML requirements diagram for a music streaming service. Address simultaneous stream limit, track availability, and recommendation transparency requirements.",
+    "desired_model": {
+      "name": "MusicStreamingREQ",
+      "requirements": [
+        {
+          "id": "REQ-1901",
+          "text": "Service shall support 3 simultaneous streams per user.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1902",
+          "text": "Track availability shall exceed 99.5%.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-1903",
+          "text": "Recommendations shall provide explainable reasons to users.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "StreamingServer",
+          "type": "block"
+        },
+        {
+          "name": "ContentDatabase",
+          "type": "block"
+        },
+        {
+          "name": "RecommendationService",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "StreamingServer",
+          "to": "REQ-1901",
+          "type": "satisfy"
+        },
+        {
+          "from": "ContentDatabase",
+          "to": "REQ-1902",
+          "type": "satisfy"
+        },
+        {
+          "from": "RecommendationService",
+          "to": "REQ-1903",
+          "type": "satisfy"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML requirements diagram for a waste management IoT platform. Include sensor battery life, data latency, and city privacy policy compliance requirements.",
+    "desired_model": {
+      "name": "WasteManagementREQ",
+      "requirements": [
+        {
+          "id": "REQ-2001",
+          "text": "Bin sensors shall operate 1 year on battery.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-2002",
+          "text": "Data latency from sensor to cloud shall be \u00e2\u2030\u00a4 10 s.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-2003",
+          "text": "System shall comply with municipal privacy policies.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "WasteBinSensor",
+          "type": "block"
+        },
+        {
+          "name": "GatewayNode",
+          "type": "block"
+        },
+        {
+          "name": "ComplianceReview",
+          "type": "testcase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "WasteBinSensor",
+          "to": "REQ-2001",
+          "type": "satisfy"
+        },
+        {
+          "from": "GatewayNode",
+          "to": "REQ-2002",
+          "type": "satisfy"
+        },
+        {
+          "from": "ComplianceReview",
+          "to": "REQ-2003",
+          "type": "verify"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML requirements diagram for a distributed nuclear reactor monitoring system. The system must: (1) detect radiation levels exceeding 100mSv/h within 50ms; (2) provide real-time emergency shutdown within 2 seconds of safety threshold breach; (3) tolerate up to 33% Byzantine faulty nodes in the control system; (4) ensure all communications use NRC-approved cryptographic protocols; (5) maintain operation with degraded accuracy using a minimum of 2 out of 4 sensor channels (multi-redundant sensor fusion with graceful degradation). Use the following naming conventions for model elements: 'RadiationSensorArray', 'ByzantineFaultHandler', 'SensorFusionUnit', 'CryptoModule', 'EmergencyShutdown', 'NRCSecurityAudit', and 'RadiationCalibration'.",
+    "desired_model": {
+      "name": "NuclearMonitoringREQ",
+      "requirements": [
+        {
+          "id": "REQ-NUC001",
+          "text": "System shall detect radiation levels exceeding 100mSv/h within 50ms.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-NUC002",
+          "text": "Control system shall tolerate up to 33% Byzantine faulty nodes.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-NUC003",
+          "text": "System shall maintain operation with degraded accuracy using minimum 2 of 4 sensor channels.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-NUC004",
+          "text": "All communications shall use NRC-approved cryptographic protocols.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-NUC005",
+          "text": "Emergency shutdown shall complete within 2 seconds of safety threshold breach.",
+          "type": "requirement",
+          "risk": "high"
+        }
+      ],
+      "elements": [
+        {
+          "name": "RadiationSensorArray",
+          "type": "block"
+        },
+        {
+          "name": "ByzantineFaultHandler",
+          "type": "block"
+        },
+        {
+          "name": "SensorFusionUnit",
+          "type": "block"
+        },
+        {
+          "name": "CryptoModule",
+          "type": "block"
+        },
+        {
+          "name": "EmergencyShutdown",
+          "type": "block"
+        },
+        {
+          "name": "NRCSecurityAudit",
+          "type": "testcase"
+        },
+        {
+          "name": "RadiationCalibration",
+          "type": "testcase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "RadiationSensorArray",
+          "to": "REQ-NUC001",
+          "type": "satisfy"
+        },
+        {
+          "from": "ByzantineFaultHandler",
+          "to": "REQ-NUC002",
+          "type": "satisfy"
+        },
+        {
+          "from": "SensorFusionUnit",
+          "to": "REQ-NUC003",
+          "type": "satisfy"
+        },
+        {
+          "from": "CryptoModule",
+          "to": "REQ-NUC004",
+          "type": "satisfy"
+        },
+        {
+          "from": "EmergencyShutdown",
+          "to": "REQ-NUC005",
+          "type": "satisfy"
+        },
+        {
+          "from": "NRCSecurityAudit",
+          "to": "REQ-NUC004",
+          "type": "verify"
+        },
+        {
+          "from": "RadiationCalibration",
+          "to": "REQ-NUC001",
+          "type": "verify"
+        },
+        {
+          "from": "REQ-NUC001",
+          "to": "REQ-NUC005",
+          "type": "derive"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML requirements diagram for a space mission critical life support system. Model the following requirements:\n\n1. Oxygen generation efficiency: The system must maintain 21% \u00b11% atmospheric oxygen composition for a 6-person crew.\n2. CO2 scrubbing capacity: CO2 levels must not exceed 0.4% concentration at any time.\n3. Atmospheric pressure regulation: The system must maintain 14.7 \u00b10.2 psia cabin pressure.\n4. Backup system redundancy: In the event of primary life support failure, a backup system must activate within 30 seconds.\n5. Crew safety and mission timeline: The system must operate autonomously for 180 days without resupply, ensuring continuous crew safety.\n\nModel complex interdependencies by refining the mission timeline requirement with oxygen and CO2 requirements. Use the following element names: 'OxygenGenerator', 'CO2Scrubber', 'PressureRegulator', 'BackupLifeSupport', 'AtmosphereMonitor', 'NASA_LSS_Certification', and 'VacuumChamberTest'.",
+    "desired_model": {
+      "name": "LifeSupportSystemREQ",
+      "requirements": [
+        {
+          "id": "REQ-LSS001",
+          "text": "Oxygen generation shall maintain 21% \u00b11% atmospheric composition for 6-person crew.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-LSS002",
+          "text": "CO2 levels shall not exceed 0.4% concentration at any time.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-LSS003",
+          "text": "System shall maintain 14.7 \u00b10.2 psia cabin pressure.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-LSS004",
+          "text": "Primary life support failure shall trigger backup within 30 seconds.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-LSS005",
+          "text": "System shall operate autonomously for 180 days without resupply.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "OxygenGenerator",
+          "type": "block"
+        },
+        {
+          "name": "CO2Scrubber",
+          "type": "block"
+        },
+        {
+          "name": "PressureRegulator",
+          "type": "block"
+        },
+        {
+          "name": "BackupLifeSupport",
+          "type": "block"
+        },
+        {
+          "name": "AtmosphereMonitor",
+          "type": "block"
+        },
+        {
+          "name": "NASA_LSS_Certification",
+          "type": "testcase"
+        },
+        {
+          "name": "VacuumChamberTest",
+          "type": "testcase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "OxygenGenerator",
+          "to": "REQ-LSS001",
+          "type": "satisfy"
+        },
+        {
+          "from": "CO2Scrubber",
+          "to": "REQ-LSS002",
+          "type": "satisfy"
+        },
+        {
+          "from": "PressureRegulator",
+          "to": "REQ-LSS003",
+          "type": "satisfy"
+        },
+        {
+          "from": "BackupLifeSupport",
+          "to": "REQ-LSS004",
+          "type": "satisfy"
+        },
+        {
+          "from": "AtmosphereMonitor",
+          "to": "REQ-LSS001",
+          "type": "verify"
+        },
+        {
+          "from": "AtmosphereMonitor",
+          "to": "REQ-LSS002",
+          "type": "verify"
+        },
+        {
+          "from": "NASA_LSS_Certification",
+          "to": "REQ-LSS005",
+          "type": "verify"
+        },
+        {
+          "from": "VacuumChamberTest",
+          "to": "REQ-LSS003",
+          "type": "verify"
+        },
+        {
+          "from": "REQ-LSS001",
+          "to": "REQ-LSS005",
+          "type": "refine"
+        },
+        {
+          "from": "REQ-LSS002",
+          "to": "REQ-LSS005",
+          "type": "refine"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML requirements diagram for a financial trading platform with high-frequency trading capabilities. The system must meet the following requirements: (1) Order execution latency shall not exceed 50 microseconds; (2) Market data feed shall have 99.999% accuracy with nanosecond timestamps; (3) System shall maintain a complete audit trail per MiFID II Article 25; (4) Risk limits shall be enforced in real-time with circuit breaker activation under 10ms; (5) System shall handle 1 million orders per second with linear scalability; (6) System shall comply with Dodd-Frank Act reporting requirements. Stakeholders include Trader, Regulator, RiskManager, and Auditor. Show explicit relationships between stakeholders and the requirements they are concerned with.",
+    "desired_model": {
+      "name": "HighFrequencyTradingREQ",
+      "requirements": [
+        {
+          "id": "REQ-HFT001",
+          "text": "Order execution latency shall not exceed 50 microseconds.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-HFT002",
+          "text": "Market data feed shall have 99.999% accuracy with nanosecond timestamps.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-HFT003",
+          "text": "System shall maintain complete audit trail per MiFID II Article 25.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-HFT004",
+          "text": "Risk limits shall be enforced in real-time with circuit breaker activation <10ms.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-HFT005",
+          "text": "System shall handle 1M orders per second with linear scalability.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-HFT006",
+          "text": "System shall comply with Dodd-Frank Act reporting requirements.",
+          "type": "requirement",
+          "risk": "high"
+        }
+      ],
+      "elements": [
+        {
+          "name": "OrderMatchingEngine",
+          "type": "block"
+        },
+        {
+          "name": "MarketDataProcessor",
+          "type": "block"
+        },
+        {
+          "name": "AuditLogger",
+          "type": "block"
+        },
+        {
+          "name": "RiskEngine",
+          "type": "block"
+        },
+        {
+          "name": "LoadBalancer",
+          "type": "block"
+        },
+        {
+          "name": "MiFIDIIComplianceTest",
+          "type": "testcase"
+        },
+        {
+          "name": "DoddFrankComplianceTest",
+          "type": "testcase"
+        },
+        {
+          "name": "LatencyBenchmark",
+          "type": "testcase"
+        },
+        {
+          "name": "Trader",
+          "type": "block"
+        },
+        {
+          "name": "Regulator",
+          "type": "block"
+        },
+        {
+          "name": "RiskManager",
+          "type": "block"
+        },
+        {
+          "name": "Auditor",
+          "type": "block"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "OrderMatchingEngine",
+          "to": "REQ-HFT001",
+          "type": "satisfy"
+        },
+        {
+          "from": "MarketDataProcessor",
+          "to": "REQ-HFT002",
+          "type": "satisfy"
+        },
+        {
+          "from": "AuditLogger",
+          "to": "REQ-HFT003",
+          "type": "satisfy"
+        },
+        {
+          "from": "AuditLogger",
+          "to": "REQ-HFT006",
+          "type": "satisfy"
+        },
+        {
+          "from": "RiskEngine",
+          "to": "REQ-HFT004",
+          "type": "satisfy"
+        },
+        {
+          "from": "LoadBalancer",
+          "to": "REQ-HFT005",
+          "type": "satisfy"
+        },
+        {
+          "from": "MiFIDIIComplianceTest",
+          "to": "REQ-HFT003",
+          "type": "verify"
+        },
+        {
+          "from": "DoddFrankComplianceTest",
+          "to": "REQ-HFT006",
+          "type": "verify"
+        },
+        {
+          "from": "LatencyBenchmark",
+          "to": "REQ-HFT001",
+          "type": "verify"
+        },
+        {
+          "from": "REQ-HFT004",
+          "to": "REQ-HFT001",
+          "type": "derive"
+        },
+        {
+          "from": "Trader",
+          "to": "REQ-HFT001",
+          "type": "refine"
+        },
+        {
+          "from": "Trader",
+          "to": "REQ-HFT002",
+          "type": "refine"
+        },
+        {
+          "from": "Trader",
+          "to": "REQ-HFT005",
+          "type": "refine"
+        },
+        {
+          "from": "RiskManager",
+          "to": "REQ-HFT004",
+          "type": "refine"
+        },
+        {
+          "from": "Auditor",
+          "to": "REQ-HFT003",
+          "type": "refine"
+        },
+        {
+          "from": "Auditor",
+          "to": "REQ-HFT006",
+          "type": "refine"
+        },
+        {
+          "from": "Regulator",
+          "to": "REQ-HFT003",
+          "type": "refine"
+        },
+        {
+          "from": "Regulator",
+          "to": "REQ-HFT006",
+          "type": "refine"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML requirements diagram for a distributed healthcare AI diagnostic system. The system must: (1) achieve at least 95% sensitivity and 97% specificity in diagnostic accuracy across all demographic groups; (2) provide explainable AI decisions with reasoning traceable to medical literature; (3) anonymize patient data using differential privacy with epsilon \u2264 1.0; (4) comply with FDA Software as Medical Device guidance; and (5) enable cross-institutional data sharing while maintaining HIPAA compliance. Use the following standardized element names: DiagnosticAIModel, ExplainabilityEngine, DifferentialPrivacyModule, FederatedLearningSystem, HIPAAComplianceMonitor, FDAValidationTest, BiasAuditTest.",
+    "desired_model": {
+      "name": "AIHealthcareDiagnosticREQ",
+      "requirements": [
+        {
+          "id": "REQ-AI001",
+          "text": "Diagnostic accuracy shall exceed 95% sensitivity and 97% specificity across all demographic groups.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-AI002",
+          "text": "AI decisions shall provide explainable reasoning traceable to medical literature.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-AI003",
+          "text": "Patient data shall be anonymized using differential privacy with \u03b5 \u2264 1.0.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-AI004",
+          "text": "System shall comply with FDA Software as Medical Device guidance.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-AI005",
+          "text": "Cross-institutional data sharing shall maintain HIPAA compliance.",
+          "type": "requirement",
+          "risk": "high"
+        }
+      ],
+      "elements": [
+        {
+          "name": "DiagnosticAIModel",
+          "type": "block"
+        },
+        {
+          "name": "ExplainabilityEngine",
+          "type": "block"
+        },
+        {
+          "name": "DifferentialPrivacyModule",
+          "type": "block"
+        },
+        {
+          "name": "FederatedLearningSystem",
+          "type": "block"
+        },
+        {
+          "name": "HIPAAComplianceMonitor",
+          "type": "block"
+        },
+        {
+          "name": "FDAValidationTest",
+          "type": "testcase"
+        },
+        {
+          "name": "BiasAuditTest",
+          "type": "testcase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "DiagnosticAIModel",
+          "to": "REQ-AI001",
+          "type": "satisfy"
+        },
+        {
+          "from": "ExplainabilityEngine",
+          "to": "REQ-AI002",
+          "type": "satisfy"
+        },
+        {
+          "from": "DifferentialPrivacyModule",
+          "to": "REQ-AI003",
+          "type": "satisfy"
+        },
+        {
+          "from": "FederatedLearningSystem",
+          "to": "REQ-AI005",
+          "type": "satisfy"
+        },
+        {
+          "from": "HIPAAComplianceMonitor",
+          "to": "REQ-AI005",
+          "type": "satisfy"
+        },
+        {
+          "from": "FDAValidationTest",
+          "to": "REQ-AI004",
+          "type": "verify"
+        },
+        {
+          "from": "BiasAuditTest",
+          "to": "REQ-AI001",
+          "type": "verify"
+        },
+        {
+          "from": "REQ-AI003",
+          "to": "REQ-AI005",
+          "type": "refine"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML requirements diagram for a distributed renewable energy grid management system. The system must: (1) maintain grid frequency at 50Hz \u00b10.2Hz under all load conditions; (2) integrate wind, solar, and battery sources with at least 95% efficiency and less than 2% power loss; (3) optimize energy trading to maximize revenue while minimizing carbon footprint; (4) provide real-time carbon emission tracking with \u00b11% accuracy; and (5) comply with ISO 50001 energy management standards, including support for complex energy trading regulatory requirements. Use the following standardized element names: GridStabilizer, RenewableIntegrator, TradingOptimizer, CarbonTracker, ComplianceMonitor, ISO50001Audit, FrequencyStabilityTest.",
+    "desired_model": {
+      "name": "RenewableEnergyGridREQ",
+      "requirements": [
+        {
+          "id": "REQ-RE001",
+          "text": "Grid frequency shall be maintained at 50Hz \u00b10.2Hz under all load conditions.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-RE002",
+          "text": "Renewable source integration shall achieve 95% efficiency with <2% power loss.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-RE003",
+          "text": "Energy trading optimization shall maximize revenue while minimizing carbon footprint.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-RE004",
+          "text": "Carbon emission tracking shall provide real-time calculation with \u00b11% accuracy.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-RE005",
+          "text": "System shall comply with ISO 50001 energy management standards.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "GridStabilizer",
+          "type": "block"
+        },
+        {
+          "name": "RenewableIntegrator",
+          "type": "block"
+        },
+        {
+          "name": "TradingOptimizer",
+          "type": "block"
+        },
+        {
+          "name": "CarbonTracker",
+          "type": "block"
+        },
+        {
+          "name": "ComplianceMonitor",
+          "type": "block"
+        },
+        {
+          "name": "ISO50001Audit",
+          "type": "testcase"
+        },
+        {
+          "name": "FrequencyStabilityTest",
+          "type": "testcase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "GridStabilizer",
+          "to": "REQ-RE001",
+          "type": "satisfy"
+        },
+        {
+          "from": "RenewableIntegrator",
+          "to": "REQ-RE002",
+          "type": "satisfy"
+        },
+        {
+          "from": "TradingOptimizer",
+          "to": "REQ-RE003",
+          "type": "satisfy"
+        },
+        {
+          "from": "CarbonTracker",
+          "to": "REQ-RE004",
+          "type": "satisfy"
+        },
+        {
+          "from": "ComplianceMonitor",
+          "to": "REQ-RE005",
+          "type": "satisfy"
+        },
+        {
+          "from": "ISO50001Audit",
+          "to": "REQ-RE005",
+          "type": "verify"
+        },
+        {
+          "from": "FrequencyStabilityTest",
+          "to": "REQ-RE001",
+          "type": "verify"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML requirements diagram for a deep space communication network with interplanetary internet capabilities. The system must: (1) handle communication delays up to 44 minutes (Earth-Mars maximum light time), (2) achieve data transmission efficiency exceeding 90% using store-and-forward protocols, (3) ensure all electronics operate after 10-year exposure to 100 krad total ionizing dose, (4) autonomously reconfigure network topology when 30% of nodes become unavailable, and (5) provide mission-critical data with priority routing and guaranteed delivery. Use the following naming conventions for model elements: 'DelayTolerantRouter', 'StoreForwardProtocol', 'RadiationHardenedHW', 'NetworkReconfigurer', 'PriorityQueueManager'. Assign requirement IDs as 'REQ-DSI001' through 'REQ-DSI005'.",
+    "desired_model": {
+      "name": "DeepSpaceInternetREQ",
+      "requirements": [
+        {
+          "id": "REQ-DSI001",
+          "text": "Network shall handle communication delays up to 44 minutes (Earth-Mars).",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-DSI002",
+          "text": "Data transmission efficiency shall exceed 90% with store-and-forward protocols.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-DSI003",
+          "text": "Electronics shall operate after 10-year 100 krad radiation exposure.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-DSI004",
+          "text": "Network topology shall self-reconfigure when 30% of nodes become unavailable.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-DSI005",
+          "text": "Mission-critical data shall receive priority routing with guaranteed delivery.",
+          "type": "requirement",
+          "risk": "high"
+        }
+      ],
+      "elements": [
+        {
+          "name": "DelayTolerantRouter",
+          "type": "block"
+        },
+        {
+          "name": "StoreForwardProtocol",
+          "type": "block"
+        },
+        {
+          "name": "RadiationHardenedHW",
+          "type": "block"
+        },
+        {
+          "name": "NetworkReconfigurer",
+          "type": "block"
+        },
+        {
+          "name": "PriorityQueueManager",
+          "type": "block"
+        },
+        {
+          "name": "RadiationTest",
+          "type": "testcase"
+        },
+        {
+          "name": "NetworkResilienceTest",
+          "type": "testcase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "DelayTolerantRouter",
+          "to": "REQ-DSI001",
+          "type": "satisfy"
+        },
+        {
+          "from": "StoreForwardProtocol",
+          "to": "REQ-DSI002",
+          "type": "satisfy"
+        },
+        {
+          "from": "RadiationHardenedHW",
+          "to": "REQ-DSI003",
+          "type": "satisfy"
+        },
+        {
+          "from": "NetworkReconfigurer",
+          "to": "REQ-DSI004",
+          "type": "satisfy"
+        },
+        {
+          "from": "PriorityQueueManager",
+          "to": "REQ-DSI005",
+          "type": "satisfy"
+        },
+        {
+          "from": "RadiationTest",
+          "to": "REQ-DSI003",
+          "type": "verify"
+        },
+        {
+          "from": "NetworkResilienceTest",
+          "to": "REQ-DSI004",
+          "type": "verify"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML requirements diagram for a Mars colony life support system. Model the following requirements: (1) atmospheric composition (maintain 21% O2, 0.04% CO2, 78.96% N2 \u00b10.1%), (2) water recycling efficiency (98% efficiency, 99.9% purity), (3) food production capacity (2.2kg fresh food per person per day), (4) waste management (process all human and plant waste with 95% efficiency), (5) emergency backup systems (sustain 6 people for minimum 30 days), (6) radiation shielding (limit exposure to 50mSv per year), and (7) autonomous operation for 180 days without Earth support. Include verification and certification elements. Use the following standardized block names: AtmosphericProcessor, WaterRecycler, HydroponicsFarm, WasteProcessor, RadiationShield, EmergencyLifeSupport, MarsEnvironmentTest, NASA_LSS_Mars_Cert. Clearly show interdependencies and mission-critical constraints for a 26-month mission.",
+    "desired_model": {
+      "name": "MarsColonyLifeSupportREQ",
+      "requirements": [
+        {
+          "id": "REQ-MC001",
+          "text": "Atmospheric system shall maintain 21% O2, 0.04% CO2, 78.96% N2 composition \u00b10.1%.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-MC002",
+          "text": "Water recycling shall achieve 98% efficiency with 99.9% purity.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-MC003",
+          "text": "Food production shall yield 2.2kg fresh food per person per day.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-MC004",
+          "text": "Radiation shielding shall limit exposure to 50mSv per year.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-MC005",
+          "text": "System shall operate autonomously for 180 days without Earth support.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-MC006",
+          "text": "Emergency backup shall sustain 6 people for minimum 30 days.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-MC007",
+          "text": "Waste management shall process all human and plant waste with 95% efficiency.",
+          "type": "requirement"
+        }
+      ],
+      "elements": [
+        {
+          "name": "AtmosphericProcessor",
+          "type": "block"
+        },
+        {
+          "name": "WaterRecycler",
+          "type": "block"
+        },
+        {
+          "name": "HydroponicsFarm",
+          "type": "block"
+        },
+        {
+          "name": "RadiationShield",
+          "type": "block"
+        },
+        {
+          "name": "EmergencyLifeSupport",
+          "type": "block"
+        },
+        {
+          "name": "WasteProcessor",
+          "type": "block"
+        },
+        {
+          "name": "MarsEnvironmentTest",
+          "type": "testcase"
+        },
+        {
+          "name": "NASA_LSS_Mars_Cert",
+          "type": "testcase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "AtmosphericProcessor",
+          "to": "REQ-MC001",
+          "type": "satisfy"
+        },
+        {
+          "from": "WaterRecycler",
+          "to": "REQ-MC002",
+          "type": "satisfy"
+        },
+        {
+          "from": "HydroponicsFarm",
+          "to": "REQ-MC003",
+          "type": "satisfy"
+        },
+        {
+          "from": "RadiationShield",
+          "to": "REQ-MC004",
+          "type": "satisfy"
+        },
+        {
+          "from": "EmergencyLifeSupport",
+          "to": "REQ-MC006",
+          "type": "satisfy"
+        },
+        {
+          "from": "WasteProcessor",
+          "to": "REQ-MC007",
+          "type": "satisfy"
+        },
+        {
+          "from": "MarsEnvironmentTest",
+          "to": "REQ-MC005",
+          "type": "verify"
+        },
+        {
+          "from": "NASA_LSS_Mars_Cert",
+          "to": "REQ-MC001",
+          "type": "verify"
+        },
+        {
+          "from": "REQ-MC001",
+          "to": "REQ-MC005",
+          "type": "refine"
+        },
+        {
+          "from": "REQ-MC002",
+          "to": "REQ-MC005",
+          "type": "refine"
+        },
+        {
+          "from": "REQ-MC004",
+          "to": "REQ-MC006",
+          "type": "derive"
+        },
+        {
+          "from": "WasteProcessor",
+          "to": "HydroponicsFarm",
+          "type": "satisfy",
+          "rationale": "Nutrient recycling supports food production."
+        },
+        {
+          "from": "WaterRecycler",
+          "to": "HydroponicsFarm",
+          "type": "satisfy",
+          "rationale": "Recycled water supports food production."
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML requirements diagram for a space elevator control system. The diagram must include the following requirements:\n\n1. REQ-001: The system shall maintain cable tension within specified operational parameters. (Risk: high)\n2. REQ-002: The system shall ensure climber safety in accordance with ISO 19800, with at least 99% reliability. (Verification: test)\n3. REQ-003: The system shall maintain weather resistance under all operational conditions. (Verification: analysis)\n4. REQ-004: The system shall integrate with existing infrastructure seamlessly. (Derived from REQ-001)\n5. REQ-005: Safety protocols shall prevent hazardous conditions. (Risk: high, Verification: review)\n\nFor each requirement, specify the satisfying system element (block) using the following names: 'CableTensionController', 'ClimberSafetySystem', 'WeatherResistanceModule', 'SystemIntegrationInterface', 'SystemSafetyModule'.\n\nInclude test cases named 'ClimberSafetyTest', 'WeatherResistanceTest', and 'SystemSafetyAudit' to verify the appropriate requirements. Trace all relationships explicitly using 'satisfy', 'verify', and 'derive' links as appropriate. Use the requirement IDs and element names exactly as specified.",
+    "desired_model": {
+      "name": "SpaceElevatorControlSystemRequirements",
+      "requirements": [
+        {
+          "id": "REQ-001",
+          "text": "The system shall maintain cable tension within specified operational parameters.",
+          "type": "requirement",
+          "risk": "high"
+        },
+        {
+          "id": "REQ-002",
+          "text": "The system shall ensure climber safety in accordance with ISO 19800, with at least 99% reliability.",
+          "type": "requirement",
+          "verify": "test"
+        },
+        {
+          "id": "REQ-003",
+          "text": "The system shall maintain weather resistance under all operational conditions.",
+          "type": "requirement",
+          "verify": "analysis"
+        },
+        {
+          "id": "REQ-004",
+          "text": "The system shall integrate with existing infrastructure seamlessly.",
+          "type": "requirement"
+        },
+        {
+          "id": "REQ-005",
+          "text": "Safety protocols shall prevent hazardous conditions.",
+          "type": "requirement",
+          "risk": "high",
+          "verify": "review"
+        }
+      ],
+      "elements": [
+        {
+          "name": "CableTensionController",
+          "type": "block"
+        },
+        {
+          "name": "ClimberSafetySystem",
+          "type": "block"
+        },
+        {
+          "name": "WeatherResistanceModule",
+          "type": "block"
+        },
+        {
+          "name": "SystemIntegrationInterface",
+          "type": "block"
+        },
+        {
+          "name": "SystemSafetyModule",
+          "type": "block"
+        },
+        {
+          "name": "ClimberSafetyTest",
+          "type": "testcase"
+        },
+        {
+          "name": "WeatherResistanceTest",
+          "type": "testcase"
+        },
+        {
+          "name": "SystemSafetyAudit",
+          "type": "testcase"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "CableTensionController",
+          "to": "REQ-001",
+          "type": "satisfy"
+        },
+        {
+          "from": "ClimberSafetySystem",
+          "to": "REQ-002",
+          "type": "satisfy"
+        },
+        {
+          "from": "WeatherResistanceModule",
+          "to": "REQ-003",
+          "type": "satisfy"
+        },
+        {
+          "from": "SystemIntegrationInterface",
+          "to": "REQ-004",
+          "type": "satisfy"
+        },
+        {
+          "from": "SystemSafetyModule",
+          "to": "REQ-005",
+          "type": "satisfy"
+        },
+        {
+          "from": "ClimberSafetyTest",
+          "to": "REQ-002",
+          "type": "verify"
+        },
+        {
+          "from": "WeatherResistanceTest",
+          "to": "REQ-003",
+          "type": "verify"
+        },
+        {
+          "from": "SystemSafetyAudit",
+          "to": "REQ-005",
+          "type": "verify"
+        },
+        {
+          "from": "REQ-004",
+          "to": "REQ-001",
+          "type": "derive"
+        }
+      ]
+    }
+  }
+]

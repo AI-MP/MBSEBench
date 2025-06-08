@@ -1,0 +1,93 @@
+You are an expert in SysML modeling.
+
+SYSTEM / FUNCTIONAL SCOPE TO MODEL:
+{system_description}
+
+TASK: Create a JSON use-case diagram for the system described above. Do not ask for clarification.
+
+Output Format
+You MUST output ONLY a valid JSON object that follows this exact schema:
+
+json
+Copy
+Edit
+{{
+  "name": "DiagramName",
+  "actors": [
+    {{"name": "ActorName", "type": "primary"}}
+  ],
+  "useCases": [
+    {{"name": "UseCaseName", "type": "useCase"}}
+  ],
+  "relationships": [
+    {{"from": "SourceName", "to": "TargetName", "type": "association"}}
+  ]
+}}
+Schema Requirements
+Root Field	Type	Notes
+name	string	Name of the use-case diagram
+actors	array	List of actors (≥ 1)
+useCases	array	List of use cases (≥ 1)
+relationships	array	Links between actors and use cases (≥ 1)
+
+Actor Object
+Field	Type	Allowed type values	Description
+name	string	—	Unique actor name
+type	string	"primary" | "secondary"	Interaction importance category
+
+Use-Case Object
+Field	Type	Allowed type value	Description
+name	string	—	Unique use-case name
+type	string	"useCase"	Must be "useCase"
+
+Relationship Object
+Field	Type	Allowed type values	Description
+from	string	—	Source element name (actor or use case)
+to	string	—	Target element name (actor or use case)
+type	string	"association" | "include" | "extend"	Link kind (association = direct usage)
+note	string	Optional	Brief rationale (e.g., «include» authentication)
+
+Working Example
+json
+Copy
+Edit
+{{
+  "name": "CoffeeMachineUseCases",
+  "actors": [
+    {{"name": "User", "type": "primary"}},
+    {{"name": "MaintenanceTech", "type": "secondary"}}
+  ],
+  "useCases": [
+    {{"name": "Brew Coffee", "type": "useCase"}},
+    {{"name": "Display Error", "type": "useCase"}},
+    {{"name": "Perform Maintenance", "type": "useCase"}}
+  ],
+  "relationships": [
+    {{"from": "User", "to": "Brew Coffee", "type": "association"}},
+    {{"from": "User", "to": "Display Error", "type": "association"}},
+    {{"from": "MaintenanceTech", "to": "Perform Maintenance", "type": "association"}},
+    {{"from": "Display Error", "to": "Perform Maintenance", "type": "include"}}
+  ]
+}}
+Modeling Rules
+Identify external roles → Each distinct interacting entity becomes an actor.
+
+Define system functions → Main behaviors become useCases.
+
+Connect usage → Use association links between actors and the use cases they initiate.
+
+Factor common steps → Use include or extend to avoid duplication where appropriate.
+
+Match names exactly → Elements referenced in relationships must exist in actors or useCases.
+
+No orphan elements → Every actor and use case must appear in at least one relationship.
+
+Use clear, descriptive names.
+
+Prefer concise names → Use short, descriptive names that stick closely to the terminology used in the original question. Avoid verbose or unnecessarily long element names.
+
+Output only JSON → No explanations, markdown, or extra formatting.
+
+Never ask for clarification → Work strictly with the given description.
+
+REMINDER: Create the JSON use-case diagram for the system described above. Output only valid JSON.

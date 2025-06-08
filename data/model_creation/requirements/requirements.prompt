@@ -1,0 +1,95 @@
+You are an expert in SysML modeling.
+
+REQUIREMENTS TO MODEL:
+{system_description}
+
+TASK: Create a JSON requirements diagram for the requirements described above. Do not ask for clarification.
+
+Output Format
+You MUST output ONLY a valid JSON object following this exact schema:
+
+json
+Copy
+Edit
+{{
+  "name": "DiagramName",
+  "requirements": [
+    {{"id": "REQ-1", "text": "Requirement statement", "type": "requirement"}}
+  ],
+  "elements": [
+    {{"name": "ElementName", "type": "block"}}
+  ],
+  "relationships": [
+    {{"from": "SourceID", "to": "TargetID", "type": "satisfy"}}
+  ]
+}}
+Schema Requirements
+Root Field	Type	Notes
+name	string	Name of the requirements diagram
+requirements	array	List of requirement nodes (≥ 1)
+elements	array	Optional model elements (blocks, interfaces, test cases) used for satisfaction / verify
+relationships	array	Requirement trace links (≥ 0)
+
+Requirement Object
+Field	Type	Allowed type value	Description
+id	string	—	Unique identifier (e.g., "REQ-001")
+text	string	—	Requirement statement
+type	string	"requirement"	Must be "requirement"
+risk	string	Optional	Risk level ("low", "medium", "high")
+verify	string	Optional	Verification method ("test", "analysis", "review")
+
+Element Object (optional)
+Field	Type	Description
+name	string	Model element (block, interface, test case, etc.)
+type	string	Kind of element, free-form (e.g., "block")
+
+Relationship Object
+Field	Type	Allowed type values	Description
+from	string	—	Source ID (requirement or element name)
+to	string	—	Target ID (requirement or element name)
+type	string	"satisfy", "verify", "derive", "refine"	Relationship kind
+rationale	string	Optional	Short note explaining the link
+
+Working Example
+json
+Copy
+Edit
+{{
+  "name": "AutoBrakeRequirements",
+  "requirements": [
+    {{"id": "REQ-001", "text": "The vehicle shall detect obstacles within 50 m.", "type": "requirement"}},
+    {{"id": "REQ-002", "text": "The brake system shall stop the vehicle within 3 s of obstacle detection.", "type": "requirement"}},
+    {{"id": "REQ-003", "text": "The system shall comply with ISO 26262.", "type": "requirement", "risk": "high"}}
+  ],
+  "elements": [
+    {{"name": "ObstacleSensor", "type": "block"}},
+    {{"name": "BrakeController", "type": "block"}},
+    {{"name": "ISO26262Test", "type": "testcase"}}
+  ],
+  "relationships": [
+    {{"from": "ObstacleSensor", "to": "REQ-001", "type": "satisfy"}},
+    {{"from": "BrakeController", "to": "REQ-002", "type": "satisfy"}},
+    {{"from": "ISO26262Test", "to": "REQ-003", "type": "verify"}},
+    {{"from": "REQ-002", "to": "REQ-001", "type": "derive"}}
+  ]
+}}
+Modeling Rules
+Capture all requirements → Each statement becomes a requirement node.
+
+Identify satisfying elements → Blocks/test cases that satisfy or verify requirements go in elements.
+
+Trace relationships → Use satisfy, verify, derive, refine to link nodes.
+
+Match references exactly → IDs and names in relationships must match an entry in requirements or elements.
+
+No orphan requirements → Every requirement should be satisfied, verified, derived, or refined.
+
+Use clear IDs and text.
+
+Prefer concise names → Use short, descriptive names that stick closely to the terminology used in the original question. Avoid verbose or unnecessarily long element names.
+
+Output only JSON → No explanations, comments, or extra formatting.
+
+Never ask for clarification → Work strictly with the information provided.
+
+REMINDER: Create the JSON requirements diagram for the requirements described above. Output only valid JSON.

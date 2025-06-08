@@ -1,0 +1,2644 @@
+[
+  {
+    "question": "Create a SysML activity diagram for the following coffee machine operation process: A user turns on a coffee machine. The machine heats the water. If there is enough water, it brews coffee and then turns off. If there is not enough water, it displays an error and turns off. Model this as an activity diagram with User and Machine swimlanes, including all actions, decisions, and flows in JSON format.",
+    "desired_model": {
+      "name": "CoffeeMachineOperation",
+      "swimlanes": [
+        {
+          "name": "User",
+          "type": "actor"
+        },
+        {
+          "name": "Machine",
+          "type": "system"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "User"
+        },
+        {
+          "name": "Turn On",
+          "type": "action",
+          "swimlane": "User"
+        },
+        {
+          "name": "Heat Water",
+          "type": "action",
+          "swimlane": "Machine"
+        },
+        {
+          "name": "Enough Water?",
+          "type": "decision",
+          "swimlane": "Machine"
+        },
+        {
+          "name": "Brew Coffee",
+          "type": "action",
+          "swimlane": "Machine"
+        },
+        {
+          "name": "Display Error",
+          "type": "action",
+          "swimlane": "Machine"
+        },
+        {
+          "name": "Turn Off",
+          "type": "action",
+          "swimlane": "Machine"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "User"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Turn On"
+        },
+        {
+          "from": "Turn On",
+          "to": "Heat Water"
+        },
+        {
+          "from": "Heat Water",
+          "to": "Enough Water?"
+        },
+        {
+          "from": "Enough Water?",
+          "to": "Brew Coffee",
+          "condition": "yes"
+        },
+        {
+          "from": "Enough Water?",
+          "to": "Display Error",
+          "condition": "no"
+        },
+        {
+          "from": "Brew Coffee",
+          "to": "Turn Off"
+        },
+        {
+          "from": "Display Error",
+          "to": "Turn Off"
+        },
+        {
+          "from": "Turn Off",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML activity diagram for this assignment submission workflow: A student submits an assignment. The system checks if the submission is before the deadline. If before the deadline, it records the submission as on time. If after the deadline, it marks it as late. In both cases, a confirmation is sent to the student. Create the diagram with Student and System swimlanes in JSON format.",
+    "desired_model": {
+      "name": "AssignmentSubmission",
+      "swimlanes": [
+        {
+          "name": "Student",
+          "type": "actor"
+        },
+        {
+          "name": "System",
+          "type": "system"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Student"
+        },
+        {
+          "name": "Submit Assignment",
+          "type": "action",
+          "swimlane": "Student"
+        },
+        {
+          "name": "Check Deadline",
+          "type": "action",
+          "swimlane": "System"
+        },
+        {
+          "name": "Before Deadline?",
+          "type": "decision",
+          "swimlane": "System"
+        },
+        {
+          "name": "Record On Time",
+          "type": "action",
+          "swimlane": "System"
+        },
+        {
+          "name": "Mark as Late",
+          "type": "action",
+          "swimlane": "System"
+        },
+        {
+          "name": "Send Confirmation",
+          "type": "action",
+          "swimlane": "System"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Student"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Submit Assignment"
+        },
+        {
+          "from": "Submit Assignment",
+          "to": "Check Deadline"
+        },
+        {
+          "from": "Check Deadline",
+          "to": "Before Deadline?"
+        },
+        {
+          "from": "Before Deadline?",
+          "to": "Record On Time",
+          "condition": "yes"
+        },
+        {
+          "from": "Before Deadline?",
+          "to": "Mark as Late",
+          "condition": "no"
+        },
+        {
+          "from": "Record On Time",
+          "to": "Send Confirmation"
+        },
+        {
+          "from": "Mark as Late",
+          "to": "Send Confirmation"
+        },
+        {
+          "from": "Send Confirmation",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Model the following car rental reservation process as a SysML activity diagram: A car rental customer makes a reservation. The system checks availability for the requested dates. If available, the reservation is confirmed and an email is sent. If not available, the system suggests alternate dates. Output the complete diagram with Customer and RentalSystem swimlanes in JSON format.",
+    "desired_model": {
+      "name": "CarRentalReservation",
+      "swimlanes": [
+        {
+          "name": "Customer",
+          "type": "actor"
+        },
+        {
+          "name": "RentalSystem",
+          "type": "system"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Make Reservation",
+          "type": "action",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Check Availability",
+          "type": "action",
+          "swimlane": "RentalSystem"
+        },
+        {
+          "name": "Car Available?",
+          "type": "decision",
+          "swimlane": "RentalSystem"
+        },
+        {
+          "name": "Confirm Reservation",
+          "type": "action",
+          "swimlane": "RentalSystem"
+        },
+        {
+          "name": "Send Email",
+          "type": "action",
+          "swimlane": "RentalSystem"
+        },
+        {
+          "name": "Suggest Alternate Dates",
+          "type": "action",
+          "swimlane": "RentalSystem"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Customer"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Make Reservation"
+        },
+        {
+          "from": "Make Reservation",
+          "to": "Check Availability"
+        },
+        {
+          "from": "Check Availability",
+          "to": "Car Available?"
+        },
+        {
+          "from": "Car Available?",
+          "to": "Confirm Reservation",
+          "condition": "yes"
+        },
+        {
+          "from": "Car Available?",
+          "to": "Suggest Alternate Dates",
+          "condition": "no"
+        },
+        {
+          "from": "Confirm Reservation",
+          "to": "Send Email"
+        },
+        {
+          "from": "Send Email",
+          "to": "End"
+        },
+        {
+          "from": "Suggest Alternate Dates",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A patient books a doctor's appointment. The receptionist checks the doctor's availability. If available, the appointment is scheduled. If not, the receptionist asks the patient to select a different time. The process repeats until a time is selected.",
+    "desired_model": {
+      "name": "DoctorAppointmentBooking",
+      "swimlanes": [
+        {
+          "name": "Patient",
+          "type": "actor"
+        },
+        {
+          "name": "Receptionist",
+          "type": "actor"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Patient"
+        },
+        {
+          "name": "Request Appointment",
+          "type": "action",
+          "swimlane": "Patient"
+        },
+        {
+          "name": "Check Availability",
+          "type": "action",
+          "swimlane": "Receptionist"
+        },
+        {
+          "name": "Time Available?",
+          "type": "decision",
+          "swimlane": "Receptionist"
+        },
+        {
+          "name": "Schedule Appointment",
+          "type": "action",
+          "swimlane": "Receptionist"
+        },
+        {
+          "name": "Select Different Time",
+          "type": "action",
+          "swimlane": "Patient"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Patient"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Request Appointment"
+        },
+        {
+          "from": "Request Appointment",
+          "to": "Check Availability"
+        },
+        {
+          "from": "Check Availability",
+          "to": "Time Available?"
+        },
+        {
+          "from": "Time Available?",
+          "to": "Schedule Appointment",
+          "condition": "yes"
+        },
+        {
+          "from": "Time Available?",
+          "to": "Select Different Time",
+          "condition": "no"
+        },
+        {
+          "from": "Schedule Appointment",
+          "to": "End"
+        },
+        {
+          "from": "Select Different Time",
+          "to": "Check Availability"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A customer withdraws money from an ATM. The ATM checks the card PIN. If correct, the customer enters the amount. The ATM checks the balance. If sufficient, cash is dispensed and a receipt is printed. If not, an error is shown and the card is ejected.",
+    "desired_model": {
+      "name": "ATMWithdrawal",
+      "swimlanes": [
+        {
+          "name": "Customer",
+          "type": "actor"
+        },
+        {
+          "name": "ATM",
+          "type": "system"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Insert Card",
+          "type": "action",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Check PIN",
+          "type": "action",
+          "swimlane": "ATM"
+        },
+        {
+          "name": "PIN Correct?",
+          "type": "decision",
+          "swimlane": "ATM"
+        },
+        {
+          "name": "Enter Amount",
+          "type": "action",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Check Balance",
+          "type": "action",
+          "swimlane": "ATM"
+        },
+        {
+          "name": "Sufficient Balance?",
+          "type": "decision",
+          "swimlane": "ATM"
+        },
+        {
+          "name": "Dispense Cash",
+          "type": "action",
+          "swimlane": "ATM"
+        },
+        {
+          "name": "Print Receipt",
+          "type": "action",
+          "swimlane": "ATM"
+        },
+        {
+          "name": "Show Error",
+          "type": "action",
+          "swimlane": "ATM"
+        },
+        {
+          "name": "Eject Card",
+          "type": "action",
+          "swimlane": "ATM"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Customer"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Insert Card"
+        },
+        {
+          "from": "Insert Card",
+          "to": "Check PIN"
+        },
+        {
+          "from": "Check PIN",
+          "to": "PIN Correct?"
+        },
+        {
+          "from": "PIN Correct?",
+          "to": "Enter Amount",
+          "condition": "yes"
+        },
+        {
+          "from": "PIN Correct?",
+          "to": "Show Error",
+          "condition": "no"
+        },
+        {
+          "from": "Enter Amount",
+          "to": "Check Balance"
+        },
+        {
+          "from": "Check Balance",
+          "to": "Sufficient Balance?"
+        },
+        {
+          "from": "Sufficient Balance?",
+          "to": "Dispense Cash",
+          "condition": "yes"
+        },
+        {
+          "from": "Sufficient Balance?",
+          "to": "Show Error",
+          "condition": "no"
+        },
+        {
+          "from": "Dispense Cash",
+          "to": "Print Receipt"
+        },
+        {
+          "from": "Print Receipt",
+          "to": "Eject Card"
+        },
+        {
+          "from": "Show Error",
+          "to": "Eject Card"
+        },
+        {
+          "from": "Eject Card",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A customer places an order in a restaurant. The waiter takes the order and sends it to the kitchen. The chef prepares the food and notifies the waiter when it is ready. The waiter delivers the food to the customer.",
+    "desired_model": {
+      "name": "RestaurantOrder",
+      "swimlanes": [
+        {
+          "name": "Customer",
+          "type": "actor"
+        },
+        {
+          "name": "Waiter",
+          "type": "actor"
+        },
+        {
+          "name": "Chef",
+          "type": "actor"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Place Order",
+          "type": "action",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Take Order",
+          "type": "action",
+          "swimlane": "Waiter"
+        },
+        {
+          "name": "Send to Kitchen",
+          "type": "action",
+          "swimlane": "Waiter"
+        },
+        {
+          "name": "Prepare Food",
+          "type": "action",
+          "swimlane": "Chef"
+        },
+        {
+          "name": "Notify Waiter",
+          "type": "action",
+          "swimlane": "Chef"
+        },
+        {
+          "name": "Deliver Food",
+          "type": "action",
+          "swimlane": "Waiter"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Customer"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Place Order"
+        },
+        {
+          "from": "Place Order",
+          "to": "Take Order"
+        },
+        {
+          "from": "Take Order",
+          "to": "Send to Kitchen"
+        },
+        {
+          "from": "Send to Kitchen",
+          "to": "Prepare Food"
+        },
+        {
+          "from": "Prepare Food",
+          "to": "Notify Waiter"
+        },
+        {
+          "from": "Notify Waiter",
+          "to": "Deliver Food"
+        },
+        {
+          "from": "Deliver Food",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A customer calls for a taxi. The operator assigns a driver. The driver accepts the ride and picks up the customer. The customer pays the driver at the destination.",
+    "desired_model": {
+      "name": "TaxiBooking",
+      "swimlanes": [
+        {
+          "name": "Customer",
+          "type": "actor"
+        },
+        {
+          "name": "Operator",
+          "type": "actor"
+        },
+        {
+          "name": "Driver",
+          "type": "actor"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Request Taxi",
+          "type": "action",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Assign Driver",
+          "type": "action",
+          "swimlane": "Operator"
+        },
+        {
+          "name": "Accept Ride",
+          "type": "action",
+          "swimlane": "Driver"
+        },
+        {
+          "name": "Pick Up Customer",
+          "type": "action",
+          "swimlane": "Driver"
+        },
+        {
+          "name": "Pay Driver",
+          "type": "action",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Customer"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Request Taxi"
+        },
+        {
+          "from": "Request Taxi",
+          "to": "Assign Driver"
+        },
+        {
+          "from": "Assign Driver",
+          "to": "Accept Ride"
+        },
+        {
+          "from": "Accept Ride",
+          "to": "Pick Up Customer"
+        },
+        {
+          "from": "Pick Up Customer",
+          "to": "Pay Driver"
+        },
+        {
+          "from": "Pay Driver",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A library user borrows a book. The librarian checks if the book is available. If available, the book is lent and the due date is set. If not, the user is notified of unavailability.",
+    "desired_model": {
+      "name": "BookBorrowing",
+      "swimlanes": [
+        {
+          "name": "User",
+          "type": "actor"
+        },
+        {
+          "name": "Librarian",
+          "type": "actor"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "User"
+        },
+        {
+          "name": "Request Book",
+          "type": "action",
+          "swimlane": "User"
+        },
+        {
+          "name": "Check Availability",
+          "type": "action",
+          "swimlane": "Librarian"
+        },
+        {
+          "name": "Available?",
+          "type": "decision",
+          "swimlane": "Librarian"
+        },
+        {
+          "name": "Lend Book",
+          "type": "action",
+          "swimlane": "Librarian"
+        },
+        {
+          "name": "Set Due Date",
+          "type": "action",
+          "swimlane": "Librarian"
+        },
+        {
+          "name": "Notify Unavailability",
+          "type": "action",
+          "swimlane": "Librarian"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "User"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Request Book"
+        },
+        {
+          "from": "Request Book",
+          "to": "Check Availability"
+        },
+        {
+          "from": "Check Availability",
+          "to": "Available?"
+        },
+        {
+          "from": "Available?",
+          "to": "Lend Book",
+          "condition": "yes"
+        },
+        {
+          "from": "Available?",
+          "to": "Notify Unavailability",
+          "condition": "no"
+        },
+        {
+          "from": "Lend Book",
+          "to": "Set Due Date"
+        },
+        {
+          "from": "Set Due Date",
+          "to": "End"
+        },
+        {
+          "from": "Notify Unavailability",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A hotel guest requests a wake-up call. The receptionist schedules the call for the requested time. At the scheduled time, the system calls the guest. If the guest answers, the process ends. If not, the system calls again once. If there is still no answer, the receptionist is notified.",
+    "desired_model": {
+      "name": "WakeUpCall",
+      "swimlanes": [
+        {
+          "name": "Guest",
+          "type": "actor"
+        },
+        {
+          "name": "Receptionist",
+          "type": "actor"
+        },
+        {
+          "name": "System",
+          "type": "system"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Guest"
+        },
+        {
+          "name": "Request Wake-Up Call",
+          "type": "action",
+          "swimlane": "Guest"
+        },
+        {
+          "name": "Schedule Call",
+          "type": "action",
+          "swimlane": "Receptionist"
+        },
+        {
+          "name": "Make Call",
+          "type": "action",
+          "swimlane": "System"
+        },
+        {
+          "name": "Answered?",
+          "type": "decision",
+          "swimlane": "System"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Guest"
+        },
+        {
+          "name": "Call Again",
+          "type": "action",
+          "swimlane": "System"
+        },
+        {
+          "name": "Answered 2nd Time?",
+          "type": "decision",
+          "swimlane": "System"
+        },
+        {
+          "name": "Notify Receptionist",
+          "type": "action",
+          "swimlane": "System"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Request Wake-Up Call"
+        },
+        {
+          "from": "Request Wake-Up Call",
+          "to": "Schedule Call"
+        },
+        {
+          "from": "Schedule Call",
+          "to": "Make Call"
+        },
+        {
+          "from": "Make Call",
+          "to": "Answered?"
+        },
+        {
+          "from": "Answered?",
+          "to": "End",
+          "condition": "yes"
+        },
+        {
+          "from": "Answered?",
+          "to": "Call Again",
+          "condition": "no"
+        },
+        {
+          "from": "Call Again",
+          "to": "Answered 2nd Time?"
+        },
+        {
+          "from": "Answered 2nd Time?",
+          "to": "End",
+          "condition": "yes"
+        },
+        {
+          "from": "Answered 2nd Time?",
+          "to": "Notify Receptionist",
+          "condition": "no"
+        },
+        {
+          "from": "Notify Receptionist",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "An Applicant applies for a job online. The HRSystem checks if all required documents are provided. If not, the HRSystem performs 'Reject Application'. If all documents are present, the HRSystem performs 'Forward to Manager'. The Manager then reviews the application and makes a decision: if accepted, the Manager performs 'Accept Application'; if rejected, the Manager performs 'Reject Application'. The process ends for the Applicant after either acceptance or rejection. Use the following swimlane names: 'Applicant', 'HRSystem', 'Manager'. Use the following action names: 'Submit Application', 'Check Documents', 'All Documents Present?', 'Reject Application', 'Forward to Manager', 'Review Application', 'Accepted?', 'Accept Application'. The initial node is 'Start' in the 'Applicant' swimlane, and the final node is 'End' in the 'Applicant' swimlane. Include a merge node named 'Merge Result' in the 'Applicant' swimlane to converge the accept/reject flows before the final node.",
+    "desired_model": {
+      "name": "JobApplication",
+      "swimlanes": [
+        {
+          "name": "Applicant",
+          "type": "actor"
+        },
+        {
+          "name": "HRSystem",
+          "type": "system"
+        },
+        {
+          "name": "Manager",
+          "type": "actor"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Applicant"
+        },
+        {
+          "name": "Submit Application",
+          "type": "action",
+          "swimlane": "Applicant"
+        },
+        {
+          "name": "Check Documents",
+          "type": "action",
+          "swimlane": "HRSystem"
+        },
+        {
+          "name": "All Documents Present?",
+          "type": "decision",
+          "swimlane": "HRSystem"
+        },
+        {
+          "name": "Reject Application",
+          "type": "action",
+          "swimlane": "HRSystem"
+        },
+        {
+          "name": "Forward to Manager",
+          "type": "action",
+          "swimlane": "HRSystem"
+        },
+        {
+          "name": "Review Application",
+          "type": "action",
+          "swimlane": "Manager"
+        },
+        {
+          "name": "Accepted?",
+          "type": "decision",
+          "swimlane": "Manager"
+        },
+        {
+          "name": "Accept Application",
+          "type": "action",
+          "swimlane": "Manager"
+        },
+        {
+          "name": "Reject Application",
+          "type": "action",
+          "swimlane": "Manager"
+        },
+        {
+          "name": "Merge Result",
+          "type": "merge",
+          "swimlane": "Applicant"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Applicant"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Submit Application"
+        },
+        {
+          "from": "Submit Application",
+          "to": "Check Documents"
+        },
+        {
+          "from": "Check Documents",
+          "to": "All Documents Present?"
+        },
+        {
+          "from": "All Documents Present?",
+          "to": "Forward to Manager",
+          "condition": "yes"
+        },
+        {
+          "from": "All Documents Present?",
+          "to": "Reject Application",
+          "condition": "no"
+        },
+        {
+          "from": "Forward to Manager",
+          "to": "Review Application"
+        },
+        {
+          "from": "Review Application",
+          "to": "Accepted?"
+        },
+        {
+          "from": "Accepted?",
+          "to": "Accept Application",
+          "condition": "yes"
+        },
+        {
+          "from": "Accepted?",
+          "to": "Reject Application",
+          "condition": "no"
+        },
+        {
+          "from": "Accept Application",
+          "to": "Merge Result"
+        },
+        {
+          "from": "Reject Application",
+          "to": "Merge Result"
+        },
+        {
+          "from": "Reject Application",
+          "to": "Merge Result"
+        },
+        {
+          "from": "Merge Result",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A patient takes a laboratory test. The lab processes the sample. The result is checked. If the test is positive, the doctor is notified. If negative, the patient is notified.",
+    "desired_model": {
+      "name": "LabTestProcess",
+      "swimlanes": [
+        {
+          "name": "Patient",
+          "type": "actor"
+        },
+        {
+          "name": "Lab",
+          "type": "component"
+        },
+        {
+          "name": "Doctor",
+          "type": "actor"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Patient"
+        },
+        {
+          "name": "Give Sample",
+          "type": "action",
+          "swimlane": "Patient"
+        },
+        {
+          "name": "Process Sample",
+          "type": "action",
+          "swimlane": "Lab"
+        },
+        {
+          "name": "Check Result",
+          "type": "action",
+          "swimlane": "Lab"
+        },
+        {
+          "name": "Result Positive?",
+          "type": "decision",
+          "swimlane": "Lab"
+        },
+        {
+          "name": "Notify Doctor",
+          "type": "action",
+          "swimlane": "Lab"
+        },
+        {
+          "name": "Notify Patient",
+          "type": "action",
+          "swimlane": "Lab"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Patient"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Give Sample"
+        },
+        {
+          "from": "Give Sample",
+          "to": "Process Sample"
+        },
+        {
+          "from": "Process Sample",
+          "to": "Check Result"
+        },
+        {
+          "from": "Check Result",
+          "to": "Result Positive?"
+        },
+        {
+          "from": "Result Positive?",
+          "to": "Notify Doctor",
+          "condition": "yes"
+        },
+        {
+          "from": "Result Positive?",
+          "to": "Notify Patient",
+          "condition": "no"
+        },
+        {
+          "from": "Notify Doctor",
+          "to": "End"
+        },
+        {
+          "from": "Notify Patient",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A customer wants to return an item. The store clerk checks the receipt. If a receipt is valid, the refund is processed. If not, the return is denied.",
+    "desired_model": {
+      "name": "ItemReturn",
+      "swimlanes": [
+        {
+          "name": "Customer",
+          "type": "actor"
+        },
+        {
+          "name": "Clerk",
+          "type": "actor"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Request Return",
+          "type": "action",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Check Receipt",
+          "type": "action",
+          "swimlane": "Clerk"
+        },
+        {
+          "name": "Receipt Valid?",
+          "type": "decision",
+          "swimlane": "Clerk"
+        },
+        {
+          "name": "Process Refund",
+          "type": "action",
+          "swimlane": "Clerk"
+        },
+        {
+          "name": "Deny Return",
+          "type": "action",
+          "swimlane": "Clerk"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Customer"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Request Return"
+        },
+        {
+          "from": "Request Return",
+          "to": "Check Receipt"
+        },
+        {
+          "from": "Check Receipt",
+          "to": "Receipt Valid?"
+        },
+        {
+          "from": "Receipt Valid?",
+          "to": "Process Refund",
+          "condition": "yes"
+        },
+        {
+          "from": "Receipt Valid?",
+          "to": "Deny Return",
+          "condition": "no"
+        },
+        {
+          "from": "Process Refund",
+          "to": "End"
+        },
+        {
+          "from": "Deny Return",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A user registers for a website. The system checks if the email is unique. If unique, a verification email is sent. If not unique, the registration is denied.",
+    "desired_model": {
+      "name": "WebsiteRegistration",
+      "swimlanes": [
+        {
+          "name": "User",
+          "type": "actor"
+        },
+        {
+          "name": "System",
+          "type": "system"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "User"
+        },
+        {
+          "name": "Enter Registration Data",
+          "type": "action",
+          "swimlane": "User"
+        },
+        {
+          "name": "Check Email Unique",
+          "type": "action",
+          "swimlane": "System"
+        },
+        {
+          "name": "Email Unique?",
+          "type": "decision",
+          "swimlane": "System"
+        },
+        {
+          "name": "Send Verification Email",
+          "type": "action",
+          "swimlane": "System"
+        },
+        {
+          "name": "Deny Registration",
+          "type": "action",
+          "swimlane": "System"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "User"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Enter Registration Data"
+        },
+        {
+          "from": "Enter Registration Data",
+          "to": "Check Email Unique"
+        },
+        {
+          "from": "Check Email Unique",
+          "to": "Email Unique?"
+        },
+        {
+          "from": "Email Unique?",
+          "to": "Send Verification Email",
+          "condition": "yes"
+        },
+        {
+          "from": "Email Unique?",
+          "to": "Deny Registration",
+          "condition": "no"
+        },
+        {
+          "from": "Send Verification Email",
+          "to": "End"
+        },
+        {
+          "from": "Deny Registration",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A person buys a movie ticket online. The system checks seat availability. If available, payment is processed and the ticket is issued. If not, the user is asked to choose a different seat.",
+    "desired_model": {
+      "name": "MovieTicketPurchase",
+      "swimlanes": [
+        {
+          "name": "User",
+          "type": "actor"
+        },
+        {
+          "name": "TicketSystem",
+          "type": "system"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "User"
+        },
+        {
+          "name": "Select Movie and Seat",
+          "type": "action",
+          "swimlane": "User"
+        },
+        {
+          "name": "Check Seat Availability",
+          "type": "action",
+          "swimlane": "TicketSystem"
+        },
+        {
+          "name": "Seat Available?",
+          "type": "decision",
+          "swimlane": "TicketSystem"
+        },
+        {
+          "name": "Process Payment",
+          "type": "action",
+          "swimlane": "TicketSystem"
+        },
+        {
+          "name": "Issue Ticket",
+          "type": "action",
+          "swimlane": "TicketSystem"
+        },
+        {
+          "name": "Choose Different Seat",
+          "type": "action",
+          "swimlane": "User"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "User"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Select Movie and Seat"
+        },
+        {
+          "from": "Select Movie and Seat",
+          "to": "Check Seat Availability"
+        },
+        {
+          "from": "Check Seat Availability",
+          "to": "Seat Available?"
+        },
+        {
+          "from": "Seat Available?",
+          "to": "Process Payment",
+          "condition": "yes"
+        },
+        {
+          "from": "Seat Available?",
+          "to": "Choose Different Seat",
+          "condition": "no"
+        },
+        {
+          "from": "Process Payment",
+          "to": "Issue Ticket"
+        },
+        {
+          "from": "Issue Ticket",
+          "to": "End"
+        },
+        {
+          "from": "Choose Different Seat",
+          "to": "Check Seat Availability"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A package delivery process involves three actors: Sender, Courier, and Recipient. The Sender ships the package. The Courier sorts the package, delivers it to the Recipient, and then confirms delivery in the system. The Recipient receives the package. Model each actor as a swimlane and represent each step as an action. Use the following action names: 'Ship Package', 'Sort Package', 'Deliver Package', 'Receive Package', and 'Confirm Delivery'. The process starts with the Sender and ends after the Courier confirms delivery.",
+    "desired_model": {
+      "name": "PackageDelivery",
+      "swimlanes": [
+        {
+          "name": "Sender",
+          "type": "actor"
+        },
+        {
+          "name": "Courier",
+          "type": "actor"
+        },
+        {
+          "name": "Recipient",
+          "type": "actor"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Sender"
+        },
+        {
+          "name": "Ship Package",
+          "type": "action",
+          "swimlane": "Sender"
+        },
+        {
+          "name": "Sort Package",
+          "type": "action",
+          "swimlane": "Courier"
+        },
+        {
+          "name": "Deliver Package",
+          "type": "action",
+          "swimlane": "Courier"
+        },
+        {
+          "name": "Receive Package",
+          "type": "action",
+          "swimlane": "Recipient"
+        },
+        {
+          "name": "Confirm Delivery",
+          "type": "action",
+          "swimlane": "Courier"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Sender"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Ship Package"
+        },
+        {
+          "from": "Ship Package",
+          "to": "Sort Package"
+        },
+        {
+          "from": "Sort Package",
+          "to": "Deliver Package"
+        },
+        {
+          "from": "Deliver Package",
+          "to": "Receive Package"
+        },
+        {
+          "from": "Receive Package",
+          "to": "Confirm Delivery"
+        },
+        {
+          "from": "Confirm Delivery",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A customer submits a support ticket. The support agent reviews it. If more information is needed, the agent requests it from the customer. If enough information is present, the agent resolves the ticket.",
+    "desired_model": {
+      "name": "SupportTicketResolution",
+      "swimlanes": [
+        {
+          "name": "Customer",
+          "type": "actor"
+        },
+        {
+          "name": "Agent",
+          "type": "actor"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Submit Ticket",
+          "type": "action",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Review Ticket",
+          "type": "action",
+          "swimlane": "Agent"
+        },
+        {
+          "name": "Enough Information?",
+          "type": "decision",
+          "swimlane": "Agent"
+        },
+        {
+          "name": "Request Information",
+          "type": "action",
+          "swimlane": "Agent"
+        },
+        {
+          "name": "Provide Information",
+          "type": "action",
+          "swimlane": "Customer"
+        },
+        {
+          "name": "Resolve Ticket",
+          "type": "action",
+          "swimlane": "Agent"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Customer"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Submit Ticket"
+        },
+        {
+          "from": "Submit Ticket",
+          "to": "Review Ticket"
+        },
+        {
+          "from": "Review Ticket",
+          "to": "Enough Information?"
+        },
+        {
+          "from": "Enough Information?",
+          "to": "Resolve Ticket",
+          "condition": "yes"
+        },
+        {
+          "from": "Enough Information?",
+          "to": "Request Information",
+          "condition": "no"
+        },
+        {
+          "from": "Request Information",
+          "to": "Provide Information"
+        },
+        {
+          "from": "Provide Information",
+          "to": "Review Ticket"
+        },
+        {
+          "from": "Resolve Ticket",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A user uploads a document. The system scans for viruses. If a virus is found, the upload is rejected. If not, the document is saved.",
+    "desired_model": {
+      "name": "DocumentUpload",
+      "swimlanes": [
+        {
+          "name": "User",
+          "type": "actor"
+        },
+        {
+          "name": "System",
+          "type": "system"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "User"
+        },
+        {
+          "name": "Upload Document",
+          "type": "action",
+          "swimlane": "User"
+        },
+        {
+          "name": "Scan for Virus",
+          "type": "action",
+          "swimlane": "System"
+        },
+        {
+          "name": "Virus Found?",
+          "type": "decision",
+          "swimlane": "System"
+        },
+        {
+          "name": "Reject Upload",
+          "type": "action",
+          "swimlane": "System"
+        },
+        {
+          "name": "Save Document",
+          "type": "action",
+          "swimlane": "System"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "User"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Upload Document"
+        },
+        {
+          "from": "Upload Document",
+          "to": "Scan for Virus"
+        },
+        {
+          "from": "Scan for Virus",
+          "to": "Virus Found?"
+        },
+        {
+          "from": "Virus Found?",
+          "to": "Reject Upload",
+          "condition": "yes"
+        },
+        {
+          "from": "Virus Found?",
+          "to": "Save Document",
+          "condition": "no"
+        },
+        {
+          "from": "Reject Upload",
+          "to": "End"
+        },
+        {
+          "from": "Save Document",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A multi-stage loan approval process starts when an applicant submits a loan application. The system performs initial validation (credit score, income verification, and debt-to-income ratio) in parallel. If any validation fails, the application is immediately rejected. If all pass, the application goes to preliminary review by a loan officer. The officer can approve (for amounts under $50K), request additional documentation, or escalate to senior review (for amounts over $50K). If additional docs are requested, the customer has 30 days to provide them, after which the process repeats. For senior review, a committee evaluates the application. They can approve, reject, or request a property appraisal. If appraisal is requested, an external appraiser is assigned, conducts the appraisal, and submits the report. The committee then makes a final decision. Upon approval at any stage, loan documents are generated and sent to the customer for signing.",
+    "desired_model": {
+      "name": "LoanApprovalProcess",
+      "swimlanes": [
+        {
+          "name": "Applicant",
+          "type": "actor"
+        },
+        {
+          "name": "LoanSystem",
+          "type": "system"
+        },
+        {
+          "name": "LoanOfficer",
+          "type": "actor"
+        },
+        {
+          "name": "SeniorCommittee",
+          "type": "actor"
+        },
+        {
+          "name": "Appraiser",
+          "type": "actor"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Applicant"
+        },
+        {
+          "name": "Submit Application",
+          "type": "action",
+          "swimlane": "Applicant"
+        },
+        {
+          "name": "Check Credit Score",
+          "type": "action",
+          "swimlane": "LoanSystem"
+        },
+        {
+          "name": "Verify Income",
+          "type": "action",
+          "swimlane": "LoanSystem"
+        },
+        {
+          "name": "Calculate Debt Ratio",
+          "type": "action",
+          "swimlane": "LoanSystem"
+        },
+        {
+          "name": "All Validations Pass?",
+          "type": "decision",
+          "swimlane": "LoanSystem"
+        },
+        {
+          "name": "Reject Application",
+          "type": "action",
+          "swimlane": "LoanSystem"
+        },
+        {
+          "name": "Preliminary Review",
+          "type": "action",
+          "swimlane": "LoanOfficer"
+        },
+        {
+          "name": "Amount Under 50K?",
+          "type": "decision",
+          "swimlane": "LoanOfficer"
+        },
+        {
+          "name": "Officer Decision",
+          "type": "decision",
+          "swimlane": "LoanOfficer"
+        },
+        {
+          "name": "Request Additional Docs",
+          "type": "action",
+          "swimlane": "LoanOfficer"
+        },
+        {
+          "name": "Provide Documents",
+          "type": "action",
+          "swimlane": "Applicant"
+        },
+        {
+          "name": "Docs Received Within 30 Days?",
+          "type": "decision",
+          "swimlane": "LoanSystem"
+        },
+        {
+          "name": "Escalate to Senior Review",
+          "type": "action",
+          "swimlane": "LoanOfficer"
+        },
+        {
+          "name": "Committee Evaluation",
+          "type": "action",
+          "swimlane": "SeniorCommittee"
+        },
+        {
+          "name": "Committee Decision",
+          "type": "decision",
+          "swimlane": "SeniorCommittee"
+        },
+        {
+          "name": "Request Appraisal",
+          "type": "action",
+          "swimlane": "SeniorCommittee"
+        },
+        {
+          "name": "Assign Appraiser",
+          "type": "action",
+          "swimlane": "LoanSystem"
+        },
+        {
+          "name": "Conduct Appraisal",
+          "type": "action",
+          "swimlane": "Appraiser"
+        },
+        {
+          "name": "Submit Appraisal Report",
+          "type": "action",
+          "swimlane": "Appraiser"
+        },
+        {
+          "name": "Final Committee Decision",
+          "type": "decision",
+          "swimlane": "SeniorCommittee"
+        },
+        {
+          "name": "Generate Loan Documents",
+          "type": "action",
+          "swimlane": "LoanSystem"
+        },
+        {
+          "name": "Send for Signing",
+          "type": "action",
+          "swimlane": "LoanSystem"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Applicant"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Submit Application"
+        },
+        {
+          "from": "Submit Application",
+          "to": "Check Credit Score"
+        },
+        {
+          "from": "Submit Application",
+          "to": "Verify Income"
+        },
+        {
+          "from": "Submit Application",
+          "to": "Calculate Debt Ratio"
+        },
+        {
+          "from": "Check Credit Score",
+          "to": "All Validations Pass?"
+        },
+        {
+          "from": "Verify Income",
+          "to": "All Validations Pass?"
+        },
+        {
+          "from": "Calculate Debt Ratio",
+          "to": "All Validations Pass?"
+        },
+        {
+          "from": "All Validations Pass?",
+          "to": "Reject Application",
+          "condition": "no"
+        },
+        {
+          "from": "All Validations Pass?",
+          "to": "Preliminary Review",
+          "condition": "yes"
+        },
+        {
+          "from": "Preliminary Review",
+          "to": "Amount Under 50K?"
+        },
+        {
+          "from": "Amount Under 50K?",
+          "to": "Officer Decision",
+          "condition": "yes"
+        },
+        {
+          "from": "Amount Under 50K?",
+          "to": "Escalate to Senior Review",
+          "condition": "no"
+        },
+        {
+          "from": "Officer Decision",
+          "to": "Generate Loan Documents",
+          "condition": "approve"
+        },
+        {
+          "from": "Officer Decision",
+          "to": "Reject Application",
+          "condition": "reject"
+        },
+        {
+          "from": "Officer Decision",
+          "to": "Request Additional Docs",
+          "condition": "need_docs"
+        },
+        {
+          "from": "Request Additional Docs",
+          "to": "Provide Documents"
+        },
+        {
+          "from": "Provide Documents",
+          "to": "Docs Received Within 30 Days?"
+        },
+        {
+          "from": "Docs Received Within 30 Days?",
+          "to": "Preliminary Review",
+          "condition": "yes"
+        },
+        {
+          "from": "Docs Received Within 30 Days?",
+          "to": "Reject Application",
+          "condition": "no"
+        },
+        {
+          "from": "Escalate to Senior Review",
+          "to": "Committee Evaluation"
+        },
+        {
+          "from": "Committee Evaluation",
+          "to": "Committee Decision"
+        },
+        {
+          "from": "Committee Decision",
+          "to": "Generate Loan Documents",
+          "condition": "approve"
+        },
+        {
+          "from": "Committee Decision",
+          "to": "Reject Application",
+          "condition": "reject"
+        },
+        {
+          "from": "Committee Decision",
+          "to": "Request Appraisal",
+          "condition": "need_appraisal"
+        },
+        {
+          "from": "Request Appraisal",
+          "to": "Assign Appraiser"
+        },
+        {
+          "from": "Assign Appraiser",
+          "to": "Conduct Appraisal"
+        },
+        {
+          "from": "Conduct Appraisal",
+          "to": "Submit Appraisal Report"
+        },
+        {
+          "from": "Submit Appraisal Report",
+          "to": "Final Committee Decision"
+        },
+        {
+          "from": "Final Committee Decision",
+          "to": "Generate Loan Documents",
+          "condition": "approve"
+        },
+        {
+          "from": "Final Committee Decision",
+          "to": "Reject Application",
+          "condition": "reject"
+        },
+        {
+          "from": "Generate Loan Documents",
+          "to": "Send for Signing"
+        },
+        {
+          "from": "Send for Signing",
+          "to": "End"
+        },
+        {
+          "from": "Reject Application",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "An emergency response system activates when a 911 call is received. The dispatcher simultaneously alerts police, fire department, and medical services based on the emergency type. Each service independently assesses the situation and decides whether to dispatch units. Police may request backup if the situation is dangerous. Fire department coordinates with utilities to shut off gas/electricity if needed. Medical services determine if helicopter transport is required. All responding units report their status updates in parallel. Once the emergency is resolved, each service conducts post-incident reporting, and the system generates a comprehensive incident report combining all service reports.",
+    "desired_model": {
+      "name": "EmergencyResponseSystem",
+      "swimlanes": [
+        {
+          "name": "Caller",
+          "type": "actor"
+        },
+        {
+          "name": "Dispatcher",
+          "type": "actor"
+        },
+        {
+          "name": "Police",
+          "type": "component"
+        },
+        {
+          "name": "FireDept",
+          "type": "component"
+        },
+        {
+          "name": "Medical",
+          "type": "component"
+        },
+        {
+          "name": "Utilities",
+          "type": "component"
+        },
+        {
+          "name": "IncidentSystem",
+          "type": "system"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Caller"
+        },
+        {
+          "name": "Make 911 Call",
+          "type": "action",
+          "swimlane": "Caller"
+        },
+        {
+          "name": "Receive Emergency Call",
+          "type": "action",
+          "swimlane": "Dispatcher"
+        },
+        {
+          "name": "Alert Police",
+          "type": "action",
+          "swimlane": "Dispatcher"
+        },
+        {
+          "name": "Alert Fire Dept",
+          "type": "action",
+          "swimlane": "Dispatcher"
+        },
+        {
+          "name": "Alert Medical",
+          "type": "action",
+          "swimlane": "Dispatcher"
+        },
+        {
+          "name": "Police Assess Situation",
+          "type": "action",
+          "swimlane": "Police"
+        },
+        {
+          "name": "Fire Assess Situation",
+          "type": "action",
+          "swimlane": "FireDept"
+        },
+        {
+          "name": "Medical Assess Situation",
+          "type": "action",
+          "swimlane": "Medical"
+        },
+        {
+          "name": "Police Dispatch Needed?",
+          "type": "decision",
+          "swimlane": "Police"
+        },
+        {
+          "name": "Fire Dispatch Needed?",
+          "type": "decision",
+          "swimlane": "FireDept"
+        },
+        {
+          "name": "Medical Dispatch Needed?",
+          "type": "decision",
+          "swimlane": "Medical"
+        },
+        {
+          "name": "Dispatch Police Units",
+          "type": "action",
+          "swimlane": "Police"
+        },
+        {
+          "name": "Dispatch Fire Units",
+          "type": "action",
+          "swimlane": "FireDept"
+        },
+        {
+          "name": "Dispatch Medical Units",
+          "type": "action",
+          "swimlane": "Medical"
+        },
+        {
+          "name": "Situation Dangerous?",
+          "type": "decision",
+          "swimlane": "Police"
+        },
+        {
+          "name": "Request Police Backup",
+          "type": "action",
+          "swimlane": "Police"
+        },
+        {
+          "name": "Utilities Shutoff Needed?",
+          "type": "decision",
+          "swimlane": "FireDept"
+        },
+        {
+          "name": "Coordinate Utility Shutoff",
+          "type": "action",
+          "swimlane": "FireDept"
+        },
+        {
+          "name": "Shut Off Utilities",
+          "type": "action",
+          "swimlane": "Utilities"
+        },
+        {
+          "name": "Helicopter Transport Needed?",
+          "type": "decision",
+          "swimlane": "Medical"
+        },
+        {
+          "name": "Request Helicopter",
+          "type": "action",
+          "swimlane": "Medical"
+        },
+        {
+          "name": "Report Police Status",
+          "type": "action",
+          "swimlane": "Police"
+        },
+        {
+          "name": "Report Fire Status",
+          "type": "action",
+          "swimlane": "FireDept"
+        },
+        {
+          "name": "Report Medical Status",
+          "type": "action",
+          "swimlane": "Medical"
+        },
+        {
+          "name": "Emergency Resolved?",
+          "type": "decision",
+          "swimlane": "Dispatcher"
+        },
+        {
+          "name": "Police Post-Incident Report",
+          "type": "action",
+          "swimlane": "Police"
+        },
+        {
+          "name": "Fire Post-Incident Report",
+          "type": "action",
+          "swimlane": "FireDept"
+        },
+        {
+          "name": "Medical Post-Incident Report",
+          "type": "action",
+          "swimlane": "Medical"
+        },
+        {
+          "name": "Generate Comprehensive Report",
+          "type": "action",
+          "swimlane": "IncidentSystem"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Caller"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Make 911 Call"
+        },
+        {
+          "from": "Make 911 Call",
+          "to": "Receive Emergency Call"
+        },
+        {
+          "from": "Receive Emergency Call",
+          "to": "Alert Police"
+        },
+        {
+          "from": "Receive Emergency Call",
+          "to": "Alert Fire Dept"
+        },
+        {
+          "from": "Receive Emergency Call",
+          "to": "Alert Medical"
+        },
+        {
+          "from": "Alert Police",
+          "to": "Police Assess Situation"
+        },
+        {
+          "from": "Alert Fire Dept",
+          "to": "Fire Assess Situation"
+        },
+        {
+          "from": "Alert Medical",
+          "to": "Medical Assess Situation"
+        },
+        {
+          "from": "Police Assess Situation",
+          "to": "Police Dispatch Needed?"
+        },
+        {
+          "from": "Fire Assess Situation",
+          "to": "Fire Dispatch Needed?"
+        },
+        {
+          "from": "Medical Assess Situation",
+          "to": "Medical Dispatch Needed?"
+        },
+        {
+          "from": "Police Dispatch Needed?",
+          "to": "Dispatch Police Units",
+          "condition": "yes"
+        },
+        {
+          "from": "Fire Dispatch Needed?",
+          "to": "Dispatch Fire Units",
+          "condition": "yes"
+        },
+        {
+          "from": "Medical Dispatch Needed?",
+          "to": "Dispatch Medical Units",
+          "condition": "yes"
+        },
+        {
+          "from": "Dispatch Police Units",
+          "to": "Situation Dangerous?"
+        },
+        {
+          "from": "Situation Dangerous?",
+          "to": "Request Police Backup",
+          "condition": "yes"
+        },
+        {
+          "from": "Dispatch Fire Units",
+          "to": "Utilities Shutoff Needed?"
+        },
+        {
+          "from": "Utilities Shutoff Needed?",
+          "to": "Coordinate Utility Shutoff",
+          "condition": "yes"
+        },
+        {
+          "from": "Coordinate Utility Shutoff",
+          "to": "Shut Off Utilities"
+        },
+        {
+          "from": "Dispatch Medical Units",
+          "to": "Helicopter Transport Needed?"
+        },
+        {
+          "from": "Helicopter Transport Needed?",
+          "to": "Request Helicopter",
+          "condition": "yes"
+        },
+        {
+          "from": "Dispatch Police Units",
+          "to": "Report Police Status"
+        },
+        {
+          "from": "Request Police Backup",
+          "to": "Report Police Status"
+        },
+        {
+          "from": "Police Dispatch Needed?",
+          "to": "Report Police Status",
+          "condition": "no"
+        },
+        {
+          "from": "Dispatch Fire Units",
+          "to": "Report Fire Status"
+        },
+        {
+          "from": "Shut Off Utilities",
+          "to": "Report Fire Status"
+        },
+        {
+          "from": "Fire Dispatch Needed?",
+          "to": "Report Fire Status",
+          "condition": "no"
+        },
+        {
+          "from": "Dispatch Medical Units",
+          "to": "Report Medical Status"
+        },
+        {
+          "from": "Request Helicopter",
+          "to": "Report Medical Status"
+        },
+        {
+          "from": "Medical Dispatch Needed?",
+          "to": "Report Medical Status",
+          "condition": "no"
+        },
+        {
+          "from": "Report Police Status",
+          "to": "Emergency Resolved?"
+        },
+        {
+          "from": "Report Fire Status",
+          "to": "Emergency Resolved?"
+        },
+        {
+          "from": "Report Medical Status",
+          "to": "Emergency Resolved?"
+        },
+        {
+          "from": "Emergency Resolved?",
+          "to": "Report Police Status",
+          "condition": "no"
+        },
+        {
+          "from": "Emergency Resolved?",
+          "to": "Police Post-Incident Report",
+          "condition": "yes"
+        },
+        {
+          "from": "Emergency Resolved?",
+          "to": "Fire Post-Incident Report",
+          "condition": "yes"
+        },
+        {
+          "from": "Emergency Resolved?",
+          "to": "Medical Post-Incident Report",
+          "condition": "yes"
+        },
+        {
+          "from": "Police Post-Incident Report",
+          "to": "Generate Comprehensive Report"
+        },
+        {
+          "from": "Fire Post-Incident Report",
+          "to": "Generate Comprehensive Report"
+        },
+        {
+          "from": "Medical Post-Incident Report",
+          "to": "Generate Comprehensive Report"
+        },
+        {
+          "from": "Generate Comprehensive Report",
+          "to": "End"
+        }
+      ]
+    }
+  },
+  {
+    "question": "A comprehensive online learning management system handles diverse educational workflows. Students enroll in courses through automated eligibility checks and prerequisite validation. Content delivery adapts based on learning styles, progress tracking, and assessment performance. Interactive elements include video lectures, quizzes, assignments, and peer discussions. Automated grading systems process objective assessments while subjective work routes to instructors. Progress analytics identify struggling students and trigger intervention strategies. Instructors manage course content, monitor student engagement, provide feedback, and conduct virtual office hours. The system integrates with external tools for plagiarism detection, proctoring services, and library resources. Completion tracking monitors certification requirements, issues digital badges, and updates academic transcripts. Mobile apps synchronize across devices with offline capability for content access.\n\nUse the following standardized swimlane and action names in your model:\n\nSwimlanes:\n- Student\n- EnrollmentSystem\n- ContentDelivery\n- AssessmentSystem\n- Instructor\n- AnalyticsSystem\n- ExternalTools\n- CertificationSystem\n- MobileApp\n\nActions (use these exact names):\n- Start\n- Request Enrollment\n- Check Eligibility\n- Validate Prerequisites\n- Enrollment Approved?\n- Deliver Content\n- Adapt to Learning Style\n- Track Progress\n- Take Assessment\n- Assessment Type?\n- Auto Grade\n- Route to Instructor\n- Instructor Grading\n- Analyze Performance\n- Struggling Student?\n- Trigger Intervention\n- Manage Course Content\n- Monitor Engagement\n- Provide Feedback\n- Virtual Office Hours\n- Plagiarism Check\n- Proctoring Service\n- Library Integration\n- Check Completion\n- Issue Digital Badge\n- Update Transcript\n- Mobile Sync\n- Offline Access\n- End\n\nEnsure all flows and decision conditions match the provided expected result.",
+    "desired_model": {
+      "name": "OnlineLearningManagement",
+      "swimlanes": [
+        {
+          "name": "Student",
+          "type": "actor"
+        },
+        {
+          "name": "EnrollmentSystem",
+          "type": "system"
+        },
+        {
+          "name": "ContentDelivery",
+          "type": "system"
+        },
+        {
+          "name": "AssessmentSystem",
+          "type": "system"
+        },
+        {
+          "name": "Instructor",
+          "type": "actor"
+        },
+        {
+          "name": "AnalyticsSystem",
+          "type": "system"
+        },
+        {
+          "name": "ExternalTools",
+          "type": "system"
+        },
+        {
+          "name": "CertificationSystem",
+          "type": "system"
+        },
+        {
+          "name": "MobileApp",
+          "type": "system"
+        }
+      ],
+      "actions": [
+        {
+          "name": "Start",
+          "type": "initial",
+          "swimlane": "Student"
+        },
+        {
+          "name": "Request Enrollment",
+          "type": "action",
+          "swimlane": "Student"
+        },
+        {
+          "name": "Check Eligibility",
+          "type": "action",
+          "swimlane": "EnrollmentSystem"
+        },
+        {
+          "name": "Validate Prerequisites",
+          "type": "action",
+          "swimlane": "EnrollmentSystem"
+        },
+        {
+          "name": "Enrollment Approved?",
+          "type": "decision",
+          "swimlane": "EnrollmentSystem"
+        },
+        {
+          "name": "Deliver Content",
+          "type": "action",
+          "swimlane": "ContentDelivery"
+        },
+        {
+          "name": "Adapt to Learning Style",
+          "type": "action",
+          "swimlane": "ContentDelivery"
+        },
+        {
+          "name": "Track Progress",
+          "type": "action",
+          "swimlane": "AnalyticsSystem"
+        },
+        {
+          "name": "Take Assessment",
+          "type": "action",
+          "swimlane": "Student"
+        },
+        {
+          "name": "Assessment Type?",
+          "type": "decision",
+          "swimlane": "AssessmentSystem"
+        },
+        {
+          "name": "Auto Grade",
+          "type": "action",
+          "swimlane": "AssessmentSystem"
+        },
+        {
+          "name": "Route to Instructor",
+          "type": "action",
+          "swimlane": "AssessmentSystem"
+        },
+        {
+          "name": "Instructor Grading",
+          "type": "action",
+          "swimlane": "Instructor"
+        },
+        {
+          "name": "Analyze Performance",
+          "type": "action",
+          "swimlane": "AnalyticsSystem"
+        },
+        {
+          "name": "Struggling Student?",
+          "type": "decision",
+          "swimlane": "AnalyticsSystem"
+        },
+        {
+          "name": "Trigger Intervention",
+          "type": "action",
+          "swimlane": "AnalyticsSystem"
+        },
+        {
+          "name": "Manage Course Content",
+          "type": "action",
+          "swimlane": "Instructor"
+        },
+        {
+          "name": "Monitor Engagement",
+          "type": "action",
+          "swimlane": "Instructor"
+        },
+        {
+          "name": "Provide Feedback",
+          "type": "action",
+          "swimlane": "Instructor"
+        },
+        {
+          "name": "Virtual Office Hours",
+          "type": "action",
+          "swimlane": "Instructor"
+        },
+        {
+          "name": "Plagiarism Check",
+          "type": "action",
+          "swimlane": "ExternalTools"
+        },
+        {
+          "name": "Proctoring Service",
+          "type": "action",
+          "swimlane": "ExternalTools"
+        },
+        {
+          "name": "Library Integration",
+          "type": "action",
+          "swimlane": "ExternalTools"
+        },
+        {
+          "name": "Check Completion",
+          "type": "action",
+          "swimlane": "CertificationSystem"
+        },
+        {
+          "name": "Issue Digital Badge",
+          "type": "action",
+          "swimlane": "CertificationSystem"
+        },
+        {
+          "name": "Update Transcript",
+          "type": "action",
+          "swimlane": "CertificationSystem"
+        },
+        {
+          "name": "Mobile Sync",
+          "type": "action",
+          "swimlane": "MobileApp"
+        },
+        {
+          "name": "Offline Access",
+          "type": "action",
+          "swimlane": "MobileApp"
+        },
+        {
+          "name": "End",
+          "type": "final",
+          "swimlane": "Student"
+        }
+      ],
+      "flows": [
+        {
+          "from": "Start",
+          "to": "Request Enrollment"
+        },
+        {
+          "from": "Request Enrollment",
+          "to": "Check Eligibility"
+        },
+        {
+          "from": "Check Eligibility",
+          "to": "Validate Prerequisites"
+        },
+        {
+          "from": "Validate Prerequisites",
+          "to": "Enrollment Approved?"
+        },
+        {
+          "from": "Enrollment Approved?",
+          "to": "Deliver Content",
+          "condition": "yes"
+        },
+        {
+          "from": "Enrollment Approved?",
+          "to": "End",
+          "condition": "no"
+        },
+        {
+          "from": "Deliver Content",
+          "to": "Adapt to Learning Style"
+        },
+        {
+          "from": "Adapt to Learning Style",
+          "to": "Track Progress"
+        },
+        {
+          "from": "Track Progress",
+          "to": "Take Assessment"
+        },
+        {
+          "from": "Take Assessment",
+          "to": "Assessment Type?"
+        },
+        {
+          "from": "Assessment Type?",
+          "to": "Auto Grade",
+          "condition": "objective"
+        },
+        {
+          "from": "Assessment Type?",
+          "to": "Route to Instructor",
+          "condition": "subjective"
+        },
+        {
+          "from": "Auto Grade",
+          "to": "Analyze Performance"
+        },
+        {
+          "from": "Route to Instructor",
+          "to": "Instructor Grading"
+        },
+        {
+          "from": "Instructor Grading",
+          "to": "Analyze Performance"
+        },
+        {
+          "from": "Analyze Performance",
+          "to": "Struggling Student?"
+        },
+        {
+          "from": "Struggling Student?",
+          "to": "Trigger Intervention",
+          "condition": "yes"
+        },
+        {
+          "from": "Struggling Student?",
+          "to": "Manage Course Content",
+          "condition": "no"
+        },
+        {
+          "from": "Trigger Intervention",
+          "to": "Provide Feedback"
+        },
+        {
+          "from": "Manage Course Content",
+          "to": "Monitor Engagement"
+        },
+        {
+          "from": "Monitor Engagement",
+          "to": "Provide Feedback"
+        },
+        {
+          "from": "Provide Feedback",
+          "to": "Virtual Office Hours"
+        },
+        {
+          "from": "Virtual Office Hours",
+          "to": "Plagiarism Check"
+        },
+        {
+          "from": "Plagiarism Check",
+          "to": "Proctoring Service"
+        },
+        {
+          "from": "Proctoring Service",
+          "to": "Library Integration"
+        },
+        {
+          "from": "Library Integration",
+          "to": "Check Completion"
+        },
+        {
+          "from": "Check Completion",
+          "to": "Issue Digital Badge"
+        },
+        {
+          "from": "Issue Digital Badge",
+          "to": "Update Transcript"
+        },
+        {
+          "from": "Update Transcript",
+          "to": "Mobile Sync"
+        },
+        {
+          "from": "Mobile Sync",
+          "to": "Offline Access"
+        },
+        {
+          "from": "Offline Access",
+          "to": "End"
+        }
+      ]
+    }
+  }
+]

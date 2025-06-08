@@ -1,0 +1,707 @@
+[
+  {
+    "question": "What is the primary purpose of SysML as described in the specification?",
+    "options": [
+      "A. Modeling software systems only",
+      "B. Facilitating a model-based systems engineering approach",
+      "C. Serving as a general-purpose programming language",
+      "D. Documenting business processes only",
+      "E. Providing a platform for simulation only"
+    ],
+    "correct_answers": [
+      "B"
+    ]
+  },
+  {
+    "question": "Which of the following are true about SysML namespaces?",
+    "options": [
+      "A. Namespaces can only contain packages",
+      "B. Namespaces can provide names for contained elements",
+      "C. An element can have multiple memberships in namespaces",
+      "D. Namespaces cannot be nested",
+      "E. Namespace membership can define visibility"
+    ],
+    "correct_answers": [
+      "B",
+      "C",
+      "E"
+    ]
+  },
+  {
+    "question": "Which statements about SysML dependencies are correct?",
+    "options": [
+      "A. Dependencies are always binary",
+      "B. Dependencies may involve any number of client and supplier elements",
+      "C. The direction of dependency is always from supplier to client",
+      "D. Dependencies can represent refinement relationships",
+      "E. Dependencies cannot be annotated"
+    ],
+    "correct_answers": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "question": "Which of the following is NOT a valid concrete syntax conformance for SysML tools?",
+    "options": [
+      "A. Textual notation conformance",
+      "B. Graphical notation conformance",
+      "C. Semantic conformance",
+      "D. Model interchange conformance",
+      "E. Physical device conformance"
+    ],
+    "correct_answers": [
+      "E"
+    ]
+  },
+  {
+    "question": "What is true about SysML elements and their identifiers?",
+    "options": [
+      "A. Every element has a unique element ID",
+      "B. An element’s element ID can change over time",
+      "C. Elements can have alias IDs",
+      "D. Only root elements have IDs",
+      "E. Element IDs are specified in textual notation"
+    ],
+    "correct_answers": [
+      "A",
+      "C"
+    ]
+  },
+  {
+    "question": "In SysML, what is a package?",
+    "options": [
+      "A. A type of attribute",
+      "B. A kind of namespace used to organize models",
+      "C. A required element for every model",
+      "D. A graphical-only construct",
+      "E. A language keyword only for legacy support"
+    ],
+    "correct_answers": [
+      "B"
+    ]
+  },
+  {
+    "question": "How can comments be attached to elements in SysML textual notation?",
+    "options": [
+      "A. Using the keyword `comment` followed by `about` and the element name(s)",
+      "B. By using single-line `//` comments",
+      "C. Only in graphical diagrams",
+      "D. By writing text after the element name",
+      "E. Comments cannot be attached in textual notation"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "Which statements about annotations in SysML are true?",
+    "options": [
+      "A. Annotations are always about packages",
+      "B. Documentation is a special kind of comment",
+      "C. Textual representations can be in languages other than SysML",
+      "D. Only one annotation can exist per element",
+      "E. Annotations must be graphical"
+    ],
+    "correct_answers": [
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "What are possible visibilities for memberships in a namespace?",
+    "options": [
+      "A. public",
+      "B. internal",
+      "C. protected",
+      "D. package",
+      "E. private"
+    ],
+    "correct_answers": [
+      "A",
+      "C",
+      "E"
+    ]
+  },
+  {
+    "question": "What is required for a SysML tool to claim full conformance?",
+    "options": [
+      "A. Support for Abstract Syntax Conformance",
+      "B. Model Interchange Conformance",
+      "C. Concrete Syntax Conformance",
+      "D. Domain Library Support",
+      "E. Semantic Conformance"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "Which of the following are correct about part definitions and usages in SysML?",
+    "options": [
+      "A. A part usage must be defined by a part definition",
+      "B. Part usages can exist without definitions",
+      "C. Part definitions and usages are both namespaces",
+      "D. Part usages can specialize their definition for context",
+      "E. Part usages cannot be owned by namespaces"
+    ],
+    "correct_answers": [
+      "A",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "question": "How can an alias be declared in a package?",
+    "options": [
+      "A. With the `alias` keyword, an alias name, and a `for` clause referencing the target element",
+      "B. Using the `public` keyword",
+      "C. With an `import` statement",
+      "D. By direct assignment",
+      "E. By using a comment"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "In SysML, which are the correct ways to represent an element’s name?",
+    "options": [
+      "A. As a basic name, starting with a letter or underscore",
+      "B. As an unrestricted name in single quotes",
+      "C. Only in camelCase",
+      "D. Only in ALLCAPS",
+      "E. With spaces, using unrestricted names"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "E"
+    ]
+  },
+  {
+    "question": "What is true about import relationships in SysML?",
+    "options": [
+      "A. They allow elements from another namespace to be referenced",
+      "B. Imports may be recursive",
+      "C. Imported members become unowned members in the importing namespace",
+      "D. Imports can filter based on metadata",
+      "E. Imports must be private"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "question": "Which are valid standard language names for textual representations in SysML?",
+    "options": [
+      "A. \"sysml\"",
+      "B. \"uml\"",
+      "C. \"ocl\"",
+      "D. \"alf\"",
+      "E. \"kerml\""
+    ],
+    "correct_answers": [
+      "A",
+      "C",
+      "D",
+      "E"
+    ]
+  },
+  {
+    "question": "Which of the following statements about relationship deletion rules are correct?",
+    "options": [
+      "A. Deleting a root element deletes all elements in its ownership tree",
+      "B. Deleting an owned element may trigger cascading deletions",
+      "C. Deleting an element always deletes its owner",
+      "D. Only direct owned elements are deleted",
+      "E. An element can have multiple owners"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "In SysML, what is the meaning of a documentation comment?",
+    "options": [
+      "A. It is a comment used only for graphical notation",
+      "B. It is a special kind of comment always annotating its owning element",
+      "C. It cannot be owned by a namespace",
+      "D. It is only used in packages",
+      "E. It always requires an `about` clause"
+    ],
+    "correct_answers": [
+      "B"
+    ]
+  },
+  {
+    "question": "What is true about qualified names in SysML?",
+    "options": [
+      "A. They resolve elements in the context of nested namespaces",
+      "B. Qualified names use `::` as separators",
+      "C. Name resolution is defined by KerML",
+      "D. Qualified names appear in abstract syntax",
+      "E. Unqualified names can be ambiguous"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ]
+  },
+  {
+    "question": "Which of the following are modeling constructs specific to SysML (beyond KerML)?",
+    "options": [
+      "A. Attributes",
+      "B. Ports",
+      "C. Parts",
+      "D. Actions",
+      "E. States"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ]
+  },
+  {
+    "question": "Which are correct statements about element ownership in SysML?",
+    "options": [
+      "A. A namespace may own multiple elements",
+      "B. Ownership implies cascading deletions",
+      "C. Non-owning memberships can provide alias names",
+      "D. Ownership is shown in the graphical notation",
+      "E. Elements can be owned by more than one namespace"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "Which of the following best describes a relationship in SysML?",
+    "options": [
+      "A. An element relating two or more elements",
+      "B. Always a graphical connector",
+      "C. Never directed",
+      "D. Cannot own other elements",
+      "E. Only used in behavioral diagrams"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What is a required feature for a SysML model to be syntactically conformant?",
+    "options": [
+      "A. Use of SysML graphical notation",
+      "B. Compliance with the abstract syntax",
+      "C. Use of root namespaces",
+      "D. Presence of at least one package",
+      "E. Use of KerML textual notation"
+    ],
+    "correct_answers": [
+      "B"
+    ]
+  },
+  {
+    "question": "Which statements about packages are correct?",
+    "options": [
+      "A. Packages can be nested",
+      "B. Packages can contain owned and unowned members",
+      "C. Packages cannot have aliases",
+      "D. Packages are required to filter all imports",
+      "E. Packages can own comments and documentation"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "E"
+    ]
+  },
+  {
+    "question": "What is the effect of deleting a namespace in SysML?",
+    "options": [
+      "A. All owned members are deleted",
+      "B. Only the namespace is deleted, not its members",
+      "C. All non-owning memberships are deleted",
+      "D. Only aliases are deleted",
+      "E. Comments are never deleted"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "Which of the following is NOT true about SysML comments?",
+    "options": [
+      "A. They can annotate multiple elements",
+      "B. They can be named",
+      "C. They must always annotate an element",
+      "D. They are always owned by namespaces",
+      "E. They can have bodies with markup"
+    ],
+    "correct_answers": [
+      "C"
+    ]
+  },
+  {
+    "question": "In textual notation, how is a documentation compartment represented?",
+    "options": [
+      "A. By `doc /*...*/` inside an element",
+      "B. With the keyword `documentation`",
+      "C. As a graphical note",
+      "D. As a special import",
+      "E. As a protected alias"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What is the default visibility of a package member?",
+    "options": [
+      "A. private",
+      "B. public",
+      "C. protected",
+      "D. internal",
+      "E. package"
+    ],
+    "correct_answers": [
+      "B"
+    ]
+  },
+  {
+    "question": "Which of these are ways to extend SysML for a specific domain?",
+    "options": [
+      "A. Using user-defined keywords",
+      "B. By creating Domain Libraries",
+      "C. By changing the abstract syntax",
+      "D. By modifying the KerML core directly",
+      "E. By using metadata annotations"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "E"
+    ]
+  },
+  {
+    "question": "Which statement about alias memberships is correct?",
+    "options": [
+      "A. An alias is a non-owning membership",
+      "B. Alias names must be unique in the whole model",
+      "C. An element can have multiple alias memberships",
+      "D. Aliases cannot have visibility",
+      "E. Only packages can have aliases"
+    ],
+    "correct_answers": [
+      "A",
+      "C"
+    ]
+  },
+  {
+    "question": "What is true about comments declared within a namespace body?",
+    "options": [
+      "A. They become owned members of the namespace",
+      "B. They cannot annotate the containing namespace",
+      "C. They must specify an `about` clause",
+      "D. They are automatically about the containing namespace if not specified",
+      "E. They always require a short name"
+    ],
+    "correct_answers": [
+      "A",
+      "D"
+    ]
+  },
+  {
+    "question": "Which is NOT a valid textual notation element in SysML?",
+    "options": [
+      "A. part def",
+      "B. alias",
+      "C. connection",
+      "D. group",
+      "E. import"
+    ],
+    "correct_answers": [
+      "D"
+    ]
+  },
+  {
+    "question": "What is true about the concrete syntax of SysML?",
+    "options": [
+      "A. It includes both textual and graphical notation",
+      "B. It is only for diagrams",
+      "C. Textual and graphical syntax are mapped to the same abstract syntax",
+      "D. Only graphical notation is required",
+      "E. The abstract syntax is part of the concrete syntax"
+    ],
+    "correct_answers": [
+      "A",
+      "C"
+    ]
+  },
+  {
+    "question": "Which of the following statements about owned elements is correct?",
+    "options": [
+      "A. They are always deleted with their owner",
+      "B. They can exist without a namespace",
+      "C. They are also known as owned related elements",
+      "D. They are not considered part of the model",
+      "E. They must be visible outside the namespace"
+    ],
+    "correct_answers": [
+      "A",
+      "C"
+    ]
+  },
+  {
+    "question": "Which is a valid declaration for a recursive import?",
+    "options": [
+      "A. import Namespace::**;",
+      "B. import Namespace::*;",
+      "C. import Namespace;",
+      "D. import *;",
+      "E. import Namespace::all;"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "Which of the following are true about the body of a comment?",
+    "options": [
+      "A. It can contain markup",
+      "B. It is enclosed between /* and */",
+      "C. It can be omitted",
+      "D. It must reference another language",
+      "E. It can have multiple owners"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "What is a feature of a documentation comment that distinguishes it from a regular comment?",
+    "options": [
+      "A. Always annotates its owning element",
+      "B. Can annotate multiple elements",
+      "C. Can be a namespace member",
+      "D. Written only in graphical notation",
+      "E. Cannot have a body"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "Which best describes an \"element ID\" in SysML?",
+    "options": [
+      "A. Unique per element",
+      "B. Shown in textual notation",
+      "C. Can change after creation",
+      "D. Used for tool management",
+      "E. Can be omitted in the model"
+    ],
+    "correct_answers": [
+      "A",
+      "D"
+    ]
+  },
+  {
+    "question": "What is the result of declaring an alias in a package with the `private` keyword?",
+    "options": [
+      "A. The alias is not visible outside the package",
+      "B. The alias is visible in all namespaces",
+      "C. The alias must have a body",
+      "D. It is not allowed",
+      "E. The alias is treated as protected"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "Which of the following are true for names and short names in SysML?",
+    "options": [
+      "A. Names should be descriptive",
+      "B. Short names are delimited with `<` and `>`",
+      "C. Both can be omitted",
+      "D. Only one may be given",
+      "E. Names can include Unicode characters"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ]
+  },
+  {
+    "question": "Which is true about documentation comments in the context of a part definition?",
+    "options": [
+      "A. They use the `doc` keyword",
+      "B. They are about the part definition",
+      "C. They require a name",
+      "D. They can include markup",
+      "E. They must be public"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "D"
+    ]
+  },
+  {
+    "question": "What does a membership relationship specify?",
+    "options": [
+      "A. Name by which an element is known relative to a namespace",
+      "B. Whether an element is owned or not",
+      "C. Whether the element is visible outside the namespace",
+      "D. The deletion rules for the element",
+      "E. The graphical notation used"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "Which of these is NOT a purpose of the Systems Model Library?",
+    "options": [
+      "A. Providing semantics for SysML language constructs",
+      "B. Supporting model-based systems engineering",
+      "C. Organizing user documentation",
+      "D. Extending the Kernel Library",
+      "E. Supplying reference models for domains"
+    ],
+    "correct_answers": [
+      "C"
+    ]
+  },
+  {
+    "question": "Which element is used to organize models in SysML?",
+    "options": [
+      "A. Package",
+      "B. Attribute",
+      "C. Alias",
+      "D. Comment",
+      "E. Part"
+    ],
+    "correct_answers": [
+      "A"
+    ]
+  },
+  {
+    "question": "What are the two major forms of concrete syntax conformance in SysML?",
+    "options": [
+      "A. Textual notation conformance",
+      "B. Abstract syntax conformance",
+      "C. Graphical notation conformance",
+      "D. Model interchange conformance",
+      "E. Domain library conformance"
+    ],
+    "correct_answers": [
+      "A",
+      "C"
+    ]
+  },
+  {
+    "question": "What is a valid visibility for a SysML alias?",
+    "options": [
+      "A. public",
+      "B. protected",
+      "C. private",
+      "D. visible",
+      "E. global"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "What is the consequence of having no name or short name for an element?",
+    "options": [
+      "A. It cannot be referenced in textual notation",
+      "B. It can only be referenced graphically",
+      "C. It must be deleted",
+      "D. It becomes a root element",
+      "E. It gains a default name"
+    ],
+    "correct_answers": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "question": "What can be included in a SysML package compartment?",
+    "options": [
+      "A. Comments",
+      "B. Documentation",
+      "C. Parts",
+      "D. Attributes",
+      "E. All of the above"
+    ],
+    "correct_answers": [
+      "E"
+    ]
+  },
+  {
+    "question": "Which is true about documentation in the SysML textual notation?",
+    "options": [
+      "A. It uses the `doc` keyword",
+      "B. It can be a compartment in an element",
+      "C. It is always about its owning element",
+      "D. It must be graphical",
+      "E. It can annotate multiple elements"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "What does the abstract syntax define in SysML?",
+    "options": [
+      "A. The structure of models",
+      "B. The mapping from concrete syntax",
+      "C. The set of permissible model elements",
+      "D. The graphical notation",
+      "E. The serialization format"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  {
+    "question": "What is true about the graphical notation of SysML relationships?",
+    "options": [
+      "A. Relationships are generally shown as lines",
+      "B. Additional shapes can be attached to relationship lines",
+      "C. Relationship symbols may have compartments",
+      "D. Only non-relationship elements use boxes",
+      "E. Graphical notation is optional in the standard"
+    ],
+    "correct_answers": [
+      "A",
+      "B",
+      "C"
+    ]
+  }
+]

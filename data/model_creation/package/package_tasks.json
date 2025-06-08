@@ -1,0 +1,1067 @@
+[
+  {
+    "question": "Create a SysML package diagram for a smart home security system that groups components into Security, Sensors, and UserInterface packages. Show dependencies: UserInterface depends on Security; Security depends on Sensors. Include representative elements in each package.",
+    "desired_model": {
+      "name": "SmartHomeSecurityPackages",
+      "packages": [
+        {
+          "name": "Security",
+          "type": "package"
+        },
+        {
+          "name": "Sensors",
+          "type": "package"
+        },
+        {
+          "name": "UserInterface",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "AlarmController",
+          "type": "block",
+          "package": "Security"
+        },
+        {
+          "name": "DoorSensor",
+          "type": "block",
+          "package": "Sensors"
+        },
+        {
+          "name": "Camera",
+          "type": "block",
+          "package": "Sensors"
+        },
+        {
+          "name": "MobileApp",
+          "type": "interface",
+          "package": "UserInterface"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "UserInterface",
+          "to": "Security",
+          "type": "dependency"
+        },
+        {
+          "from": "Security",
+          "to": "Sensors",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML package diagram for an autonomous delivery drone system with Navigation, Control, Payload, and Communication packages. Navigation depends on Communication, Control depends on Navigation, and Payload depends on Control.",
+    "desired_model": {
+      "name": "AutonomousDronePackages",
+      "packages": [
+        {
+          "name": "Navigation",
+          "type": "package"
+        },
+        {
+          "name": "Control",
+          "type": "package"
+        },
+        {
+          "name": "Payload",
+          "type": "package"
+        },
+        {
+          "name": "Communication",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "GPSModule",
+          "type": "block",
+          "package": "Navigation"
+        },
+        {
+          "name": "FlightController",
+          "type": "block",
+          "package": "Control"
+        },
+        {
+          "name": "ParcelBay",
+          "type": "block",
+          "package": "Payload"
+        },
+        {
+          "name": "RadioLink",
+          "type": "block",
+          "package": "Communication"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Navigation",
+          "to": "Communication",
+          "type": "dependency"
+        },
+        {
+          "from": "Control",
+          "to": "Navigation",
+          "type": "dependency"
+        },
+        {
+          "from": "Payload",
+          "to": "Control",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML package diagram for an electric vehicle charging network. Use Station, Backend, Payment, and Power packages. Station depends on Backend and Payment; Backend depends on Power.",
+    "desired_model": {
+      "name": "EVChargingNetworkPackages",
+      "packages": [
+        {
+          "name": "Station",
+          "type": "package"
+        },
+        {
+          "name": "Backend",
+          "type": "package"
+        },
+        {
+          "name": "Payment",
+          "type": "package"
+        },
+        {
+          "name": "Power",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "ChargingStationUI",
+          "type": "block",
+          "package": "Station"
+        },
+        {
+          "name": "OperatorServer",
+          "type": "block",
+          "package": "Backend"
+        },
+        {
+          "name": "PaymentGateway",
+          "type": "interface",
+          "package": "Payment"
+        },
+        {
+          "name": "PowerModule",
+          "type": "block",
+          "package": "Power"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Station",
+          "to": "Backend",
+          "type": "dependency"
+        },
+        {
+          "from": "Station",
+          "to": "Payment",
+          "type": "dependency"
+        },
+        {
+          "from": "Backend",
+          "to": "Power",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML package diagram for an online bookstore with Catalog, OrderProcessing, Payment, and User packages. OrderProcessing depends on Catalog, Payment, and User.",
+    "desired_model": {
+      "name": "OnlineBookstorePackages",
+      "packages": [
+        {
+          "name": "Catalog",
+          "type": "package"
+        },
+        {
+          "name": "OrderProcessing",
+          "type": "package"
+        },
+        {
+          "name": "Payment",
+          "type": "package"
+        },
+        {
+          "name": "User",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "BookListing",
+          "type": "block",
+          "package": "Catalog"
+        },
+        {
+          "name": "OrderService",
+          "type": "block",
+          "package": "OrderProcessing"
+        },
+        {
+          "name": "Checkout",
+          "type": "block",
+          "package": "Payment"
+        },
+        {
+          "name": "UserProfile",
+          "type": "block",
+          "package": "User"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "OrderProcessing",
+          "to": "Catalog",
+          "type": "dependency"
+        },
+        {
+          "from": "OrderProcessing",
+          "to": "Payment",
+          "type": "dependency"
+        },
+        {
+          "from": "OrderProcessing",
+          "to": "User",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Produce a SysML package diagram for a hospital patient monitoring system with Sensors, Server, and MobileInterface packages. MobileInterface depends on Server; Server accesses Sensors.",
+    "desired_model": {
+      "name": "PatientMonitoringPackages",
+      "packages": [
+        {
+          "name": "Sensors",
+          "type": "package"
+        },
+        {
+          "name": "Server",
+          "type": "package"
+        },
+        {
+          "name": "MobileInterface",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "VitalSensor",
+          "type": "block",
+          "package": "Sensors"
+        },
+        {
+          "name": "MonitoringServer",
+          "type": "block",
+          "package": "Server"
+        },
+        {
+          "name": "NurseApp",
+          "type": "interface",
+          "package": "MobileInterface"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "MobileInterface",
+          "to": "Server",
+          "type": "dependency"
+        },
+        {
+          "from": "Server",
+          "to": "Sensors",
+          "type": "access"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML package diagram for a weather satellite data chain with Satellite, GroundStation, and DataProcessing packages. GroundStation imports Satellite; DataProcessing depends on GroundStation.",
+    "desired_model": {
+      "name": "WeatherSatellitePackages",
+      "packages": [
+        {
+          "name": "Satellite",
+          "type": "package"
+        },
+        {
+          "name": "GroundStation",
+          "type": "package"
+        },
+        {
+          "name": "DataProcessing",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "SensorArray",
+          "type": "block",
+          "package": "Satellite"
+        },
+        {
+          "name": "DownlinkReceiver",
+          "type": "block",
+          "package": "GroundStation"
+        },
+        {
+          "name": "ForecastModel",
+          "type": "block",
+          "package": "DataProcessing"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "GroundStation",
+          "to": "Satellite",
+          "type": "import"
+        },
+        {
+          "from": "DataProcessing",
+          "to": "GroundStation",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML package diagram for a manufacturing analytics system with Vision, RobotControl, and Analytics packages. Analytics accesses Vision and RobotControl.",
+    "desired_model": {
+      "name": "ManufacturingAnalyticsPackages",
+      "packages": [
+        {
+          "name": "Vision",
+          "type": "package"
+        },
+        {
+          "name": "RobotControl",
+          "type": "package"
+        },
+        {
+          "name": "Analytics",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "CameraFeed",
+          "type": "block",
+          "package": "Vision"
+        },
+        {
+          "name": "MotionPlanner",
+          "type": "block",
+          "package": "RobotControl"
+        },
+        {
+          "name": "QualityDashboard",
+          "type": "block",
+          "package": "Analytics"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Analytics",
+          "to": "Vision",
+          "type": "access"
+        },
+        {
+          "from": "Analytics",
+          "to": "RobotControl",
+          "type": "access"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML package diagram for an e-commerce payment gateway backend featuring GatewayCore, Fraud, and BankIntegration packages. GatewayCore depends on Fraud and BankIntegration.",
+    "desired_model": {
+      "name": "EcommerceGatewayPackages",
+      "packages": [
+        {
+          "name": "GatewayCore",
+          "type": "package"
+        },
+        {
+          "name": "Fraud",
+          "type": "package"
+        },
+        {
+          "name": "BankIntegration",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "TransactionManager",
+          "type": "block",
+          "package": "GatewayCore"
+        },
+        {
+          "name": "RiskScorer",
+          "type": "block",
+          "package": "Fraud"
+        },
+        {
+          "name": "BankAPIAdapter",
+          "type": "interface",
+          "package": "BankIntegration"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "GatewayCore",
+          "to": "Fraud",
+          "type": "dependency"
+        },
+        {
+          "from": "GatewayCore",
+          "to": "BankIntegration",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Build a SysML package diagram for an agricultural irrigation cloud system with SensorNetwork, Controller, and Cloud packages. Controller depends on SensorNetwork; Cloud imports Controller.",
+    "desired_model": {
+      "name": "IrrigationCloudPackages",
+      "packages": [
+        {
+          "name": "SensorNetwork",
+          "type": "package"
+        },
+        {
+          "name": "Controller",
+          "type": "package"
+        },
+        {
+          "name": "Cloud",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "MoistureSensor",
+          "type": "block",
+          "package": "SensorNetwork"
+        },
+        {
+          "name": "IrrigationController",
+          "type": "block",
+          "package": "Controller"
+        },
+        {
+          "name": "AnalyticsService",
+          "type": "block",
+          "package": "Cloud"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Controller",
+          "to": "SensorNetwork",
+          "type": "dependency"
+        },
+        {
+          "from": "Cloud",
+          "to": "Controller",
+          "type": "import"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML package diagram for a city bike sharing platform with MobileApp, Backend, and DockingStation packages. MobileApp and DockingStation both depend on Backend.",
+    "desired_model": {
+      "name": "BikeSharingPackages",
+      "packages": [
+        {
+          "name": "MobileApp",
+          "type": "package"
+        },
+        {
+          "name": "Backend",
+          "type": "package"
+        },
+        {
+          "name": "DockingStation",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "RiderApp",
+          "type": "interface",
+          "package": "MobileApp"
+        },
+        {
+          "name": "CentralServer",
+          "type": "block",
+          "package": "Backend"
+        },
+        {
+          "name": "StationController",
+          "type": "block",
+          "package": "DockingStation"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "MobileApp",
+          "to": "Backend",
+          "type": "dependency"
+        },
+        {
+          "from": "DockingStation",
+          "to": "Backend",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML package diagram for a warehouse inventory system with Scanning, InventoryDB, and RobotControl packages. RobotControl accesses InventoryDB; Scanning depends on InventoryDB.",
+    "desired_model": {
+      "name": "WarehouseInventoryPackages",
+      "packages": [
+        {
+          "name": "Scanning",
+          "type": "package"
+        },
+        {
+          "name": "InventoryDB",
+          "type": "package"
+        },
+        {
+          "name": "RobotControl",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "BarcodeScanner",
+          "type": "block",
+          "package": "Scanning"
+        },
+        {
+          "name": "StockDatabase",
+          "type": "block",
+          "package": "InventoryDB"
+        },
+        {
+          "name": "CartController",
+          "type": "block",
+          "package": "RobotControl"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Scanning",
+          "to": "InventoryDB",
+          "type": "dependency"
+        },
+        {
+          "from": "RobotControl",
+          "to": "InventoryDB",
+          "type": "access"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML package diagram for a social media platform backend with Server, Database, and Recommendation packages. Recommendation depends on Database; Server depends on both.",
+    "desired_model": {
+      "name": "SocialMediaPackages",
+      "packages": [
+        {
+          "name": "Server",
+          "type": "package"
+        },
+        {
+          "name": "Database",
+          "type": "package"
+        },
+        {
+          "name": "Recommendation",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "APIService",
+          "type": "block",
+          "package": "Server"
+        },
+        {
+          "name": "UserData",
+          "type": "block",
+          "package": "Database"
+        },
+        {
+          "name": "FeedEngine",
+          "type": "block",
+          "package": "Recommendation"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Server",
+          "to": "Database",
+          "type": "dependency"
+        },
+        {
+          "from": "Server",
+          "to": "Recommendation",
+          "type": "dependency"
+        },
+        {
+          "from": "Recommendation",
+          "to": "Database",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Produce a SysML package diagram for a food delivery service backend using Order, Routing, and Payment packages. Routing depends on Order; Payment depends on Order.",
+    "desired_model": {
+      "name": "FoodDeliveryPackages",
+      "packages": [
+        {
+          "name": "Order",
+          "type": "package"
+        },
+        {
+          "name": "Routing",
+          "type": "package"
+        },
+        {
+          "name": "Payment",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "OrderManager",
+          "type": "block",
+          "package": "Order"
+        },
+        {
+          "name": "RoutePlanner",
+          "type": "block",
+          "package": "Routing"
+        },
+        {
+          "name": "BillingService",
+          "type": "block",
+          "package": "Payment"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Routing",
+          "to": "Order",
+          "type": "dependency"
+        },
+        {
+          "from": "Payment",
+          "to": "Order",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML package diagram for a car rental system with Reservation, VehicleManagement, and Payment packages. Reservation depends on VehicleManagement and Payment.",
+    "desired_model": {
+      "name": "CarRentalPackages",
+      "packages": [
+        {
+          "name": "Reservation",
+          "type": "package"
+        },
+        {
+          "name": "VehicleManagement",
+          "type": "package"
+        },
+        {
+          "name": "Payment",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "BookingService",
+          "type": "block",
+          "package": "Reservation"
+        },
+        {
+          "name": "FleetDatabase",
+          "type": "block",
+          "package": "VehicleManagement"
+        },
+        {
+          "name": "PaymentProcessor",
+          "type": "interface",
+          "package": "Payment"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Reservation",
+          "to": "VehicleManagement",
+          "type": "dependency"
+        },
+        {
+          "from": "Reservation",
+          "to": "Payment",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML package diagram for a smart traffic light system containing ControlCenter, IntersectionController, and DataAnalytics packages. DataAnalytics depends on ControlCenter; ControlCenter imports IntersectionController.",
+    "desired_model": {
+      "name": "SmartTrafficLightPackages",
+      "packages": [
+        {
+          "name": "ControlCenter",
+          "type": "package"
+        },
+        {
+          "name": "IntersectionController",
+          "type": "package"
+        },
+        {
+          "name": "DataAnalytics",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "SignalScheduler",
+          "type": "block",
+          "package": "ControlCenter"
+        },
+        {
+          "name": "LightController",
+          "type": "block",
+          "package": "IntersectionController"
+        },
+        {
+          "name": "TrafficDashboard",
+          "type": "block",
+          "package": "DataAnalytics"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "ControlCenter",
+          "to": "IntersectionController",
+          "type": "import"
+        },
+        {
+          "from": "DataAnalytics",
+          "to": "ControlCenter",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Design a SysML package diagram for a lunar rover mission with Rover, MissionControl, Communication, and Science packages. Communication depends on Rover and MissionControl; Science depends on Rover.",
+    "desired_model": {
+      "name": "LunarRoverPackages",
+      "packages": [
+        {
+          "name": "Rover",
+          "type": "package"
+        },
+        {
+          "name": "MissionControl",
+          "type": "package"
+        },
+        {
+          "name": "Communication",
+          "type": "package"
+        },
+        {
+          "name": "Science",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "MobilitySubsystem",
+          "type": "block",
+          "package": "Rover"
+        },
+        {
+          "name": "OpsCenter",
+          "type": "block",
+          "package": "MissionControl"
+        },
+        {
+          "name": "RelayLink",
+          "type": "block",
+          "package": "Communication"
+        },
+        {
+          "name": "Spectrometer",
+          "type": "block",
+          "package": "Science"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Communication",
+          "to": "Rover",
+          "type": "dependency"
+        },
+        {
+          "from": "Communication",
+          "to": "MissionControl",
+          "type": "dependency"
+        },
+        {
+          "from": "Science",
+          "to": "Rover",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML package diagram for a university course registration system featuring Portal, Server, Database, and Payment packages. Server depends on Database and Payment; Portal depends on Server.",
+    "desired_model": {
+      "name": "CourseRegistrationPackages",
+      "packages": [
+        {
+          "name": "Portal",
+          "type": "package"
+        },
+        {
+          "name": "Server",
+          "type": "package"
+        },
+        {
+          "name": "Database",
+          "type": "package"
+        },
+        {
+          "name": "Payment",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "WebFrontend",
+          "type": "interface",
+          "package": "Portal"
+        },
+        {
+          "name": "RegistrationService",
+          "type": "block",
+          "package": "Server"
+        },
+        {
+          "name": "CourseCatalog",
+          "type": "block",
+          "package": "Database"
+        },
+        {
+          "name": "PaymentService",
+          "type": "interface",
+          "package": "Payment"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Portal",
+          "to": "Server",
+          "type": "dependency"
+        },
+        {
+          "from": "Server",
+          "to": "Database",
+          "type": "dependency"
+        },
+        {
+          "from": "Server",
+          "to": "Payment",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML package diagram for a hotel reservation backend with Booking, Inventory, and Payment packages. Booking depends on Inventory and Payment.",
+    "desired_model": {
+      "name": "HotelReservationPackages",
+      "packages": [
+        {
+          "name": "Booking",
+          "type": "package"
+        },
+        {
+          "name": "Inventory",
+          "type": "package"
+        },
+        {
+          "name": "Payment",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "ReservationService",
+          "type": "block",
+          "package": "Booking"
+        },
+        {
+          "name": "RoomDatabase",
+          "type": "block",
+          "package": "Inventory"
+        },
+        {
+          "name": "GatewayAdapter",
+          "type": "interface",
+          "package": "Payment"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Booking",
+          "to": "Inventory",
+          "type": "dependency"
+        },
+        {
+          "from": "Booking",
+          "to": "Payment",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Build a SysML package diagram for a music streaming service backend with StreamingServer, ContentDatabase, and RecommendationService packages. RecommendationService depends on ContentDatabase; StreamingServer depends on both.",
+    "desired_model": {
+      "name": "MusicStreamingPackages",
+      "packages": [
+        {
+          "name": "StreamingServer",
+          "type": "package"
+        },
+        {
+          "name": "ContentDatabase",
+          "type": "package"
+        },
+        {
+          "name": "RecommendationService",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "APIHandler",
+          "type": "block",
+          "package": "StreamingServer"
+        },
+        {
+          "name": "TrackStore",
+          "type": "block",
+          "package": "ContentDatabase"
+        },
+        {
+          "name": "PlaylistEngine",
+          "type": "block",
+          "package": "RecommendationService"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "StreamingServer",
+          "to": "ContentDatabase",
+          "type": "dependency"
+        },
+        {
+          "from": "StreamingServer",
+          "to": "RecommendationService",
+          "type": "dependency"
+        },
+        {
+          "from": "RecommendationService",
+          "to": "ContentDatabase",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML package diagram for a waste management IoT platform with SensorNetwork, Gateway, and CloudPlatform packages. Gateway imports SensorNetwork; CloudPlatform depends on Gateway.",
+    "desired_model": {
+      "name": "WasteManagementPackages",
+      "packages": [
+        {
+          "name": "SensorNetwork",
+          "type": "package"
+        },
+        {
+          "name": "Gateway",
+          "type": "package"
+        },
+        {
+          "name": "CloudPlatform",
+          "type": "package"
+        }
+      ],
+      "elements": [
+        {
+          "name": "BinSensor",
+          "type": "block",
+          "package": "SensorNetwork"
+        },
+        {
+          "name": "EdgeGateway",
+          "type": "block",
+          "package": "Gateway"
+        },
+        {
+          "name": "DataLake",
+          "type": "block",
+          "package": "CloudPlatform"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Gateway",
+          "to": "SensorNetwork",
+          "type": "import"
+        },
+        {
+          "from": "CloudPlatform",
+          "to": "Gateway",
+          "type": "dependency"
+        }
+      ]
+    }
+  }
+]

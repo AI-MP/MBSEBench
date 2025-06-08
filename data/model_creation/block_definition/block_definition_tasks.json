@@ -1,0 +1,1204 @@
+[
+  {
+    "question": "Create a SysML block definition diagram for a smart home security system: A homeowner uses a mobile app that communicates with a security hub. The hub manages multiple door sensors and cameras. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "SmartHomeSecuritySystemBDD",
+      "blocks": [
+        {
+          "name": "HomeOwner",
+          "type": "actor"
+        },
+        {
+          "name": "MobileApp",
+          "type": "interface"
+        },
+        {
+          "name": "SecurityHub",
+          "type": "system"
+        },
+        {
+          "name": "DoorSensor",
+          "type": "component"
+        },
+        {
+          "name": "Camera",
+          "type": "component"
+        }
+      ],
+      "properties": [
+        {
+          "block": "SecurityHub",
+          "name": "ipAddress",
+          "type": "string"
+        },
+        {
+          "block": "DoorSensor",
+          "name": "status",
+          "type": "boolean"
+        },
+        {
+          "block": "Camera",
+          "name": "resolution",
+          "type": "string"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "HomeOwner",
+          "to": "MobileApp",
+          "type": "association"
+        },
+        {
+          "from": "MobileApp",
+          "to": "SecurityHub",
+          "type": "dependency"
+        },
+        {
+          "from": "SecurityHub",
+          "to": "DoorSensor",
+          "type": "composition",
+          "multiplicity": "1..*"
+        },
+        {
+          "from": "SecurityHub",
+          "to": "Camera",
+          "type": "composition",
+          "multiplicity": "1..*"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML block definition diagram for an autonomous delivery drone system: A customer places delivery requests through a control center interface, which commands drones composed of a navigation module and a payload bay. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "AutonomousDeliveryDroneBDD",
+      "blocks": [
+        {
+          "name": "Customer",
+          "type": "actor"
+        },
+        {
+          "name": "ControlCenter",
+          "type": "interface"
+        },
+        {
+          "name": "Drone",
+          "type": "system"
+        },
+        {
+          "name": "NavigationModule",
+          "type": "component"
+        },
+        {
+          "name": "PayloadBay",
+          "type": "component"
+        }
+      ],
+      "properties": [
+        {
+          "block": "Drone",
+          "name": "batteryLevel",
+          "type": "float"
+        },
+        {
+          "block": "NavigationModule",
+          "name": "gpsAccuracy",
+          "type": "float"
+        },
+        {
+          "block": "PayloadBay",
+          "name": "capacityKg",
+          "type": "float"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Customer",
+          "to": "ControlCenter",
+          "type": "association"
+        },
+        {
+          "from": "ControlCenter",
+          "to": "Drone",
+          "type": "dependency"
+        },
+        {
+          "from": "Drone",
+          "to": "NavigationModule",
+          "type": "composition"
+        },
+        {
+          "from": "Drone",
+          "to": "PayloadBay",
+          "type": "composition"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML block definition diagram for an electric vehicle charging station network: Drivers interact with charging stations that include payment terminals and power modules, and stations report to an operator backend. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "EVChargingNetworkBDD",
+      "blocks": [
+        {
+          "name": "Driver",
+          "type": "actor"
+        },
+        {
+          "name": "ChargingStation",
+          "type": "system"
+        },
+        {
+          "name": "PaymentTerminal",
+          "type": "component"
+        },
+        {
+          "name": "PowerModule",
+          "type": "component"
+        },
+        {
+          "name": "OperatorBackend",
+          "type": "interface"
+        }
+      ],
+      "properties": [
+        {
+          "block": "ChargingStation",
+          "name": "location",
+          "type": "string"
+        },
+        {
+          "block": "PaymentTerminal",
+          "name": "paymentMethod",
+          "type": "string"
+        },
+        {
+          "block": "PowerModule",
+          "name": "outputKW",
+          "type": "int"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Driver",
+          "to": "ChargingStation",
+          "type": "association"
+        },
+        {
+          "from": "ChargingStation",
+          "to": "PaymentTerminal",
+          "type": "composition"
+        },
+        {
+          "from": "ChargingStation",
+          "to": "PowerModule",
+          "type": "composition"
+        },
+        {
+          "from": "ChargingStation",
+          "to": "OperatorBackend",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML block definition diagram for an online bookstore system. Use the following block names and types: 'Customer' (actor), 'WebPortal' (interface), 'OrderService' (system), 'InventoryDB' (component), and 'PaymentGateway' (interface). The 'Customer' interacts with the 'WebPortal', which depends on the 'OrderService'. The 'OrderService' depends on both the 'InventoryDB' and the 'PaymentGateway'. Add the property 'orderId' (type: string) to 'OrderService' and 'stockCount' (type: int) to 'InventoryDB'. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "OnlineBookstoreBDD",
+      "blocks": [
+        {
+          "name": "Customer",
+          "type": "actor"
+        },
+        {
+          "name": "WebPortal",
+          "type": "interface"
+        },
+        {
+          "name": "OrderService",
+          "type": "system"
+        },
+        {
+          "name": "InventoryDB",
+          "type": "component"
+        },
+        {
+          "name": "PaymentGateway",
+          "type": "interface"
+        }
+      ],
+      "properties": [
+        {
+          "block": "OrderService",
+          "name": "orderId",
+          "type": "string"
+        },
+        {
+          "block": "InventoryDB",
+          "name": "stockCount",
+          "type": "int"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Customer",
+          "to": "WebPortal",
+          "type": "association"
+        },
+        {
+          "from": "WebPortal",
+          "to": "OrderService",
+          "type": "dependency"
+        },
+        {
+          "from": "OrderService",
+          "to": "InventoryDB",
+          "type": "dependency"
+        },
+        {
+          "from": "OrderService",
+          "to": "PaymentGateway",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML block definition diagram for a hospital patient monitoring system: Patients are connected to vital sensors that send data to a monitoring server, which nurses access via a mobile dashboard. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "PatientMonitoringSystemBDD",
+      "blocks": [
+        {
+          "name": "Patient",
+          "type": "actor"
+        },
+        {
+          "name": "VitalSensor",
+          "type": "component"
+        },
+        {
+          "name": "MonitoringServer",
+          "type": "system"
+        },
+        {
+          "name": "Nurse",
+          "type": "actor"
+        },
+        {
+          "name": "MobileDashboard",
+          "type": "interface"
+        }
+      ],
+      "properties": [
+        {
+          "block": "VitalSensor",
+          "name": "heartRate",
+          "type": "float"
+        },
+        {
+          "block": "MonitoringServer",
+          "name": "serverId",
+          "type": "string"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Patient",
+          "to": "VitalSensor",
+          "type": "association"
+        },
+        {
+          "from": "VitalSensor",
+          "to": "MonitoringServer",
+          "type": "dependency"
+        },
+        {
+          "from": "Nurse",
+          "to": "MobileDashboard",
+          "type": "association"
+        },
+        {
+          "from": "MobileDashboard",
+          "to": "MonitoringServer",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML block definition diagram for a weather forecasting satellite system using the following conventions: The system includes the following blocks\u2014'Meteorologist' (actor), 'GroundStation' (system), 'WeatherSatellite' (system), 'SensorArray' (component), and 'DataDownlink' (interface). The 'Meteorologist' is associated with the 'GroundStation'. The 'GroundStation' depends on the 'DataDownlink', which in turn depends on the 'WeatherSatellite'. The 'WeatherSatellite' contains the 'SensorArray' as a composition. The 'WeatherSatellite' block has a property 'orbit' of type 'string', and the 'SensorArray' block has a property 'temperature' of type 'float'. Use these exact block and property names in your diagram. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "WeatherSatelliteSystemBDD",
+      "blocks": [
+        {
+          "name": "Meteorologist",
+          "type": "actor"
+        },
+        {
+          "name": "GroundStation",
+          "type": "system"
+        },
+        {
+          "name": "DataDownlink",
+          "type": "interface"
+        },
+        {
+          "name": "WeatherSatellite",
+          "type": "system"
+        },
+        {
+          "name": "SensorArray",
+          "type": "component"
+        }
+      ],
+      "properties": [
+        {
+          "block": "WeatherSatellite",
+          "name": "orbit",
+          "type": "string"
+        },
+        {
+          "block": "SensorArray",
+          "name": "temperature",
+          "type": "float"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Meteorologist",
+          "to": "GroundStation",
+          "type": "association"
+        },
+        {
+          "from": "GroundStation",
+          "to": "DataDownlink",
+          "type": "dependency"
+        },
+        {
+          "from": "DataDownlink",
+          "to": "WeatherSatellite",
+          "type": "dependency"
+        },
+        {
+          "from": "WeatherSatellite",
+          "to": "SensorArray",
+          "type": "composition"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML block definition diagram for a manufacturing assembly line robot system: An operator uses a maintenance panel connected to a control unit that directs a robot arm and vision system. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "AssemblyLineRobotBDD",
+      "blocks": [
+        {
+          "name": "Operator",
+          "type": "actor"
+        },
+        {
+          "name": "MaintenancePanel",
+          "type": "interface"
+        },
+        {
+          "name": "ControlUnit",
+          "type": "system"
+        },
+        {
+          "name": "RobotArm",
+          "type": "component"
+        },
+        {
+          "name": "VisionSystem",
+          "type": "component"
+        }
+      ],
+      "properties": [
+        {
+          "block": "RobotArm",
+          "name": "payloadKg",
+          "type": "float"
+        },
+        {
+          "block": "VisionSystem",
+          "name": "cameraResolution",
+          "type": "string"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Operator",
+          "to": "MaintenancePanel",
+          "type": "association"
+        },
+        {
+          "from": "MaintenancePanel",
+          "to": "ControlUnit",
+          "type": "dependency"
+        },
+        {
+          "from": "ControlUnit",
+          "to": "RobotArm",
+          "type": "composition"
+        },
+        {
+          "from": "ControlUnit",
+          "to": "VisionSystem",
+          "type": "composition"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML block definition diagram for an e-commerce payment gateway: Shoppers purchase via a merchant site that relies on a payment gateway, which uses a fraud check service and communicates with bank APIs. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "EcommercePaymentGatewayBDD",
+      "blocks": [
+        {
+          "name": "Shopper",
+          "type": "actor"
+        },
+        {
+          "name": "MerchantSite",
+          "type": "interface"
+        },
+        {
+          "name": "PaymentGateway",
+          "type": "system"
+        },
+        {
+          "name": "FraudCheckService",
+          "type": "component"
+        },
+        {
+          "name": "BankAPI",
+          "type": "interface"
+        }
+      ],
+      "properties": [
+        {
+          "block": "PaymentGateway",
+          "name": "transactionId",
+          "type": "string"
+        },
+        {
+          "block": "FraudCheckService",
+          "name": "riskScore",
+          "type": "int"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Shopper",
+          "to": "MerchantSite",
+          "type": "association"
+        },
+        {
+          "from": "MerchantSite",
+          "to": "PaymentGateway",
+          "type": "dependency"
+        },
+        {
+          "from": "PaymentGateway",
+          "to": "FraudCheckService",
+          "type": "composition"
+        },
+        {
+          "from": "PaymentGateway",
+          "to": "BankAPI",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML block definition diagram for an agricultural irrigation control system: A farmer monitors soil with moisture sensors and controls valves through a cloud dashboard that communicates with an irrigation controller. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "IrrigationControlSystemBDD",
+      "blocks": [
+        {
+          "name": "Farmer",
+          "type": "actor"
+        },
+        {
+          "name": "CloudDashboard",
+          "type": "interface"
+        },
+        {
+          "name": "IrrigationController",
+          "type": "system"
+        },
+        {
+          "name": "MoistureSensor",
+          "type": "component"
+        },
+        {
+          "name": "Valve",
+          "type": "component"
+        }
+      ],
+      "properties": [
+        {
+          "block": "MoistureSensor",
+          "name": "moistureLevel",
+          "type": "float"
+        },
+        {
+          "block": "Valve",
+          "name": "state",
+          "type": "boolean"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Farmer",
+          "to": "CloudDashboard",
+          "type": "association"
+        },
+        {
+          "from": "CloudDashboard",
+          "to": "IrrigationController",
+          "type": "dependency"
+        },
+        {
+          "from": "IrrigationController",
+          "to": "MoistureSensor",
+          "type": "composition",
+          "multiplicity": "1..*"
+        },
+        {
+          "from": "IrrigationController",
+          "to": "Valve",
+          "type": "composition",
+          "multiplicity": "1..*"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML block definition diagram for a city bike sharing system. Use the following block names and types: 'Rider' (actor), 'MobileApp' (interface), 'CentralServer' (system), 'DockingStation' (system), and 'Bike' (component). Add a 'stationId' (string) property to 'DockingStation' and a 'batteryLevel' (float) property to 'Bike'. Specify these relationships: 'Rider' is associated with 'MobileApp'; 'MobileApp' depends on 'CentralServer'; 'CentralServer' is associated with 'DockingStation'; 'DockingStation' composes 'Bike' with multiplicity '0..*'. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "BikeSharingSystemBDD",
+      "blocks": [
+        {
+          "name": "Rider",
+          "type": "actor"
+        },
+        {
+          "name": "MobileApp",
+          "type": "interface"
+        },
+        {
+          "name": "CentralServer",
+          "type": "system"
+        },
+        {
+          "name": "DockingStation",
+          "type": "system"
+        },
+        {
+          "name": "Bike",
+          "type": "component"
+        }
+      ],
+      "properties": [
+        {
+          "block": "DockingStation",
+          "name": "stationId",
+          "type": "string"
+        },
+        {
+          "block": "Bike",
+          "name": "batteryLevel",
+          "type": "float"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Rider",
+          "to": "MobileApp",
+          "type": "association"
+        },
+        {
+          "from": "MobileApp",
+          "to": "CentralServer",
+          "type": "dependency"
+        },
+        {
+          "from": "CentralServer",
+          "to": "DockingStation",
+          "type": "association"
+        },
+        {
+          "from": "DockingStation",
+          "to": "Bike",
+          "type": "composition",
+          "multiplicity": "0..*"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML block definition diagram for a warehouse inventory management system: Workers scan items with barcode scanners linked to an inventory system that coordinates storage racks and robot carts. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "WarehouseInventoryBDD",
+      "blocks": [
+        {
+          "name": "WarehouseWorker",
+          "type": "actor"
+        },
+        {
+          "name": "BarcodeScanner",
+          "type": "interface"
+        },
+        {
+          "name": "InventorySystem",
+          "type": "system"
+        },
+        {
+          "name": "StorageRack",
+          "type": "component"
+        },
+        {
+          "name": "RobotCart",
+          "type": "component"
+        }
+      ],
+      "properties": [
+        {
+          "block": "StorageRack",
+          "name": "capacity",
+          "type": "int"
+        },
+        {
+          "block": "RobotCart",
+          "name": "loadWeight",
+          "type": "float"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "WarehouseWorker",
+          "to": "BarcodeScanner",
+          "type": "association"
+        },
+        {
+          "from": "BarcodeScanner",
+          "to": "InventorySystem",
+          "type": "dependency"
+        },
+        {
+          "from": "InventorySystem",
+          "to": "StorageRack",
+          "type": "association"
+        },
+        {
+          "from": "InventorySystem",
+          "to": "RobotCart",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML block definition diagram for a social media platform: Users access a web client that interacts with a social media server containing a database and recommendation engine. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "SocialMediaPlatformBDD",
+      "blocks": [
+        {
+          "name": "User",
+          "type": "actor"
+        },
+        {
+          "name": "WebClient",
+          "type": "interface"
+        },
+        {
+          "name": "SocialMediaServer",
+          "type": "system"
+        },
+        {
+          "name": "Database",
+          "type": "component"
+        },
+        {
+          "name": "RecommendationEngine",
+          "type": "component"
+        }
+      ],
+      "properties": [
+        {
+          "block": "Database",
+          "name": "recordCount",
+          "type": "int"
+        },
+        {
+          "block": "RecommendationEngine",
+          "name": "algorithm",
+          "type": "string"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "User",
+          "to": "WebClient",
+          "type": "association"
+        },
+        {
+          "from": "WebClient",
+          "to": "SocialMediaServer",
+          "type": "dependency"
+        },
+        {
+          "from": "SocialMediaServer",
+          "to": "Database",
+          "type": "composition"
+        },
+        {
+          "from": "SocialMediaServer",
+          "to": "RecommendationEngine",
+          "type": "composition"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML block definition diagram for a food delivery service: Customers place orders via a mobile app that connects to a delivery server, which coordinates couriers, restaurants, and a route planner. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "FoodDeliveryServiceBDD",
+      "blocks": [
+        {
+          "name": "Customer",
+          "type": "actor"
+        },
+        {
+          "name": "MobileApp",
+          "type": "interface"
+        },
+        {
+          "name": "DeliveryServer",
+          "type": "system"
+        },
+        {
+          "name": "Courier",
+          "type": "actor"
+        },
+        {
+          "name": "Restaurant",
+          "type": "actor"
+        },
+        {
+          "name": "RoutePlanner",
+          "type": "component"
+        }
+      ],
+      "properties": [
+        {
+          "block": "RoutePlanner",
+          "name": "etaMinutes",
+          "type": "int"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Customer",
+          "to": "MobileApp",
+          "type": "association"
+        },
+        {
+          "from": "MobileApp",
+          "to": "DeliveryServer",
+          "type": "dependency"
+        },
+        {
+          "from": "DeliveryServer",
+          "to": "RoutePlanner",
+          "type": "composition"
+        },
+        {
+          "from": "DeliveryServer",
+          "to": "Courier",
+          "type": "association"
+        },
+        {
+          "from": "DeliveryServer",
+          "to": "Restaurant",
+          "type": "association"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML block definition diagram for a car rental system: Renters use a web portal that communicates with a rental server managing vehicles and interacting with a payment processor. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "CarRentalSystemBDD",
+      "blocks": [
+        {
+          "name": "Renter",
+          "type": "actor"
+        },
+        {
+          "name": "RentalWebPortal",
+          "type": "interface"
+        },
+        {
+          "name": "RentalServer",
+          "type": "system"
+        },
+        {
+          "name": "Vehicle",
+          "type": "component"
+        },
+        {
+          "name": "PaymentProcessor",
+          "type": "interface"
+        }
+      ],
+      "properties": [
+        {
+          "block": "Vehicle",
+          "name": "licensePlate",
+          "type": "string"
+        },
+        {
+          "block": "RentalServer",
+          "name": "bookingNumber",
+          "type": "string"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Renter",
+          "to": "RentalWebPortal",
+          "type": "association"
+        },
+        {
+          "from": "RentalWebPortal",
+          "to": "RentalServer",
+          "type": "dependency"
+        },
+        {
+          "from": "RentalServer",
+          "to": "Vehicle",
+          "type": "association"
+        },
+        {
+          "from": "RentalServer",
+          "to": "PaymentProcessor",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML block definition diagram for a lunar rover exploration system: Mission control communicates via a link with a lunar rover that includes a mobility subsystem and navigation camera. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "LunarRoverSystemBDD",
+      "blocks": [
+        {
+          "name": "MissionControl",
+          "type": "actor"
+        },
+        {
+          "name": "CommunicationLink",
+          "type": "interface"
+        },
+        {
+          "name": "LunarRover",
+          "type": "system"
+        },
+        {
+          "name": "MobilitySubsystem",
+          "type": "component"
+        },
+        {
+          "name": "NavigationCamera",
+          "type": "component"
+        }
+      ],
+      "properties": [
+        {
+          "block": "MobilitySubsystem",
+          "name": "wheelSpeed",
+          "type": "float"
+        },
+        {
+          "block": "NavigationCamera",
+          "name": "imageResolution",
+          "type": "string"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "MissionControl",
+          "to": "CommunicationLink",
+          "type": "association"
+        },
+        {
+          "from": "CommunicationLink",
+          "to": "LunarRover",
+          "type": "dependency"
+        },
+        {
+          "from": "LunarRover",
+          "to": "MobilitySubsystem",
+          "type": "composition"
+        },
+        {
+          "from": "LunarRover",
+          "to": "NavigationCamera",
+          "type": "composition"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML block definition diagram for a university course registration system: Students use a registration portal connected to a registration server that accesses a course catalog database and payment service. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "CourseRegistrationSystemBDD",
+      "blocks": [
+        {
+          "name": "Student",
+          "type": "actor"
+        },
+        {
+          "name": "RegistrationPortal",
+          "type": "interface"
+        },
+        {
+          "name": "RegistrationServer",
+          "type": "system"
+        },
+        {
+          "name": "CourseCatalogDB",
+          "type": "component"
+        },
+        {
+          "name": "PaymentService",
+          "type": "interface"
+        }
+      ],
+      "properties": [
+        {
+          "block": "CourseCatalogDB",
+          "name": "courseCount",
+          "type": "int"
+        },
+        {
+          "block": "RegistrationServer",
+          "name": "sessionId",
+          "type": "string"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Student",
+          "to": "RegistrationPortal",
+          "type": "association"
+        },
+        {
+          "from": "RegistrationPortal",
+          "to": "RegistrationServer",
+          "type": "dependency"
+        },
+        {
+          "from": "RegistrationServer",
+          "to": "CourseCatalogDB",
+          "type": "dependency"
+        },
+        {
+          "from": "RegistrationServer",
+          "to": "PaymentService",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML block definition diagram for a hotel reservation system: Guests book rooms through a website that communicates with a reservation server managing rooms and using a payment gateway. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "HotelReservationSystemBDD",
+      "blocks": [
+        {
+          "name": "Guest",
+          "type": "actor"
+        },
+        {
+          "name": "BookingWebsite",
+          "type": "interface"
+        },
+        {
+          "name": "ReservationServer",
+          "type": "system"
+        },
+        {
+          "name": "Room",
+          "type": "component"
+        },
+        {
+          "name": "PaymentGateway",
+          "type": "interface"
+        }
+      ],
+      "properties": [
+        {
+          "block": "Room",
+          "name": "roomNumber",
+          "type": "string"
+        },
+        {
+          "block": "ReservationServer",
+          "name": "reservationId",
+          "type": "string"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Guest",
+          "to": "BookingWebsite",
+          "type": "association"
+        },
+        {
+          "from": "BookingWebsite",
+          "to": "ReservationServer",
+          "type": "dependency"
+        },
+        {
+          "from": "ReservationServer",
+          "to": "Room",
+          "type": "association"
+        },
+        {
+          "from": "ReservationServer",
+          "to": "PaymentGateway",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML block definition diagram for a music streaming service: Listeners use a mobile client to access a streaming server that relies on a content database and recommendation service. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "MusicStreamingServiceBDD",
+      "blocks": [
+        {
+          "name": "Listener",
+          "type": "actor"
+        },
+        {
+          "name": "MobileClient",
+          "type": "interface"
+        },
+        {
+          "name": "StreamingServer",
+          "type": "system"
+        },
+        {
+          "name": "ContentDB",
+          "type": "component"
+        },
+        {
+          "name": "RecommendationService",
+          "type": "component"
+        }
+      ],
+      "properties": [
+        {
+          "block": "ContentDB",
+          "name": "trackCount",
+          "type": "int"
+        },
+        {
+          "block": "RecommendationService",
+          "name": "modelVersion",
+          "type": "string"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "Listener",
+          "to": "MobileClient",
+          "type": "association"
+        },
+        {
+          "from": "MobileClient",
+          "to": "StreamingServer",
+          "type": "dependency"
+        },
+        {
+          "from": "StreamingServer",
+          "to": "ContentDB",
+          "type": "dependency"
+        },
+        {
+          "from": "StreamingServer",
+          "to": "RecommendationService",
+          "type": "dependency"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML block definition diagram for a waste management IoT sensor network: City workers monitor fill levels via a mobile dashboard connected to a cloud platform that receives data from gateway nodes and waste bin sensors. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "WasteManagementIoTBDD",
+      "blocks": [
+        {
+          "name": "CityWorker",
+          "type": "actor"
+        },
+        {
+          "name": "MobileDashboard",
+          "type": "interface"
+        },
+        {
+          "name": "CloudPlatform",
+          "type": "system"
+        },
+        {
+          "name": "GatewayNode",
+          "type": "system"
+        },
+        {
+          "name": "WasteBinSensor",
+          "type": "component"
+        }
+      ],
+      "properties": [
+        {
+          "block": "GatewayNode",
+          "name": "nodeId",
+          "type": "string"
+        },
+        {
+          "block": "WasteBinSensor",
+          "name": "fillLevel",
+          "type": "int"
+        }
+      ],
+      "relationships": [
+        {
+          "from": "CityWorker",
+          "to": "MobileDashboard",
+          "type": "association"
+        },
+        {
+          "from": "MobileDashboard",
+          "to": "CloudPlatform",
+          "type": "dependency"
+        },
+        {
+          "from": "GatewayNode",
+          "to": "CloudPlatform",
+          "type": "dependency"
+        },
+        {
+          "from": "WasteBinSensor",
+          "to": "GatewayNode",
+          "type": "dependency"
+        }
+      ]
+    }
+  }
+]

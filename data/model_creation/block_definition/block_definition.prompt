@@ -1,0 +1,99 @@
+SYSTEM TO MODEL:
+{system_description}
+
+TASK: Create a JSON block definition diagram (BDD) for the system described above. Do not ask for clarification.
+
+Output Format
+You MUST output ONLY a valid JSON object following this exact schema:
+
+json
+Copy
+Edit
+{{
+  "name": "DiagramName",
+  "blocks": [
+    {{"name": "BlockName", "type": "block"}}
+  ],
+  "properties": [
+    {{"block": "BlockName", "name": "PropertyName", "type": "PropertyType"}}
+  ],
+  "relationships": [
+    {{"from": "SourceBlock", "to": "TargetBlock", "type": "association"}}
+  ]
+}}
+Schema Requirements
+Root object (required fields)
+Field	Type	Notes
+name	string	Name of the block definition diagram
+blocks	array	List of blocks (≥ 1)
+properties	array	List of block properties (optional but recommended)
+relationships	array	Structural relationships between blocks (≥ 0)
+
+Block object
+Field	Type	Allowed type values	Description
+name	string	—	Block name (unique)
+type	string	"block", "actor", "system", "component", "interface"	Block category
+
+Property object
+Field	Type	Description
+block	string	Must exactly match a blocks.name
+name	string	Property name
+type	string	Property or value type (e.g., "int", "string", another block)
+
+Relationship object
+Field	Type	Allowed type values	Description
+from	string	—	Source block (must match blocks.name)
+to	string	—	Target block (must match blocks.name)
+type	string	"association", "aggregation", "composition", "generalization", "dependency"	Relationship kind
+multiplicity	string	Optional	Use SysML multiplicity format (e.g., "1", "0..*")
+
+OBJECT_FLOWS (optional)
+Include only if data flows or value exchanges are explicitly specified.
+Format: {{"from":"BlockA","to":"BlockB","object":"DataItem"}}
+
+Working Example
+json
+Copy
+Edit
+{{
+  "name": "HomeAutomationSystemBDD",
+  "blocks": [
+    {{"name": "HomeOwner", "type": "actor"}},
+    {{"name": "SmartHub", "type": "system"}},
+    {{"name": "Thermostat", "type": "component"}},
+    {{"name": "MobileApp", "type": "interface"}}
+  ],
+  "properties": [
+    {{"block": "Thermostat", "name": "temperature", "type": "float"}},
+    {{"block": "SmartHub", "name": "ipAddress", "type": "string"}}
+  ],
+  "relationships": [
+    {{"from": "HomeOwner", "to": "MobileApp", "type": "association"}},
+    {{"from": "MobileApp", "to": "SmartHub", "type": "dependency"}},
+    {{"from": "SmartHub", "to": "Thermostat", "type": "composition", "multiplicity": "1..*"}}
+  ]
+}}
+Modeling Rules
+Identify blocks → Create a block for every major entity, subsystem, or external actor.
+
+Define properties → Add key attributes or part properties to the appropriate block.
+
+Specify relationships → Use associations/aggregations/compositions/generalizations/dependencies to describe structural links.
+
+Match references exactly → properties.block, relationships.from, and relationships.to must match block names exactly.
+
+Use clear names → Names should be descriptive and unique.
+
+Multiplicity → Provide multiplicity when relevant; omit otherwise.
+
+Avoid circular definitions → Every relationship must reference valid, distinct blocks.
+
+No orphan blocks → Every block (except standalone actors) should appear in at least one relationship.
+
+Prefer concise names → Use short, descriptive names that stick closely to the terminology used in the original question. Avoid verbose or unnecessarily long element names.
+
+Output only JSON → Do not include explanations, comments, or extra formatting outside the JSON object.
+
+Do not ask for clarification → Model with the information provided.
+
+REMINDER: Create the JSON block definition diagram for the system described at the top. Output only valid JSON.

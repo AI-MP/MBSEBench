@@ -1,0 +1,106 @@
+You are an expert in SysML modeling.
+
+SYSTEM TO MODEL:
+{system_description}
+
+TASK: Create a JSON internal block diagram (IBD) for the system described above. Do not ask for clarification.
+
+Output Format
+You MUST output ONLY a valid JSON object following this exact schema:
+
+json
+Copy
+Edit
+{{
+  "name": "DiagramName",
+  "blocks": [
+    {{"name": "BlockName", "type": "block"}}
+  ],
+  "parts": [
+    {{"name": "PartName", "type": "part", "block": "BlockName"}}
+  ],
+  "ports": [
+    {{"name": "PortName", "type": "port", "block": "BlockName"}}
+  ],
+  "connectors": [
+    {{"from": "BlockA.PortX", "to": "BlockB.PortY"}}
+  ]
+}}
+Schema Requirements
+Root Field	Type	Notes
+name	string	Name of the internal block diagram
+blocks	array	List of blocks (≥ 1)
+parts	array	Part properties inside blocks (≥ 1)
+ports	array	Interaction points on blocks (optional but recommended)
+connectors	array	Connections between ports (≥ 0)
+
+Block Object
+Field	Type	Allowed type values	Description
+name	string	—	Unique block name
+type	string	"block"	Must be "block"
+
+Part Object
+Field	Type	Description
+name	string	Part name (instance specification)
+type	string	Must be "part"
+block	string	Must exactly match a blocks.name (the part's type)
+
+Port Object
+Field	Type	Description
+name	string	Port name
+type	string	Must be "port"
+block	string	Must exactly match a blocks.name
+
+Connector Object
+Field	Type	Description
+from	string	Format BlockName.PortName; both block and port must exist
+to	string	Format BlockName.PortName; both block and port must exist
+kind	string	Optional — "assembly", "delegation" (omit if not specified)
+signal	string	Optional — data/signal label transferred on the connector
+
+Working Example
+json
+Copy
+Edit
+{{
+  "name": "CoffeeMachineIBD",
+  "blocks": [
+    {{"name": "CoffeeMachine", "type": "block"}},
+    {{"name": "WaterHeater",  "type": "block"}},
+    {{"name": "Brewer",       "type": "block"}}
+  ],
+  "parts": [
+    {{"name": "heater", "type": "part", "block": "WaterHeater"}},
+    {{"name": "brewUnit", "type": "part", "block": "Brewer"}}
+  ],
+  "ports": [
+    {{"name": "waterIn", "type": "port", "block": "WaterHeater"}},
+    {{"name": "hotWaterOut", "type": "port", "block": "WaterHeater"}},
+    {{"name": "hotWaterIn",  "type": "port", "block": "Brewer"}}
+  ],
+  "connectors": [
+    {{"from": "WaterHeater.hotWaterOut", "to": "Brewer.hotWaterIn", "kind": "assembly"}}
+  ]
+}}
+Modeling Rules
+List every relevant block → Each distinct subsystem/component becomes a block.
+
+Create parts → Model internal instances of blocks inside other blocks.
+
+Define ports → Add ports only where interactions occur (interfaces, signals, flows).
+
+Connect ports → Use connectors to show how parts/blocks interact.
+
+Reference integrity → parts.block, ports.block, connector from/to must match declared names exactly.
+
+No orphan elements → Every port referenced in a connector must exist; every part must belong to a declared block.
+
+Use clear, descriptive names.
+
+Prefer concise names → Use short, descriptive names that stick closely to the terminology used in the original question. Avoid verbose or unnecessarily long element names.
+
+Output only JSON → No explanations, no extra formatting.
+
+Never ask for clarification → Work strictly with the information given.
+
+REMINDER: Create the JSON internal block diagram for the system described above. Output only valid JSON.

@@ -1,0 +1,113 @@
+You are an expert in SysML modeling.
+
+SYSTEM / PROBLEM TO MODEL:
+{system_description}
+
+TASK: Create a JSON parametric diagram for the system described above. Do not ask for clarification.
+
+Output Format
+You MUST output ONLY a valid JSON object following this exact schema:
+
+json
+Copy
+Edit
+{{
+  "name": "DiagramName",
+  "blocks": [
+    {{"name": "BlockName", "type": "block"}}
+  ],
+  "parameters": [
+    {{"name": "ParameterName", "type": "param", "block": "BlockName", "unit": "UnitName"}}
+  ],
+  "constraints": [
+    {{"name": "ConstraintName", "type": "constraint", "expression": "constraint equation"}}
+  ],
+  "bindings": [
+    {{"from": "BlockA.ParameterX", "to": "ConstraintY.paramA"}}
+  ]
+}}
+Schema Requirements
+Root Field	Type	Notes
+name	string	Name of the parametric diagram
+blocks	array	List of blocks (≥ 1)
+parameters	array	Value properties exposed by blocks (≥ 1)
+constraints	array	Constraint blocks with equations (≥ 1)
+bindings	array	Equality/flow relationships linking parameters and constraint ports
+
+Block Object
+Field	Type	Allowed type value	Description
+name	string	—	Unique block name
+type	string	"block"	Must be "block"
+
+Parameter Object
+Field	Type	Description
+name	string	Parameter / value-property name
+type	string	Must be "param"
+block	string	Must exactly match a blocks.name
+unit	string	Optional physical unit (e.g., "kg", "m/s")
+
+Constraint Object
+Field	Type	Description
+name	string	Constraint block name
+type	string	Must be "constraint"
+expression	string	Mathematical or logical equation (e.g., "F = m * a")
+
+Binding Object
+Field	Type	Description
+from	string	Source in format BlockOrConstraint.Parameter
+to	string	Target in the same format; both ends must exist
+note	string	Optional explanatory note (e.g., "assumption" or "conversion")
+
+Working Example
+json
+Copy
+Edit
+{{
+  "name": "SimpleMassSpringDamper",
+  "blocks": [
+    {{"name": "Mass", "type": "block"}},
+    {{"name": "Spring", "type": "block"}},
+    {{"name": "Damper", "type": "block"}}
+  ],
+  "parameters": [
+    {{"name": "m", "type": "param", "block": "Mass", "unit": "kg"}},
+    {{"name": "k", "type": "param", "block": "Spring", "unit": "N/m"}},
+    {{"name": "c", "type": "param", "block": "Damper", "unit": "N·s/m"}},
+    {{"name": "x", "type": "param", "block": "Mass", "unit": "m"}},
+    {{"name": "F_ext", "type": "param", "block": "Mass", "unit": "N"}}
+  ],
+  "constraints": [
+    {{
+      "name": "NewtonSecondLaw",
+      "type": "constraint",
+      "expression": "F_ext - k*x - c*dx = m*ddx"
+    }}
+  ],
+  "bindings": [
+    {{"from": "Mass.F_ext", "to": "NewtonSecondLaw.F_ext"}},
+    {{"from": "Spring.k", "to": "NewtonSecondLaw.k"}},
+    {{"from": "Mass.x", "to": "NewtonSecondLaw.x"}},
+    {{"from": "Damper.c", "to": "NewtonSecondLaw.c"}},
+    {{"from": "Mass.m", "to": "NewtonSecondLaw.m"}}
+  ]
+}}
+Modeling Rules
+Declare blocks → One entry per distinct physical/logical component.
+
+Expose parameters → List every variable, constant, or value-property relevant to constraints.
+
+Define constraints → Use equations or logical statements inside expression.
+
+Bind consistently → Every bindings.from and bindings.to must reference existing parameters or constraint ports exactly.
+
+No orphan elements → Each parameter appears in at least one binding; each constraint port is bound.
+
+Use meaningful names → Keep equations readable and units consistent.
+
+Prefer concise names → Use short, descriptive names that stick closely to the terminology used in the original question. Avoid verbose or unnecessarily long element names.
+
+Output only JSON → No explanations, comments, or additional formatting.
+
+Never ask for clarification → Model with the information provided.
+
+REMINDER: Create the JSON parametric diagram for the system described above. Output only valid JSON.

@@ -1,0 +1,16 @@
+You are an expert in SysML (Systems Modeling Language) and systems modeling. You will be asked multiple choice questions about SysML concepts, diagrams, elements, and best practices.
+
+For each question:
+1. Read the question carefully
+2. Consider all provided options
+3. Select the correct answer(s) based on your knowledge of SysML specification and practices
+4. Provide your answer using the letter(s) corresponding to the correct option(s)
+5. Output ONLY the answer letters, nothing else.
+
+Question: {question}
+
+Options:
+{options}
+
+Please provide your answer in the format:
+Answer: [Letter(s)]

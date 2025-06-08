@@ -1,0 +1,1445 @@
+[
+  {
+    "question": "Create a SysML sequence diagram for this coffee-machine interaction: A user turns on the machine, the machine heats water, checks if water is sufficient, brews coffee if yes, otherwise shows an error. It then turns off and notifies the user. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "CoffeeMachineSequence",
+      "lifelines": [
+        {
+          "name": "User",
+          "type": "actor"
+        },
+        {
+          "name": "CoffeeMachine",
+          "type": "system"
+        }
+      ],
+      "messages": [
+        {
+          "from": "User",
+          "to": "CoffeeMachine",
+          "name": "turnOn()",
+          "type": "synchronous"
+        },
+        {
+          "from": "CoffeeMachine",
+          "to": "CoffeeMachine",
+          "name": "heatWater()",
+          "type": "synchronous"
+        },
+        {
+          "from": "CoffeeMachine",
+          "to": "CoffeeMachine",
+          "name": "checkWater()",
+          "type": "synchronous"
+        },
+        {
+          "from": "CoffeeMachine",
+          "to": "CoffeeMachine",
+          "name": "brewCoffee()",
+          "type": "synchronous"
+        },
+        {
+          "from": "CoffeeMachine",
+          "to": "CoffeeMachine",
+          "name": "displayError()",
+          "type": "synchronous"
+        },
+        {
+          "from": "CoffeeMachine",
+          "to": "CoffeeMachine",
+          "name": "turnOff()",
+          "type": "synchronous"
+        },
+        {
+          "from": "CoffeeMachine",
+          "to": "User",
+          "name": "notify()",
+          "type": "reply"
+        }
+      ],
+      "fragments": [
+        {
+          "type": "alt",
+          "condition": "enoughWater",
+          "messages": [
+            "checkWater()",
+            "brewCoffee()"
+          ]
+        },
+        {
+          "type": "alt",
+          "condition": "not enoughWater",
+          "messages": [
+            "checkWater()",
+            "displayError()"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML sequence diagram for an assignment submission: Student submits, System checks deadline, records on-time if before deadline otherwise marks late, then sends confirmation. Provide JSON format.",
+    "desired_model": {
+      "name": "AssignmentSubmissionSequence",
+      "lifelines": [
+        {
+          "name": "Student",
+          "type": "actor"
+        },
+        {
+          "name": "SubmissionSystem",
+          "type": "system"
+        }
+      ],
+      "messages": [
+        {
+          "from": "Student",
+          "to": "SubmissionSystem",
+          "name": "submit(file)",
+          "type": "synchronous"
+        },
+        {
+          "from": "SubmissionSystem",
+          "to": "SubmissionSystem",
+          "name": "checkDeadline()",
+          "type": "synchronous"
+        },
+        {
+          "from": "SubmissionSystem",
+          "to": "SubmissionSystem",
+          "name": "recordOnTime()",
+          "type": "synchronous"
+        },
+        {
+          "from": "SubmissionSystem",
+          "to": "SubmissionSystem",
+          "name": "markLate()",
+          "type": "synchronous"
+        },
+        {
+          "from": "SubmissionSystem",
+          "to": "Student",
+          "name": "sendConfirmation()",
+          "type": "reply"
+        }
+      ],
+      "fragments": [
+        {
+          "type": "alt",
+          "condition": "beforeDeadline",
+          "messages": [
+            "checkDeadline()",
+            "recordOnTime()"
+          ]
+        },
+        {
+          "type": "alt",
+          "condition": "afterDeadline",
+          "messages": [
+            "checkDeadline()",
+            "markLate()"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML sequence diagram for a smart-home security alert scenario: When an intruder opens the DoorSensor, the DoorSensor notifies the SecurityHub. The SecurityHub then triggers the Alarm and sends a push notification to the HomeownerApp. Use the following lifelines: 'DoorSensor' (component), 'SecurityHub' (system), 'Alarm' (component), and 'HomeownerApp' (actor). Use the following message names: 'intrusionDetected()', 'activate()', and 'pushAlert()'. Provide the result in the specified JSON format.",
+    "desired_model": {
+      "name": "SecurityAlertSequence",
+      "lifelines": [
+        {
+          "name": "DoorSensor",
+          "type": "component"
+        },
+        {
+          "name": "SecurityHub",
+          "type": "system"
+        },
+        {
+          "name": "Alarm",
+          "type": "component"
+        },
+        {
+          "name": "HomeownerApp",
+          "type": "actor"
+        }
+      ],
+      "messages": [
+        {
+          "from": "DoorSensor",
+          "to": "SecurityHub",
+          "name": "intrusionDetected()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "SecurityHub",
+          "to": "Alarm",
+          "name": "activate()",
+          "type": "synchronous"
+        },
+        {
+          "from": "SecurityHub",
+          "to": "HomeownerApp",
+          "name": "pushAlert()",
+          "type": "asynchronous"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Generate a SysML sequence diagram for an autonomous drone delivery: Customer places order, ControlCenter schedules Drone, Drone confirms, Drone delivers package, Customer acknowledges. Provide JSON format.",
+    "desired_model": {
+      "name": "DroneDeliverySequence",
+      "lifelines": [
+        {
+          "name": "Customer",
+          "type": "actor"
+        },
+        {
+          "name": "ControlCenter",
+          "type": "system"
+        },
+        {
+          "name": "Drone",
+          "type": "system"
+        }
+      ],
+      "messages": [
+        {
+          "from": "Customer",
+          "to": "ControlCenter",
+          "name": "placeOrder()",
+          "type": "synchronous"
+        },
+        {
+          "from": "ControlCenter",
+          "to": "Drone",
+          "name": "scheduleDelivery(order)",
+          "type": "asynchronous"
+        },
+        {
+          "from": "Drone",
+          "to": "ControlCenter",
+          "name": "confirmSchedule()",
+          "type": "reply"
+        },
+        {
+          "from": "Drone",
+          "to": "Customer",
+          "name": "deliverPackage()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "Customer",
+          "to": "ControlCenter",
+          "name": "acknowledgeDelivery()",
+          "type": "reply"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Create a SysML sequence diagram for an EV charging session with the following participants: Driver (actor), ChargingStation (system), and PaymentGateway (component). The process is as follows: The Driver authenticates with the ChargingStation using a token. The ChargingStation starts power delivery. The Driver stops the charging session. The ChargingStation sends an asynchronous processPayment() message to the PaymentGateway. The PaymentGateway replies with paymentResult(). The ChargingStation sends a sessionSummary() reply to the Driver. Use these exact names for all lifelines and messages. Provide the diagram in the specified JSON format.",
+    "desired_model": {
+      "name": "EVChargingSequence",
+      "lifelines": [
+        {
+          "name": "Driver",
+          "type": "actor"
+        },
+        {
+          "name": "ChargingStation",
+          "type": "system"
+        },
+        {
+          "name": "PaymentGateway",
+          "type": "component"
+        }
+      ],
+      "messages": [
+        {
+          "from": "Driver",
+          "to": "ChargingStation",
+          "name": "authenticate(token)",
+          "type": "synchronous"
+        },
+        {
+          "from": "ChargingStation",
+          "to": "ChargingStation",
+          "name": "startPower()",
+          "type": "synchronous"
+        },
+        {
+          "from": "Driver",
+          "to": "ChargingStation",
+          "name": "stopCharging()",
+          "type": "synchronous"
+        },
+        {
+          "from": "ChargingStation",
+          "to": "PaymentGateway",
+          "name": "processPayment()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "PaymentGateway",
+          "to": "ChargingStation",
+          "name": "paymentResult()",
+          "type": "reply"
+        },
+        {
+          "from": "ChargingStation",
+          "to": "Driver",
+          "name": "sessionSummary()",
+          "type": "reply"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Generate a SysML sequence diagram for an online bookstore order process with the following architecture: The system includes the following participants: 'User' (actor), 'WebPortal' (system), 'OrderService' (system), 'InventoryDB' (component), and 'PaymentGateway' (component). The process is as follows: The User searches for a book using the WebPortal, selects an item, and initiates an order. The WebPortal sends a createOrder() request to the OrderService. The OrderService checks inventory by sending reserveStock() to InventoryDB, then processes payment by sending charge() asynchronously to PaymentGateway. Upon receiving chargeResult() from PaymentGateway, the OrderService sends confirmOrder() as a reply to the User. Use these exact participant and message names in your model. Provide the sequence diagram in JSON format.",
+    "desired_model": {
+      "name": "BookstoreOrderSequence",
+      "lifelines": [
+        {
+          "name": "User",
+          "type": "actor"
+        },
+        {
+          "name": "WebPortal",
+          "type": "system"
+        },
+        {
+          "name": "OrderService",
+          "type": "system"
+        },
+        {
+          "name": "InventoryDB",
+          "type": "component"
+        },
+        {
+          "name": "PaymentGateway",
+          "type": "component"
+        }
+      ],
+      "messages": [
+        {
+          "from": "User",
+          "to": "WebPortal",
+          "name": "searchBook()",
+          "type": "synchronous"
+        },
+        {
+          "from": "WebPortal",
+          "to": "OrderService",
+          "name": "createOrder()",
+          "type": "synchronous"
+        },
+        {
+          "from": "OrderService",
+          "to": "InventoryDB",
+          "name": "reserveStock()",
+          "type": "synchronous"
+        },
+        {
+          "from": "OrderService",
+          "to": "PaymentGateway",
+          "name": "charge()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "PaymentGateway",
+          "to": "OrderService",
+          "name": "chargeResult()",
+          "type": "reply"
+        },
+        {
+          "from": "OrderService",
+          "to": "User",
+          "name": "confirmOrder()",
+          "type": "reply"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Design a SysML sequence diagram for a hospital alert: Sensor measures vitals, sends data to Server, Server evaluates, if critical sends alert to NurseDashboard and triggers Alarm. Provide JSON format.",
+    "desired_model": {
+      "name": "HospitalAlertSequence",
+      "lifelines": [
+        {
+          "name": "VitalSensor",
+          "type": "component"
+        },
+        {
+          "name": "MonitoringServer",
+          "type": "system"
+        },
+        {
+          "name": "NurseDashboard",
+          "type": "actor"
+        },
+        {
+          "name": "Alarm",
+          "type": "component"
+        }
+      ],
+      "messages": [
+        {
+          "from": "VitalSensor",
+          "to": "MonitoringServer",
+          "name": "sendVitals()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "MonitoringServer",
+          "to": "MonitoringServer",
+          "name": "evaluateVitals()",
+          "type": "synchronous"
+        },
+        {
+          "from": "MonitoringServer",
+          "to": "NurseDashboard",
+          "name": "pushAlert()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "MonitoringServer",
+          "to": "Alarm",
+          "name": "activate()",
+          "type": "asynchronous"
+        }
+      ],
+      "fragments": [
+        {
+          "type": "alt",
+          "condition": "vitalsCritical",
+          "messages": [
+            "evaluateVitals()",
+            "pushAlert()",
+            "activate()"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML sequence diagram for a weather satellite downlink process. The process consists of the following steps: (1) The Satellite captures an image (model this as a synchronous message from Satellite to itself named 'captureImage()'), (2) the Satellite sends the image to the GroundStation ('downlinkData()' as an asynchronous message), (3) the GroundStation sends the data to the DataCenter ('storeData()' as an asynchronous message), (4) the Analyst retrieves the data from the DataCenter ('retrieveData()' as a synchronous message), and (5) the DataCenter delivers the data to the Analyst ('deliverData()' as a reply message). Use the following lifeline names and types: 'Satellite' (system), 'GroundStation' (system), 'DataCenter' (component), 'Analyst' (actor). Provide the sequence diagram in the specified JSON format.",
+    "desired_model": {
+      "name": "SatelliteDownlinkSequence",
+      "lifelines": [
+        {
+          "name": "Satellite",
+          "type": "system"
+        },
+        {
+          "name": "GroundStation",
+          "type": "system"
+        },
+        {
+          "name": "DataCenter",
+          "type": "component"
+        },
+        {
+          "name": "Analyst",
+          "type": "actor"
+        }
+      ],
+      "messages": [
+        {
+          "from": "Satellite",
+          "to": "Satellite",
+          "name": "captureImage()",
+          "type": "synchronous"
+        },
+        {
+          "from": "Satellite",
+          "to": "GroundStation",
+          "name": "downlinkData()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "GroundStation",
+          "to": "DataCenter",
+          "name": "storeData()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "Analyst",
+          "to": "DataCenter",
+          "name": "retrieveData()",
+          "type": "synchronous"
+        },
+        {
+          "from": "DataCenter",
+          "to": "Analyst",
+          "name": "deliverData()",
+          "type": "reply"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Generate a SysML sequence diagram for a robot arm pick-and-place process: The 'Controller' sends a 'pick(target)' command to the 'RobotArm'. The 'RobotArm' performs the pick and sends a 'verifyPick()' message to the 'VisionSystem'. The 'VisionSystem' replies with 'verificationResult()'. The 'RobotArm' then completes the place operation and sends 'placeComplete()' to the 'Controller'. Finally, the 'Controller' logs the completion with a 'log()' self-message. Use the following lifeline names: 'Controller', 'RobotArm', 'VisionSystem'. Use the following message names: 'pick(target)', 'verifyPick()', 'verificationResult()', 'placeComplete()', 'log()'. Specify message types as in the expected result.",
+    "desired_model": {
+      "name": "RobotPickPlaceSequence",
+      "lifelines": [
+        {
+          "name": "Controller",
+          "type": "system"
+        },
+        {
+          "name": "RobotArm",
+          "type": "component"
+        },
+        {
+          "name": "VisionSystem",
+          "type": "component"
+        }
+      ],
+      "messages": [
+        {
+          "from": "Controller",
+          "to": "RobotArm",
+          "name": "pick(target)",
+          "type": "synchronous"
+        },
+        {
+          "from": "RobotArm",
+          "to": "VisionSystem",
+          "name": "verifyPick()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "VisionSystem",
+          "to": "RobotArm",
+          "name": "verificationResult()",
+          "type": "reply"
+        },
+        {
+          "from": "RobotArm",
+          "to": "Controller",
+          "name": "placeComplete()",
+          "type": "reply"
+        },
+        {
+          "from": "Controller",
+          "to": "Controller",
+          "name": "log()",
+          "type": "synchronous"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Create a SysML sequence diagram for an e-commerce payment: Shopper submits cart, MerchantSite requests PaymentGateway, Gateway calls BankAPI, returns result, Merchant notifies Shopper. Provide JSON format.",
+    "desired_model": {
+      "name": "EcommercePaymentSequence",
+      "lifelines": [
+        {
+          "name": "Shopper",
+          "type": "actor"
+        },
+        {
+          "name": "MerchantSite",
+          "type": "system"
+        },
+        {
+          "name": "PaymentGateway",
+          "type": "system"
+        },
+        {
+          "name": "BankAPI",
+          "type": "component"
+        }
+      ],
+      "messages": [
+        {
+          "from": "Shopper",
+          "to": "MerchantSite",
+          "name": "submitCart()",
+          "type": "synchronous"
+        },
+        {
+          "from": "MerchantSite",
+          "to": "PaymentGateway",
+          "name": "authorizePayment()",
+          "type": "synchronous"
+        },
+        {
+          "from": "PaymentGateway",
+          "to": "BankAPI",
+          "name": "process()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "BankAPI",
+          "to": "PaymentGateway",
+          "name": "approval()",
+          "type": "reply"
+        },
+        {
+          "from": "PaymentGateway",
+          "to": "MerchantSite",
+          "name": "paymentStatus()",
+          "type": "reply"
+        },
+        {
+          "from": "MerchantSite",
+          "to": "Shopper",
+          "name": "orderConfirmation()",
+          "type": "reply"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Generate a SysML sequence diagram for an irrigation controller cycle: The 'MoistureSensor' component reads soil moisture and sends the value to the 'IrrigationController' system. The controller compares the received moisture value to a defined 'threshold'. If the moisture is below the threshold, the controller sends an 'open()' command to the 'Valve' component; otherwise, it sends a 'close()' command. After issuing the valve command, the controller logs the status by invoking 'logStatus()'. Use the following naming conventions for lifelines: 'MoistureSensor', 'IrrigationController', and 'Valve'. Use the following message names: 'moistureLevel()', 'open()', 'close()', and 'logStatus()'. Express the decision condition as 'moisture < threshold'. Provide the sequence diagram in the specified JSON format.",
+    "desired_model": {
+      "name": "IrrigationCycleSequence",
+      "lifelines": [
+        {
+          "name": "MoistureSensor",
+          "type": "component"
+        },
+        {
+          "name": "IrrigationController",
+          "type": "system"
+        },
+        {
+          "name": "Valve",
+          "type": "component"
+        }
+      ],
+      "messages": [
+        {
+          "from": "MoistureSensor",
+          "to": "IrrigationController",
+          "name": "moistureLevel()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "IrrigationController",
+          "to": "Valve",
+          "name": "open()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "IrrigationController",
+          "to": "Valve",
+          "name": "close()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "IrrigationController",
+          "to": "IrrigationController",
+          "name": "logStatus()",
+          "type": "synchronous"
+        }
+      ],
+      "fragments": [
+        {
+          "type": "alt",
+          "condition": "moisture < threshold",
+          "messages": [
+            "moistureLevel()",
+            "open()",
+            "logStatus()"
+          ]
+        },
+        {
+          "type": "alt",
+          "condition": "moisture \u2265 threshold",
+          "messages": [
+            "moistureLevel()",
+            "close()",
+            "logStatus()"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML sequence diagram for a bike rental process using the following participants: 'Rider' (actor), 'MobileApp' (system), 'CentralServer' (system), and 'DockingStation' (component). The process is as follows: Rider sends 'requestUnlock()' to MobileApp; MobileApp sends 'unlockRequest()' to CentralServer; CentralServer sends 'unlockBike()' to DockingStation; DockingStation replies with 'unlockConfirm()' to CentralServer; CentralServer replies with 'unlockSuccess()' to MobileApp. After the ride, DockingStation sends 'bikeReturned()' to CentralServer, and CentralServer sends 'chargeAccount()' to Rider. Specify all message types (synchronous, asynchronous, reply) as shown.",
+    "desired_model": {
+      "name": "BikeRentalSequence",
+      "lifelines": [
+        {
+          "name": "Rider",
+          "type": "actor"
+        },
+        {
+          "name": "MobileApp",
+          "type": "system"
+        },
+        {
+          "name": "CentralServer",
+          "type": "system"
+        },
+        {
+          "name": "DockingStation",
+          "type": "component"
+        }
+      ],
+      "messages": [
+        {
+          "from": "Rider",
+          "to": "MobileApp",
+          "name": "requestUnlock()",
+          "type": "synchronous"
+        },
+        {
+          "from": "MobileApp",
+          "to": "CentralServer",
+          "name": "unlockRequest()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "CentralServer",
+          "to": "DockingStation",
+          "name": "unlockBike()",
+          "type": "synchronous"
+        },
+        {
+          "from": "DockingStation",
+          "to": "CentralServer",
+          "name": "unlockConfirm()",
+          "type": "reply"
+        },
+        {
+          "from": "CentralServer",
+          "to": "MobileApp",
+          "name": "unlockSuccess()",
+          "type": "reply"
+        },
+        {
+          "from": "DockingStation",
+          "to": "CentralServer",
+          "name": "bikeReturned()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "CentralServer",
+          "to": "Rider",
+          "name": "chargeAccount()",
+          "type": "asynchronous"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Generate a SysML sequence diagram for a warehouse robot inventory update: Worker scans item, Scanner sends to InventorySystem, System updates DB, Robot moves item to rack, System confirms. Provide JSON format.",
+    "desired_model": {
+      "name": "InventoryUpdateSequence",
+      "lifelines": [
+        {
+          "name": "Worker",
+          "type": "actor"
+        },
+        {
+          "name": "BarcodeScanner",
+          "type": "component"
+        },
+        {
+          "name": "InventorySystem",
+          "type": "system"
+        },
+        {
+          "name": "RobotCart",
+          "type": "component"
+        }
+      ],
+      "messages": [
+        {
+          "from": "Worker",
+          "to": "BarcodeScanner",
+          "name": "scanItem()",
+          "type": "synchronous"
+        },
+        {
+          "from": "BarcodeScanner",
+          "to": "InventorySystem",
+          "name": "itemInfo()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "InventorySystem",
+          "to": "InventorySystem",
+          "name": "updateDB()",
+          "type": "synchronous"
+        },
+        {
+          "from": "InventorySystem",
+          "to": "RobotCart",
+          "name": "moveItem()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "RobotCart",
+          "to": "InventorySystem",
+          "name": "moveComplete()",
+          "type": "reply"
+        },
+        {
+          "from": "InventorySystem",
+          "to": "Worker",
+          "name": "updateComplete()",
+          "type": "reply"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Design a SysML sequence diagram for a social media feed request: User opens MobileClient app, MobileClient requests FeedService, FeedService queries RecommendationEngine and Database, returns feed, MobileClient displays feed to User. Use the following lifeline names and types: 'User' (actor), 'MobileClient' (system), 'FeedService' (system), 'RecommendationEngine' (component), 'Database' (component). Use the following message names in order: 'openApp()', 'getFeed()', 'recommend()', 'fetchPosts()', 'posts()', 'feedData()', 'feed()', 'displayFeed()'. Specify message types as follows: 'openApp()' (synchronous), 'getFeed()' (asynchronous), 'recommend()' (synchronous), 'fetchPosts()' (asynchronous), 'posts()' (reply), 'feedData()' (reply), 'feed()' (reply), 'displayFeed()' (reply). Provide JSON format.",
+    "desired_model": {
+      "name": "FeedRequestSequence",
+      "lifelines": [
+        {
+          "name": "User",
+          "type": "actor"
+        },
+        {
+          "name": "MobileClient",
+          "type": "system"
+        },
+        {
+          "name": "FeedService",
+          "type": "system"
+        },
+        {
+          "name": "RecommendationEngine",
+          "type": "component"
+        },
+        {
+          "name": "Database",
+          "type": "component"
+        }
+      ],
+      "messages": [
+        {
+          "from": "User",
+          "to": "MobileClient",
+          "name": "openApp()",
+          "type": "synchronous"
+        },
+        {
+          "from": "MobileClient",
+          "to": "FeedService",
+          "name": "getFeed()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "FeedService",
+          "to": "RecommendationEngine",
+          "name": "recommend()",
+          "type": "synchronous"
+        },
+        {
+          "from": "RecommendationEngine",
+          "to": "Database",
+          "name": "fetchPosts()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "Database",
+          "to": "RecommendationEngine",
+          "name": "posts()",
+          "type": "reply"
+        },
+        {
+          "from": "RecommendationEngine",
+          "to": "FeedService",
+          "name": "feedData()",
+          "type": "reply"
+        },
+        {
+          "from": "FeedService",
+          "to": "MobileClient",
+          "name": "feed()",
+          "type": "reply"
+        },
+        {
+          "from": "MobileClient",
+          "to": "User",
+          "name": "displayFeed()",
+          "type": "reply"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Create a SysML sequence diagram for a food delivery order process with the following participants: Customer (actor), MobileApp (system), DeliveryServer (system), Restaurant (actor), and Courier (actor). The process is: Customer places order via MobileApp; MobileApp submits order to DeliveryServer; DeliveryServer sends new order to Restaurant; Restaurant confirms order is ready to DeliveryServer; DeliveryServer sends pickup request to Courier; Courier confirms pickup to DeliveryServer; DeliveryServer sends status update to MobileApp; MobileApp shows status to Customer. Use these exact participant and message names. Provide JSON.",
+    "desired_model": {
+      "name": "FoodDeliverySequence",
+      "lifelines": [
+        {
+          "name": "Customer",
+          "type": "actor"
+        },
+        {
+          "name": "MobileApp",
+          "type": "system"
+        },
+        {
+          "name": "DeliveryServer",
+          "type": "system"
+        },
+        {
+          "name": "Restaurant",
+          "type": "actor"
+        },
+        {
+          "name": "Courier",
+          "type": "actor"
+        }
+      ],
+      "messages": [
+        {
+          "from": "Customer",
+          "to": "MobileApp",
+          "name": "placeOrder()",
+          "type": "synchronous"
+        },
+        {
+          "from": "MobileApp",
+          "to": "DeliveryServer",
+          "name": "submitOrder()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "DeliveryServer",
+          "to": "Restaurant",
+          "name": "newOrder()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "Restaurant",
+          "to": "DeliveryServer",
+          "name": "orderReady()",
+          "type": "reply"
+        },
+        {
+          "from": "DeliveryServer",
+          "to": "Courier",
+          "name": "pickupRequest()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "Courier",
+          "to": "DeliveryServer",
+          "name": "pickupConfirm()",
+          "type": "reply"
+        },
+        {
+          "from": "DeliveryServer",
+          "to": "MobileApp",
+          "name": "statusUpdate()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "MobileApp",
+          "to": "Customer",
+          "name": "showStatus()",
+          "type": "reply"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Generate a SysML sequence diagram for a car rental booking process with the following participants: Renter (actor), RentalPortal (system), RentalServer (system), VehicleDB (component), and PaymentProcessor (component). The process is as follows: Renter sends searchCars() to RentalPortal; RentalPortal sends getAvailability() (asynchronous) to RentalServer; RentalServer sends queryCars() to VehicleDB; VehicleDB replies with availabilityList() to RentalServer; RentalServer replies with offer() to RentalPortal; Renter sends bookCar() to RentalPortal; RentalPortal sends pay() (asynchronous) to PaymentProcessor; PaymentProcessor replies with paymentOK() to RentalPortal; RentalPortal replies with bookingConfirm() to Renter. Provide the sequence diagram in JSON format using these exact names.",
+    "desired_model": {
+      "name": "CarRentalBookingSequence",
+      "lifelines": [
+        {
+          "name": "Renter",
+          "type": "actor"
+        },
+        {
+          "name": "RentalPortal",
+          "type": "system"
+        },
+        {
+          "name": "RentalServer",
+          "type": "system"
+        },
+        {
+          "name": "VehicleDB",
+          "type": "component"
+        },
+        {
+          "name": "PaymentProcessor",
+          "type": "component"
+        }
+      ],
+      "messages": [
+        {
+          "from": "Renter",
+          "to": "RentalPortal",
+          "name": "searchCars()",
+          "type": "synchronous"
+        },
+        {
+          "from": "RentalPortal",
+          "to": "RentalServer",
+          "name": "getAvailability()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "RentalServer",
+          "to": "VehicleDB",
+          "name": "queryCars()",
+          "type": "synchronous"
+        },
+        {
+          "from": "VehicleDB",
+          "to": "RentalServer",
+          "name": "availabilityList()",
+          "type": "reply"
+        },
+        {
+          "from": "RentalServer",
+          "to": "RentalPortal",
+          "name": "offer()",
+          "type": "reply"
+        },
+        {
+          "from": "Renter",
+          "to": "RentalPortal",
+          "name": "bookCar()",
+          "type": "synchronous"
+        },
+        {
+          "from": "RentalPortal",
+          "to": "PaymentProcessor",
+          "name": "pay()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "PaymentProcessor",
+          "to": "RentalPortal",
+          "name": "paymentOK()",
+          "type": "reply"
+        },
+        {
+          "from": "RentalPortal",
+          "to": "Renter",
+          "name": "bookingConfirm()",
+          "type": "reply"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Create a SysML sequence diagram for a smart traffic light update cycle: Sensor sends traffic count, ControlCenter recalculates timing, IntersectionController sets new plan, Ack returns. Provide JSON format.",
+    "desired_model": {
+      "name": "TrafficLightUpdateSequence",
+      "lifelines": [
+        {
+          "name": "TrafficSensor",
+          "type": "component"
+        },
+        {
+          "name": "ControlCenter",
+          "type": "system"
+        },
+        {
+          "name": "IntersectionController",
+          "type": "system"
+        }
+      ],
+      "messages": [
+        {
+          "from": "TrafficSensor",
+          "to": "ControlCenter",
+          "name": "trafficData()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "ControlCenter",
+          "to": "ControlCenter",
+          "name": "computeTiming()",
+          "type": "synchronous"
+        },
+        {
+          "from": "ControlCenter",
+          "to": "IntersectionController",
+          "name": "setPlan()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "IntersectionController",
+          "to": "ControlCenter",
+          "name": "ack()",
+          "type": "reply"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Generate a SysML sequence diagram for a lunar rover sample collection mission. The participants are: MissionControl (actor), LunarRover (system), and NavigationCamera (component of the rover). The sequence is as follows: MissionControl sends 'navigateToSite()' to LunarRover; LunarRover performs 'drive()'; NavigationCamera sends 'image()' to MissionControl; LunarRover performs 'collectSample()'; LunarRover sends 'sampleData()' to MissionControl. Provide the diagram in JSON format using these exact names for lifelines and messages.",
+    "desired_model": {
+      "name": "RoverSampleSequence",
+      "lifelines": [
+        {
+          "name": "MissionControl",
+          "type": "actor"
+        },
+        {
+          "name": "LunarRover",
+          "type": "system"
+        },
+        {
+          "name": "NavigationCamera",
+          "type": "component"
+        }
+      ],
+      "messages": [
+        {
+          "from": "MissionControl",
+          "to": "LunarRover",
+          "name": "navigateToSite()",
+          "type": "synchronous"
+        },
+        {
+          "from": "LunarRover",
+          "to": "LunarRover",
+          "name": "drive()",
+          "type": "synchronous"
+        },
+        {
+          "from": "NavigationCamera",
+          "to": "MissionControl",
+          "name": "image()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "LunarRover",
+          "to": "LunarRover",
+          "name": "collectSample()",
+          "type": "synchronous"
+        },
+        {
+          "from": "LunarRover",
+          "to": "MissionControl",
+          "name": "sampleData()",
+          "type": "asynchronous"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Create a SysML sequence diagram for course enrollment using the following standardized elements: Lifelines are 'Student' (actor), 'Portal' (system), 'EnrollmentServer' (system), and 'CourseDB' (component). The process is: Student selects course (enroll(course)), Portal sends processEnroll() to EnrollmentServer, EnrollmentServer checks prerequisites with checkPrereq() to CourseDB. If prerequisites are met, EnrollmentServer sends addStudent() to CourseDB, then sends enrollOK() (reply) to Portal. If prerequisites fail, EnrollmentServer sends enrollError() (reply) to Portal. Use message types: synchronous, asynchronous, and reply as appropriate. Provide the sequence diagram in JSON format.",
+    "desired_model": {
+      "name": "CourseEnrollmentSequence",
+      "lifelines": [
+        {
+          "name": "Student",
+          "type": "actor"
+        },
+        {
+          "name": "Portal",
+          "type": "system"
+        },
+        {
+          "name": "EnrollmentServer",
+          "type": "system"
+        },
+        {
+          "name": "CourseDB",
+          "type": "component"
+        }
+      ],
+      "messages": [
+        {
+          "from": "Student",
+          "to": "Portal",
+          "name": "enroll(course)",
+          "type": "synchronous"
+        },
+        {
+          "from": "Portal",
+          "to": "EnrollmentServer",
+          "name": "processEnroll()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "EnrollmentServer",
+          "to": "CourseDB",
+          "name": "checkPrereq()",
+          "type": "synchronous"
+        },
+        {
+          "from": "EnrollmentServer",
+          "to": "CourseDB",
+          "name": "addStudent()",
+          "type": "synchronous"
+        },
+        {
+          "from": "EnrollmentServer",
+          "to": "Portal",
+          "name": "enrollOK()",
+          "type": "reply"
+        },
+        {
+          "from": "EnrollmentServer",
+          "to": "Portal",
+          "name": "enrollError()",
+          "type": "reply"
+        }
+      ],
+      "fragments": [
+        {
+          "type": "alt",
+          "condition": "prereqMet",
+          "messages": [
+            "checkPrereq()",
+            "addStudent()",
+            "enrollOK()"
+          ]
+        },
+        {
+          "type": "alt",
+          "condition": "prereqFail",
+          "messages": [
+            "checkPrereq()",
+            "enrollError()"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML sequence diagram for hotel booking using the following standardized lifeline names: Guest (actor), BookingWebsite (system), ReservationServer (system), RoomDB (component), PaymentGateway (component). The process is: Guest searches for rooms, BookingWebsite queries ReservationServer, ReservationServer queries RoomDB, ReservationServer returns rates to BookingWebsite, BookingWebsite offers rate to Guest, Guest books a room, BookingWebsite processes payment via PaymentGateway, PaymentGateway confirms payment to BookingWebsite, BookingWebsite sends booking confirmation to Guest. Use the following message names in order: searchRooms(), getRates(), queryAvailability(), rates(), rateOffer(), bookRoom(), pay(), paymentOK(), bookingConfirm(). Provide JSON.",
+    "desired_model": {
+      "name": "HotelBookingSequence",
+      "lifelines": [
+        {
+          "name": "Guest",
+          "type": "actor"
+        },
+        {
+          "name": "BookingWebsite",
+          "type": "system"
+        },
+        {
+          "name": "ReservationServer",
+          "type": "system"
+        },
+        {
+          "name": "RoomDB",
+          "type": "component"
+        },
+        {
+          "name": "PaymentGateway",
+          "type": "component"
+        }
+      ],
+      "messages": [
+        {
+          "from": "Guest",
+          "to": "BookingWebsite",
+          "name": "searchRooms()",
+          "type": "synchronous"
+        },
+        {
+          "from": "BookingWebsite",
+          "to": "ReservationServer",
+          "name": "getRates()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "ReservationServer",
+          "to": "RoomDB",
+          "name": "queryAvailability()",
+          "type": "synchronous"
+        },
+        {
+          "from": "RoomDB",
+          "to": "ReservationServer",
+          "name": "rates()",
+          "type": "reply"
+        },
+        {
+          "from": "ReservationServer",
+          "to": "BookingWebsite",
+          "name": "rateOffer()",
+          "type": "reply"
+        },
+        {
+          "from": "BookingWebsite",
+          "to": "Guest",
+          "name": "rateOffer()",
+          "type": "reply"
+        },
+        {
+          "from": "Guest",
+          "to": "BookingWebsite",
+          "name": "bookRoom()",
+          "type": "synchronous"
+        },
+        {
+          "from": "BookingWebsite",
+          "to": "PaymentGateway",
+          "name": "pay()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "PaymentGateway",
+          "to": "BookingWebsite",
+          "name": "paymentOK()",
+          "type": "reply"
+        },
+        {
+          "from": "BookingWebsite",
+          "to": "Guest",
+          "name": "bookingConfirm()",
+          "type": "reply"
+        }
+      ],
+      "fragments": []
+    }
+  },
+  {
+    "question": "Design a SysML sequence diagram for a music stream request using the following conventions: Lifelines are 'Listener' (actor), 'ClientApp' (system), and 'StreamingServer' (system). The process is: Listener sends 'play(track)' to ClientApp; ClientApp sends 'requestStream()' to StreamingServer; StreamingServer sends 'audioChunk()' to ClientApp; ClientApp performs 'buffer()' as a synchronous self-message. This streaming (audioChunk() and buffer()) repeats in a loop fragment labeled 'while playing'. When Listener sends 'stop()' to ClientApp, ClientApp sends 'endStream()' to StreamingServer. Provide the sequence diagram in JSON format using these exact names.",
+    "desired_model": {
+      "name": "MusicStreamSequence",
+      "lifelines": [
+        {
+          "name": "Listener",
+          "type": "actor"
+        },
+        {
+          "name": "ClientApp",
+          "type": "system"
+        },
+        {
+          "name": "StreamingServer",
+          "type": "system"
+        }
+      ],
+      "messages": [
+        {
+          "from": "Listener",
+          "to": "ClientApp",
+          "name": "play(track)",
+          "type": "synchronous"
+        },
+        {
+          "from": "ClientApp",
+          "to": "StreamingServer",
+          "name": "requestStream()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "StreamingServer",
+          "to": "ClientApp",
+          "name": "audioChunk()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "ClientApp",
+          "to": "ClientApp",
+          "name": "buffer()",
+          "type": "synchronous"
+        },
+        {
+          "from": "Listener",
+          "to": "ClientApp",
+          "name": "stop()",
+          "type": "synchronous"
+        },
+        {
+          "from": "ClientApp",
+          "to": "StreamingServer",
+          "name": "endStream()",
+          "type": "asynchronous"
+        }
+      ],
+      "fragments": [
+        {
+          "type": "loop",
+          "condition": "while playing",
+          "messages": [
+            "audioChunk()",
+            "buffer()"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML sequence diagram for a waste bin fill alert system with the following participants: 'BinSensor' (component), 'GatewayNode' (system), 'CloudPlatform' (system), and 'CityWorkerApp' (actor). The process is: BinSensor sends 'fillData()' asynchronously to GatewayNode, GatewayNode forwards the data asynchronously as 'forwardData()' to CloudPlatform, CloudPlatform analyzes the fill level synchronously with 'analyzeFill()', and if the fill level is greater than 80%, CloudPlatform sends an asynchronous 'pickupRequest()' to CityWorkerApp. Provide the JSON sequence diagram using these exact names and message types.",
+    "desired_model": {
+      "name": "WasteBinAlertSequence",
+      "lifelines": [
+        {
+          "name": "BinSensor",
+          "type": "component"
+        },
+        {
+          "name": "GatewayNode",
+          "type": "system"
+        },
+        {
+          "name": "CloudPlatform",
+          "type": "system"
+        },
+        {
+          "name": "CityWorkerApp",
+          "type": "actor"
+        }
+      ],
+      "messages": [
+        {
+          "from": "BinSensor",
+          "to": "GatewayNode",
+          "name": "fillData()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "GatewayNode",
+          "to": "CloudPlatform",
+          "name": "forwardData()",
+          "type": "asynchronous"
+        },
+        {
+          "from": "CloudPlatform",
+          "to": "CloudPlatform",
+          "name": "analyzeFill()",
+          "type": "synchronous"
+        },
+        {
+          "from": "CloudPlatform",
+          "to": "CityWorkerApp",
+          "name": "pickupRequest()",
+          "type": "asynchronous"
+        }
+      ],
+      "fragments": [
+        {
+          "type": "alt",
+          "condition": "fill>80%",
+          "messages": [
+            "analyzeFill()",
+            "pickupRequest()"
+          ]
+        }
+      ]
+    }
+  }
+]

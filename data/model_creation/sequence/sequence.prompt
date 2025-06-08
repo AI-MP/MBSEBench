@@ -1,0 +1,107 @@
+You are an expert in SysML modeling.
+
+PROCESS TO MODEL:
+{system_description}
+
+TASK: Create a JSON sequence diagram for the process described above. Do not ask for clarification.
+
+Output Format
+You MUST output ONLY a valid JSON object following this exact schema:
+
+json
+Copy
+Edit
+{{
+  "name": "DiagramName",
+  "lifelines": [
+    {{"name": "ParticipantName", "type": "actor"}}
+  ],
+  "messages": [
+    {{"from": "Sender", "to": "Receiver", "name": "MessageLabel", "type": "synchronous"}}
+  ],
+  "fragments": [
+    {{"type": "alt", "condition": "GuardExpression", "messages": ["MessageLabel1", "MessageLabel2"]}}
+  ]
+}}
+Schema Requirements
+Root Field	Type	Notes
+name	string	Name of the sequence diagram
+lifelines	array	List of lifelines/participants (≥ 2)
+messages	array	Ordered list of interaction messages (≥ 1)
+fragments	array	Optional interaction fragments (loops, alternatives, parallels)
+
+Lifeline Object
+Field	Type	Allowed type values	Description
+name	string	—	Participant name (unique)
+type	string	"actor", "system", "component"	Participant category
+
+Message Object
+Field	Type	Allowed type values	Description
+from	string	—	Sender lifeline name (must exist)
+to	string	—	Receiver lifeline name (must exist)
+name	string	—	Message label
+type	string	"synchronous", "asynchronous", "reply", "create", "destroy"	Message kind
+guard	string	Optional	Condition for sending (e.g., "x > 0")
+
+Fragment Object (optional)
+Field	Type	Allowed type values	Description
+type	string	"alt", "opt", "loop", "par"	Fragment kind
+condition	string	Optional	Guard expression for fragment (for alt, opt, loop)
+messages	array	List of messages.name included in this fragment	
+
+Working Example
+json
+Copy
+Edit
+{{
+  "name": "CoffeeMachineSequence",
+  "lifelines": [
+    {{"name": "User", "type": "actor"}},
+    {{"name": "CoffeeMachine", "type": "system"}}
+  ],
+  "messages": [
+    {{"from": "User", "to": "CoffeeMachine", "name": "turnOn()", "type": "synchronous"}},
+    {{"from": "CoffeeMachine", "to": "CoffeeMachine", "name": "heatWater()", "type": "synchronous"}},
+    {{"from": "CoffeeMachine", "to": "CoffeeMachine", "name": "enoughWater?", "type": "synchronous"}},
+    {{"from": "CoffeeMachine", "to": "CoffeeMachine", "name": "brewCoffee()", "type": "synchronous"}},
+    {{"from": "CoffeeMachine", "to": "User", "name": "ready()", "type": "reply"}},
+    {{"from": "CoffeeMachine", "to": "CoffeeMachine", "name": "turnOff()", "type": "synchronous"}}
+  ],
+  "fragments": [
+    {{
+      "type": "alt",
+      "condition": "enoughWater == false",
+      "messages": ["enoughWater?", "turnOff()"]
+    }}
+  ]
+}}
+Modeling Rules
+Declare lifelines → Each actor, system, or component becomes a lifeline.
+
+Sequence messages → Order messages exactly as they occur in time.
+
+Select message types → Use synchronous for call/return, asynchronous for signals, etc.
+
+Capture control logic → Use fragments (alt, opt, loop, par) to model decisions, loops, and concurrency.
+
+Keep references consistent → messages.from, messages.to, and fragments.messages must match declared lifelines/message names exactly.
+
+No orphan messages → Every message listed in a fragment must exist in messages.
+
+Use clear, descriptive names.
+
+Prefer concise names → Use short, descriptive names that stick closely to the terminology used in the original question. Avoid verbose or unnecessarily long element names.
+
+Output only JSON → No explanations, comments, or extra formatting.
+
+Never ask for clarification → Model strictly with the information provided.
+
+REMINDER: Create the JSON sequence diagram for the process described at the top. Output only valid JSON.
+
+
+
+
+
+
+
+

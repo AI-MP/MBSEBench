@@ -1,0 +1,1273 @@
+[
+  {
+    "question": "Create a SysML internal block diagram for a smart home HVAC system: A SmartHome block contains a Thermostat, an HVACUnit, and a TemperatureSensor. The TemperatureSensor sends the current temperature to the Thermostat, which sends control commands to the HVACUnit. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "SmartHomeHVACIBD",
+      "blocks": [
+        {
+          "name": "SmartHome",
+          "type": "block"
+        },
+        {
+          "name": "Thermostat",
+          "type": "block"
+        },
+        {
+          "name": "HVACUnit",
+          "type": "block"
+        },
+        {
+          "name": "TemperatureSensor",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "thermostat",
+          "type": "part",
+          "block": "Thermostat"
+        },
+        {
+          "name": "hvac",
+          "type": "part",
+          "block": "HVACUnit"
+        },
+        {
+          "name": "tempSensor",
+          "type": "part",
+          "block": "TemperatureSensor"
+        }
+      ],
+      "ports": [
+        {
+          "name": "tempOut",
+          "type": "port",
+          "block": "TemperatureSensor"
+        },
+        {
+          "name": "roomTempIn",
+          "type": "port",
+          "block": "Thermostat"
+        },
+        {
+          "name": "hvacCmdOut",
+          "type": "port",
+          "block": "Thermostat"
+        },
+        {
+          "name": "cmdIn",
+          "type": "port",
+          "block": "HVACUnit"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "TemperatureSensor.tempOut",
+          "to": "Thermostat.roomTempIn"
+        },
+        {
+          "from": "Thermostat.hvacCmdOut",
+          "to": "HVACUnit.cmdIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML internal block diagram for an autonomous delivery drone: A Drone block contains a NavigationModule, a FlightController, and a PayloadBay. The NavigationModule provides GPS data to the FlightController, which sends deployment commands to the PayloadBay. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "AutonomousDeliveryDroneIBD",
+      "blocks": [
+        {
+          "name": "Drone",
+          "type": "block"
+        },
+        {
+          "name": "NavigationModule",
+          "type": "block"
+        },
+        {
+          "name": "FlightController",
+          "type": "block"
+        },
+        {
+          "name": "PayloadBay",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "nav",
+          "type": "part",
+          "block": "NavigationModule"
+        },
+        {
+          "name": "fc",
+          "type": "part",
+          "block": "FlightController"
+        },
+        {
+          "name": "bay",
+          "type": "part",
+          "block": "PayloadBay"
+        }
+      ],
+      "ports": [
+        {
+          "name": "gpsOut",
+          "type": "port",
+          "block": "NavigationModule"
+        },
+        {
+          "name": "gpsIn",
+          "type": "port",
+          "block": "FlightController"
+        },
+        {
+          "name": "deployCmdOut",
+          "type": "port",
+          "block": "FlightController"
+        },
+        {
+          "name": "deployCmdIn",
+          "type": "port",
+          "block": "PayloadBay"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "NavigationModule.gpsOut",
+          "to": "FlightController.gpsIn"
+        },
+        {
+          "from": "FlightController.deployCmdOut",
+          "to": "PayloadBay.deployCmdIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML internal block diagram for a coffee machine: A CoffeeMachine block contains a WaterHeater and a Brewer part. The WaterHeater outputs hot water to the Brewer. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "CoffeeMachineIBD",
+      "blocks": [
+        {
+          "name": "CoffeeMachine",
+          "type": "block"
+        },
+        {
+          "name": "WaterHeater",
+          "type": "block"
+        },
+        {
+          "name": "Brewer",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "heater",
+          "type": "part",
+          "block": "WaterHeater"
+        },
+        {
+          "name": "brewUnit",
+          "type": "part",
+          "block": "Brewer"
+        }
+      ],
+      "ports": [
+        {
+          "name": "hotWaterOut",
+          "type": "port",
+          "block": "WaterHeater"
+        },
+        {
+          "name": "hotWaterIn",
+          "type": "port",
+          "block": "Brewer"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "WaterHeater.hotWaterOut",
+          "to": "Brewer.hotWaterIn",
+          "kind": "assembly"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Develop a SysML internal block diagram for an electric vehicle charging station: A ChargingStation block contains a PowerModule, PaymentTerminal, and DisplayUnit. The PaymentTerminal sends paymentStatus to the DisplayUnit and enablePower to the PowerModule. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "EVChargingStationIBD",
+      "blocks": [
+        {
+          "name": "ChargingStation",
+          "type": "block"
+        },
+        {
+          "name": "PowerModule",
+          "type": "block"
+        },
+        {
+          "name": "PaymentTerminal",
+          "type": "block"
+        },
+        {
+          "name": "DisplayUnit",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "power",
+          "type": "part",
+          "block": "PowerModule"
+        },
+        {
+          "name": "terminal",
+          "type": "part",
+          "block": "PaymentTerminal"
+        },
+        {
+          "name": "display",
+          "type": "part",
+          "block": "DisplayUnit"
+        }
+      ],
+      "ports": [
+        {
+          "name": "enableOut",
+          "type": "port",
+          "block": "PaymentTerminal"
+        },
+        {
+          "name": "statusOut",
+          "type": "port",
+          "block": "PaymentTerminal"
+        },
+        {
+          "name": "enableIn",
+          "type": "port",
+          "block": "PowerModule"
+        },
+        {
+          "name": "statusIn",
+          "type": "port",
+          "block": "DisplayUnit"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "PaymentTerminal.enableOut",
+          "to": "PowerModule.enableIn"
+        },
+        {
+          "from": "PaymentTerminal.statusOut",
+          "to": "DisplayUnit.statusIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML internal block diagram for a hospital patient monitoring device: A MonitoringDevice block contains a VitalSensor and an AlertModule. The VitalSensor sends alert signals to the AlertModule when thresholds are exceeded. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "PatientMonitoringDeviceIBD",
+      "blocks": [
+        {
+          "name": "MonitoringDevice",
+          "type": "block"
+        },
+        {
+          "name": "VitalSensor",
+          "type": "block"
+        },
+        {
+          "name": "AlertModule",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "sensor",
+          "type": "part",
+          "block": "VitalSensor"
+        },
+        {
+          "name": "alert",
+          "type": "part",
+          "block": "AlertModule"
+        }
+      ],
+      "ports": [
+        {
+          "name": "alertOut",
+          "type": "port",
+          "block": "VitalSensor"
+        },
+        {
+          "name": "alertIn",
+          "type": "port",
+          "block": "AlertModule"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "VitalSensor.alertOut",
+          "to": "AlertModule.alertIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML internal block diagram for a weather satellite: A WeatherSatellite block contains a SensorArray and a Transmitter. The WeatherSatellite has two parts: 'sensorArray' (of type SensorArray) and 'transmitter' (of type Transmitter). Sensor data is sent from SensorArray to Transmitter for downlink via a port named 'dataOut' on SensorArray and a port named 'dataIn' on Transmitter. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "WeatherSatelliteIBD",
+      "blocks": [
+        {
+          "name": "WeatherSatellite",
+          "type": "block"
+        },
+        {
+          "name": "SensorArray",
+          "type": "block"
+        },
+        {
+          "name": "Transmitter",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "sensorArray",
+          "type": "part",
+          "block": "SensorArray"
+        },
+        {
+          "name": "transmitter",
+          "type": "part",
+          "block": "Transmitter"
+        }
+      ],
+      "ports": [
+        {
+          "name": "dataOut",
+          "type": "port",
+          "block": "SensorArray"
+        },
+        {
+          "name": "dataIn",
+          "type": "port",
+          "block": "Transmitter"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "SensorArray.dataOut",
+          "to": "Transmitter.dataIn",
+          "kind": "assembly"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Produce a SysML internal block diagram for an assembly line robot controller: A ControlUnit block contains a RobotArm and a VisionSystem. VisionSystem feeds objectPose to ControlUnit; ControlUnit sends motionCmd to RobotArm. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "AssemblyLineRobotIBD",
+      "blocks": [
+        {
+          "name": "ControlUnit",
+          "type": "block"
+        },
+        {
+          "name": "RobotArm",
+          "type": "block"
+        },
+        {
+          "name": "VisionSystem",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "arm",
+          "type": "part",
+          "block": "RobotArm"
+        },
+        {
+          "name": "vision",
+          "type": "part",
+          "block": "VisionSystem"
+        }
+      ],
+      "ports": [
+        {
+          "name": "poseOut",
+          "type": "port",
+          "block": "VisionSystem"
+        },
+        {
+          "name": "poseIn",
+          "type": "port",
+          "block": "ControlUnit"
+        },
+        {
+          "name": "cmdOut",
+          "type": "port",
+          "block": "ControlUnit"
+        },
+        {
+          "name": "cmdIn",
+          "type": "port",
+          "block": "RobotArm"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "VisionSystem.poseOut",
+          "to": "ControlUnit.poseIn"
+        },
+        {
+          "from": "ControlUnit.cmdOut",
+          "to": "RobotArm.cmdIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML internal block diagram for an e-commerce payment gateway backend: A PaymentGateway block contains a FraudCheckService (as part 'fraud') and a BankAPIAdapter (as part 'bank'). The PaymentGateway has a port 'txnOut' that connects to the 'txnIn' port of FraudCheckService, and a port 'payReqOut' that connects to the 'payReqIn' port of BankAPIAdapter. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "EcommercePaymentGatewayIBD",
+      "blocks": [
+        {
+          "name": "PaymentGateway",
+          "type": "block"
+        },
+        {
+          "name": "FraudCheckService",
+          "type": "block"
+        },
+        {
+          "name": "BankAPIAdapter",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "fraud",
+          "type": "part",
+          "block": "FraudCheckService"
+        },
+        {
+          "name": "bank",
+          "type": "part",
+          "block": "BankAPIAdapter"
+        }
+      ],
+      "ports": [
+        {
+          "name": "txnOut",
+          "type": "port",
+          "block": "PaymentGateway"
+        },
+        {
+          "name": "txnIn",
+          "type": "port",
+          "block": "FraudCheckService"
+        },
+        {
+          "name": "payReqOut",
+          "type": "port",
+          "block": "PaymentGateway"
+        },
+        {
+          "name": "payReqIn",
+          "type": "port",
+          "block": "BankAPIAdapter"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "PaymentGateway.txnOut",
+          "to": "FraudCheckService.txnIn"
+        },
+        {
+          "from": "PaymentGateway.payReqOut",
+          "to": "BankAPIAdapter.payReqIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML internal block diagram for an agricultural irrigation controller: An IrrigationController block contains MoistureSensorArray and ValveArray parts. The MoistureSensorArray outputs moistureData to IrrigationController, which sends openCmd to ValveArray. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "IrrigationControllerIBD",
+      "blocks": [
+        {
+          "name": "IrrigationController",
+          "type": "block"
+        },
+        {
+          "name": "MoistureSensorArray",
+          "type": "block"
+        },
+        {
+          "name": "ValveArray",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "sensors",
+          "type": "part",
+          "block": "MoistureSensorArray"
+        },
+        {
+          "name": "valves",
+          "type": "part",
+          "block": "ValveArray"
+        }
+      ],
+      "ports": [
+        {
+          "name": "moistureOut",
+          "type": "port",
+          "block": "MoistureSensorArray"
+        },
+        {
+          "name": "moistureIn",
+          "type": "port",
+          "block": "IrrigationController"
+        },
+        {
+          "name": "openCmdOut",
+          "type": "port",
+          "block": "IrrigationController"
+        },
+        {
+          "name": "openCmdIn",
+          "type": "port",
+          "block": "ValveArray"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "MoistureSensorArray.moistureOut",
+          "to": "IrrigationController.moistureIn"
+        },
+        {
+          "from": "IrrigationController.openCmdOut",
+          "to": "ValveArray.openCmdIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML internal block diagram for a bike sharing docking station: A DockingStation block contains BikeSlotArray and PaymentKiosk parts. The PaymentKiosk sends unlockSignal to BikeSlotArray to release bikes. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "BikeSharingDockingStationIBD",
+      "blocks": [
+        {
+          "name": "DockingStation",
+          "type": "block"
+        },
+        {
+          "name": "BikeSlotArray",
+          "type": "block"
+        },
+        {
+          "name": "PaymentKiosk",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "slots",
+          "type": "part",
+          "block": "BikeSlotArray"
+        },
+        {
+          "name": "kiosk",
+          "type": "part",
+          "block": "PaymentKiosk"
+        }
+      ],
+      "ports": [
+        {
+          "name": "unlockOut",
+          "type": "port",
+          "block": "PaymentKiosk"
+        },
+        {
+          "name": "unlockIn",
+          "type": "port",
+          "block": "BikeSlotArray"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "PaymentKiosk.unlockOut",
+          "to": "BikeSlotArray.unlockIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Develop a SysML internal block diagram for a warehouse inventory robot system: A RobotCart block contains two parts: 'navUnit' (of type NavigationUnit) and 'lift' (of type LiftMechanism). The NavigationUnit block has a port named 'posOut' that outputs positionData, and the LiftMechanism block has a port named 'posIn' that receives positionData. The connector between NavigationUnit.posOut and LiftMechanism.posIn must specify the signal 'positionData'. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "WarehouseRobotCartIBD",
+      "blocks": [
+        {
+          "name": "RobotCart",
+          "type": "block"
+        },
+        {
+          "name": "NavigationUnit",
+          "type": "block"
+        },
+        {
+          "name": "LiftMechanism",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "navUnit",
+          "type": "part",
+          "block": "NavigationUnit"
+        },
+        {
+          "name": "lift",
+          "type": "part",
+          "block": "LiftMechanism"
+        }
+      ],
+      "ports": [
+        {
+          "name": "posOut",
+          "type": "port",
+          "block": "NavigationUnit"
+        },
+        {
+          "name": "posIn",
+          "type": "port",
+          "block": "LiftMechanism"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "NavigationUnit.posOut",
+          "to": "LiftMechanism.posIn",
+          "signal": "positionData"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML internal block diagram for a social media backend server: A SocialMediaServer block contains a DatabaseModule and RecommendationEngine. RecommendationEngine queries DatabaseModule and outputs feedData to the APIAdapter. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "SocialMediaServerIBD",
+      "blocks": [
+        {
+          "name": "SocialMediaServer",
+          "type": "block"
+        },
+        {
+          "name": "DatabaseModule",
+          "type": "block"
+        },
+        {
+          "name": "RecommendationEngine",
+          "type": "block"
+        },
+        {
+          "name": "APIAdapter",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "db",
+          "type": "part",
+          "block": "DatabaseModule"
+        },
+        {
+          "name": "recommender",
+          "type": "part",
+          "block": "RecommendationEngine"
+        },
+        {
+          "name": "api",
+          "type": "part",
+          "block": "APIAdapter"
+        }
+      ],
+      "ports": [
+        {
+          "name": "queryOut",
+          "type": "port",
+          "block": "RecommendationEngine"
+        },
+        {
+          "name": "queryIn",
+          "type": "port",
+          "block": "DatabaseModule"
+        },
+        {
+          "name": "feedOut",
+          "type": "port",
+          "block": "RecommendationEngine"
+        },
+        {
+          "name": "feedIn",
+          "type": "port",
+          "block": "APIAdapter"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "RecommendationEngine.queryOut",
+          "to": "DatabaseModule.queryIn"
+        },
+        {
+          "from": "RecommendationEngine.feedOut",
+          "to": "APIAdapter.feedIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML internal block diagram for a food delivery server: A DeliveryServer block contains three parts named 'orderMgr' (of type OrderManager), 'dispatcher' (of type CourierDispatcher), and 'planner' (of type RoutePlanner). The OrderManager block has a port named 'dispatchReqOut' that connects to the 'dispatchReqIn' port of CourierDispatcher. The CourierDispatcher block has a port named 'etaReqOut' that connects to the 'etaReqIn' port of RoutePlanner. Provide the diagram in JSON format using these exact part and port names.",
+    "desired_model": {
+      "name": "FoodDeliveryServerIBD",
+      "blocks": [
+        {
+          "name": "DeliveryServer",
+          "type": "block"
+        },
+        {
+          "name": "OrderManager",
+          "type": "block"
+        },
+        {
+          "name": "CourierDispatcher",
+          "type": "block"
+        },
+        {
+          "name": "RoutePlanner",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "orderMgr",
+          "type": "part",
+          "block": "OrderManager"
+        },
+        {
+          "name": "dispatcher",
+          "type": "part",
+          "block": "CourierDispatcher"
+        },
+        {
+          "name": "planner",
+          "type": "part",
+          "block": "RoutePlanner"
+        }
+      ],
+      "ports": [
+        {
+          "name": "dispatchReqOut",
+          "type": "port",
+          "block": "OrderManager"
+        },
+        {
+          "name": "dispatchReqIn",
+          "type": "port",
+          "block": "CourierDispatcher"
+        },
+        {
+          "name": "etaReqOut",
+          "type": "port",
+          "block": "CourierDispatcher"
+        },
+        {
+          "name": "etaReqIn",
+          "type": "port",
+          "block": "RoutePlanner"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "OrderManager.dispatchReqOut",
+          "to": "CourierDispatcher.dispatchReqIn"
+        },
+        {
+          "from": "CourierDispatcher.etaReqOut",
+          "to": "RoutePlanner.etaReqIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Produce a SysML internal block diagram for a car rental backend: A RentalServer block contains VehicleInventory and PaymentAdapter. RentalServer requests paymentAuth from PaymentAdapter and vehicleStatus from VehicleInventory. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "CarRentalBackendIBD",
+      "blocks": [
+        {
+          "name": "RentalServer",
+          "type": "block"
+        },
+        {
+          "name": "VehicleInventory",
+          "type": "block"
+        },
+        {
+          "name": "PaymentAdapter",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "inventory",
+          "type": "part",
+          "block": "VehicleInventory"
+        },
+        {
+          "name": "payment",
+          "type": "part",
+          "block": "PaymentAdapter"
+        }
+      ],
+      "ports": [
+        {
+          "name": "statusReqOut",
+          "type": "port",
+          "block": "RentalServer"
+        },
+        {
+          "name": "statusReqIn",
+          "type": "port",
+          "block": "VehicleInventory"
+        },
+        {
+          "name": "payAuthOut",
+          "type": "port",
+          "block": "RentalServer"
+        },
+        {
+          "name": "payAuthIn",
+          "type": "port",
+          "block": "PaymentAdapter"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "RentalServer.statusReqOut",
+          "to": "VehicleInventory.statusReqIn"
+        },
+        {
+          "from": "RentalServer.payAuthOut",
+          "to": "PaymentAdapter.payAuthIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML internal block diagram for a smart traffic light controller. The system consists of a TrafficLightController block containing three internal parts: sensorIf (of type SensorInterface), logic (of type ControllerLogic), and driver (of type LightDriver). The SensorInterface part sends traffic data to the ControllerLogic part via the ports trafficOut (on SensorInterface) and trafficIn (on ControllerLogic). The ControllerLogic part sends the light state to the LightDriver part via the ports stateOut (on ControllerLogic) and stateIn (on LightDriver). Use these exact part and port names. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "SmartTrafficLightControllerIBD",
+      "blocks": [
+        {
+          "name": "TrafficLightController",
+          "type": "block"
+        },
+        {
+          "name": "SensorInterface",
+          "type": "block"
+        },
+        {
+          "name": "ControllerLogic",
+          "type": "block"
+        },
+        {
+          "name": "LightDriver",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "sensorIf",
+          "type": "part",
+          "block": "SensorInterface"
+        },
+        {
+          "name": "logic",
+          "type": "part",
+          "block": "ControllerLogic"
+        },
+        {
+          "name": "driver",
+          "type": "part",
+          "block": "LightDriver"
+        }
+      ],
+      "ports": [
+        {
+          "name": "trafficOut",
+          "type": "port",
+          "block": "SensorInterface"
+        },
+        {
+          "name": "trafficIn",
+          "type": "port",
+          "block": "ControllerLogic"
+        },
+        {
+          "name": "stateOut",
+          "type": "port",
+          "block": "ControllerLogic"
+        },
+        {
+          "name": "stateIn",
+          "type": "port",
+          "block": "LightDriver"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "SensorInterface.trafficOut",
+          "to": "ControllerLogic.trafficIn"
+        },
+        {
+          "from": "ControllerLogic.stateOut",
+          "to": "LightDriver.stateIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML internal block diagram for a lunar rover: A LunarRover block contains MobilitySubsystem and NavigationCamera. NavigationCamera sends imageData to AutonomyModule, which commands MobilitySubsystem. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "LunarRoverIBD",
+      "blocks": [
+        {
+          "name": "LunarRover",
+          "type": "block"
+        },
+        {
+          "name": "MobilitySubsystem",
+          "type": "block"
+        },
+        {
+          "name": "NavigationCamera",
+          "type": "block"
+        },
+        {
+          "name": "AutonomyModule",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "mobility",
+          "type": "part",
+          "block": "MobilitySubsystem"
+        },
+        {
+          "name": "navCam",
+          "type": "part",
+          "block": "NavigationCamera"
+        },
+        {
+          "name": "autonomy",
+          "type": "part",
+          "block": "AutonomyModule"
+        }
+      ],
+      "ports": [
+        {
+          "name": "imgOut",
+          "type": "port",
+          "block": "NavigationCamera"
+        },
+        {
+          "name": "imgIn",
+          "type": "port",
+          "block": "AutonomyModule"
+        },
+        {
+          "name": "cmdOut",
+          "type": "port",
+          "block": "AutonomyModule"
+        },
+        {
+          "name": "cmdIn",
+          "type": "port",
+          "block": "MobilitySubsystem"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "NavigationCamera.imgOut",
+          "to": "AutonomyModule.imgIn"
+        },
+        {
+          "from": "AutonomyModule.cmdOut",
+          "to": "MobilitySubsystem.cmdIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML internal block diagram for a university course registration server: A RegistrationServer block contains CourseCatalogDBAdapter and PaymentServiceAdapter. RegistrationServer queries CourseCatalogDBAdapter and sends feeRequest to PaymentServiceAdapter. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "CourseRegistrationServerIBD",
+      "blocks": [
+        {
+          "name": "RegistrationServer",
+          "type": "block"
+        },
+        {
+          "name": "CourseCatalogDBAdapter",
+          "type": "block"
+        },
+        {
+          "name": "PaymentServiceAdapter",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "catalog",
+          "type": "part",
+          "block": "CourseCatalogDBAdapter"
+        },
+        {
+          "name": "payment",
+          "type": "part",
+          "block": "PaymentServiceAdapter"
+        }
+      ],
+      "ports": [
+        {
+          "name": "queryOut",
+          "type": "port",
+          "block": "RegistrationServer"
+        },
+        {
+          "name": "queryIn",
+          "type": "port",
+          "block": "CourseCatalogDBAdapter"
+        },
+        {
+          "name": "feeReqOut",
+          "type": "port",
+          "block": "RegistrationServer"
+        },
+        {
+          "name": "feeReqIn",
+          "type": "port",
+          "block": "PaymentServiceAdapter"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "RegistrationServer.queryOut",
+          "to": "CourseCatalogDBAdapter.queryIn"
+        },
+        {
+          "from": "RegistrationServer.feeReqOut",
+          "to": "PaymentServiceAdapter.feeReqIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Create a SysML internal block diagram for a hotel reservation backend: A ReservationServer block contains RoomInventory and PaymentGatewayAdapter. ReservationServer checks roomAvailability with RoomInventory and sends paymentAuth to PaymentGatewayAdapter. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "HotelReservationBackendIBD",
+      "blocks": [
+        {
+          "name": "ReservationServer",
+          "type": "block"
+        },
+        {
+          "name": "RoomInventory",
+          "type": "block"
+        },
+        {
+          "name": "PaymentGatewayAdapter",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "inventory",
+          "type": "part",
+          "block": "RoomInventory"
+        },
+        {
+          "name": "payment",
+          "type": "part",
+          "block": "PaymentGatewayAdapter"
+        }
+      ],
+      "ports": [
+        {
+          "name": "availReqOut",
+          "type": "port",
+          "block": "ReservationServer"
+        },
+        {
+          "name": "availReqIn",
+          "type": "port",
+          "block": "RoomInventory"
+        },
+        {
+          "name": "payReqOut",
+          "type": "port",
+          "block": "ReservationServer"
+        },
+        {
+          "name": "payReqIn",
+          "type": "port",
+          "block": "PaymentGatewayAdapter"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "ReservationServer.availReqOut",
+          "to": "RoomInventory.availReqIn"
+        },
+        {
+          "from": "ReservationServer.payReqOut",
+          "to": "PaymentGatewayAdapter.payReqIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Develop a SysML internal block diagram for a music streaming backend: A StreamingServer block contains ContentDatabase and RecommendationService as internal parts named 'contentDB' and 'recommender', respectively. There is also an external StreamingAPI block, represented as a part named 'api'. RecommendationService retrieves track data from ContentDatabase via ports named 'trackReqOut' (on RecommendationService) and 'trackReqIn' (on ContentDatabase). RecommendationService publishes playlists to StreamingAPI via ports named 'playlistOut' (on RecommendationService) and 'playlistIn' (on StreamingAPI). Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "MusicStreamingBackendIBD",
+      "blocks": [
+        {
+          "name": "StreamingServer",
+          "type": "block"
+        },
+        {
+          "name": "ContentDatabase",
+          "type": "block"
+        },
+        {
+          "name": "RecommendationService",
+          "type": "block"
+        },
+        {
+          "name": "StreamingAPI",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "contentDB",
+          "type": "part",
+          "block": "ContentDatabase"
+        },
+        {
+          "name": "recommender",
+          "type": "part",
+          "block": "RecommendationService"
+        },
+        {
+          "name": "api",
+          "type": "part",
+          "block": "StreamingAPI"
+        }
+      ],
+      "ports": [
+        {
+          "name": "trackReqOut",
+          "type": "port",
+          "block": "RecommendationService"
+        },
+        {
+          "name": "trackReqIn",
+          "type": "port",
+          "block": "ContentDatabase"
+        },
+        {
+          "name": "playlistOut",
+          "type": "port",
+          "block": "RecommendationService"
+        },
+        {
+          "name": "playlistIn",
+          "type": "port",
+          "block": "StreamingAPI"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "RecommendationService.trackReqOut",
+          "to": "ContentDatabase.trackReqIn"
+        },
+        {
+          "from": "RecommendationService.playlistOut",
+          "to": "StreamingAPI.playlistIn"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Generate a SysML internal block diagram for a waste management IoT gateway: A GatewayNode block contains SensorInterface and CloudUploader. SensorInterface forwards binData to CloudUploader. Provide the diagram in JSON format.",
+    "desired_model": {
+      "name": "WasteManagementGatewayIBD",
+      "blocks": [
+        {
+          "name": "GatewayNode",
+          "type": "block"
+        },
+        {
+          "name": "SensorInterface",
+          "type": "block"
+        },
+        {
+          "name": "CloudUploader",
+          "type": "block"
+        }
+      ],
+      "parts": [
+        {
+          "name": "sensorIf",
+          "type": "part",
+          "block": "SensorInterface"
+        },
+        {
+          "name": "uploader",
+          "type": "part",
+          "block": "CloudUploader"
+        }
+      ],
+      "ports": [
+        {
+          "name": "binDataOut",
+          "type": "port",
+          "block": "SensorInterface"
+        },
+        {
+          "name": "binDataIn",
+          "type": "port",
+          "block": "CloudUploader"
+        }
+      ],
+      "connectors": [
+        {
+          "from": "SensorInterface.binDataOut",
+          "to": "CloudUploader.binDataIn"
+        }
+      ]
+    }
+  }
+]

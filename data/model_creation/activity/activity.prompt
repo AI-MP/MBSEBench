@@ -1,0 +1,65 @@
+You are an expert in SysML modeling.
+
+**PROCESS TO MODEL:**
+{system_description}
+
+**TASK:** Create a JSON activity diagram for the process described above. Do not ask for clarification.
+
+## Output Format
+
+You MUST output ONLY a valid JSON object following this exact schema:
+
+```json
+{{
+  "name": "DiagramName",
+  "swimlanes": [
+    {{"name": "ActorName", "type": "actor"}}
+  ],
+  "actions": [
+    {{"name": "ActionName", "type": "action", "swimlane": "ActorName"}}
+  ],
+  "flows": [
+    {{"from": "SourceAction", "to": "TargetAction"}}
+  ]
+}}
+```
+
+## Schema Requirements
+
+**REQUIRED FIELDS for root object:**
+- `name` (string): Name of the activity diagram
+- `swimlanes` (array): Minimum 1 swimlane required
+- `actions` (array): Minimum 1 action required  
+- `flows` (array): Control flows between actions
+
+**SWIMLANE PROPERTIES:**
+- `name` (string): Name of the swimlane
+- `type` (string): Must be "actor", "system", or "component"
+
+**ACTION PROPERTIES:**
+- `name` (string): Name of the action
+- `type` (string): Must be one of:
+  - "initial" - Starting point (exactly one required)
+  - "action" - Regular activity/operation
+  - "decision" - Choice point (use "?" in name)
+  - "merge" - Where flows converge
+  - "fork" - Split into parallel flows
+  - "join" - Synchronize parallel flows
+  - "final" - End point
+- `swimlane` (string): Must exactly match a swimlane name
+- `guard` (string): Optional condition (rarely used)
+
+**FLOW PROPERTIES:**
+- `from` (string): Must exactly match an action name
+- `to` (string): Must exactly match an action name
+- `condition` (string): Optional, use for decision branches ("yes"/"no")
+
+**OBJECT_FLOWS (optional):**
+- Only include if data transfer is explicitly mentioned
+- Format: `{{"from": "ActionA", "to": "ActionB", "object": "DataItem"}}`
+
+
+
+---
+
+**REMINDER:** Create the JSON activity diagram for the process described at the top. Output only valid JSON. 
